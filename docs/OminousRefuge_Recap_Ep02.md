@@ -1,0 +1,19 @@
+# Episode #2 - Arrival in Trappist-1
+
+Following the tumultuous departure from Acheron Station, the Valkyrie and its crew arrived in the Trappist-1 system. Causticus, having been assigned to the ship's engineering section, investigated the mysterious machine, Primus Rex. Upon activating the machine, Causticus was met with an overwhelming wave of data analysis that breached her personal security. Fate intervened, shutting down Primus Rex and warning Causticus about the potential dangers of interacting with the machine.
+
+The crew then convened for a ship-wide meeting where they witnessed the Captain execute Stephen, the former ship's armorer, for his insubordination. This act sparked a debate about the Captain's adherence to protocol and raised concerns about her leadership style.
+
+As the Valkyrie journeyed deeper into Trappist-1, the crew began their investigations. Caelen, having taken over Stephen's responsibilities as the ship's armorer, discovered a hidden cache of weapons in Stephen's quarters. He reported all but one of the hidden compartments to Ermine, keeping the most well-concealed compartment secret for potential future use.
+
+Acolyte, the ship's newly appointed chaplain, received a message from a representative of the Order of the Path, a relatively obscure religious group in this futuristic society. The meeting took an unexpected turn when the Captain herself appeared, revealing her distrust of certain crew members and enlisting Acolyte's help in identifying those who might be disloyal to the Federation.
+
+Meanwhile, Garrik, a private contractor for GalMinCo, was confronted with a personal crisis when his wife, Vanessa, unexpectedly asked for a divorce. His attempts to drown his sorrows in the ship's lounge were interrupted by Ulric, who questioned Garrik about Acolyte's identity and warned him against fraternizing with the crew.
+
+Grace, the ship's social anthropologist, had a strange encounter with Jensen, a security officer who hinted at having a mutual acquaintance with Grace. He requested a meeting with her upon landing on the planet.
+
+As the Valkyrie approached Trappist-1 4, the target planet, the crew received initial sensor readings that revealed some startling anomalies. The star was larger than predicted, and the planet was shrouded in darkness, despite being within a habitable zone. Further investigation revealed that the planet's moons were hollow, suggesting advanced technological capabilities beyond the Federation's understanding. Caelen began researching the potential impact of a Dyson sphere, a hypothetical megastructure that could encapsulate a star, on civilization. Garrik, excited by the prospect of finding rare minerals, eagerly awaited the landing.
+
+Ermine, the ship's diplomatic officer, received a report from her assistant, Eesha, expressing concerns about Jensen's behavior and his potential threat to the mission. Ermine conducted her own investigation into Jensen's past, uncovering a record of maverick behavior and a clandestine meeting with Grace on Acheron Station.
+
+Finally, the Captain announced the formation of a landing party to make contact with the inhabitants of Trappist-1 4. The party consisted of Grace, Causticus, Acolyte, Caelen, Garrik, and Ermine. The Captain stressed the importance of gathering samples of biological tissue, technology, and minerals. As the lander descended towards the planet's surface, it was suddenly struck by a laser blast, causing it to crash. The crew ejected just in time, their flight suits deploying airbags and parachutes to cushion their fall. The episode ended with the crew scattered and stranded on the surface of an unknown and potentially hostile world.

@@ -1,4 +1,6 @@
-# Initial Options and Investigation
+# Episode 14 - Reunited
+
+## Initial Options and Investigation
 Following their arrival in the strange, semicircular enclosure within Vexis, the group assessed their precarious situation. Displaced Graftians milled about, wary refugees in an unknown environment. The imposing Queensguard maintained positions on a mezzanine level above, a clear potential threat. Somewhere nearby, Fate and Eesha were presumed to be held, captured by the same Vexian technology that had transported everyone from Graft. Primus Rex continued its synthesis process, utilising Garrik's collected Neutronium samples.
 
 Causticus reviewed their immediate options. They could proceed down the main corridor, using the Head Shaman's wristwatch which seemed capable of interacting with local systems, potentially opening doors. However, this path led towards the Queensguard, risking conflict while the group remained unarmed. Alternatively, they could try to rally the displaced Graftians, building on the tentative trust established by providing food and evidence against Queen Caroline. A final option involved Dr Grace Augustine attempting communication with the large creatures visible through the enclosure's inner windows, or further investigation of their surroundings.
@@ -7,7 +9,7 @@ Caelen Vesir sought to understand their environment better. The structure curved
 
 Moving cautiously down the hallway, mindful of the Queensguard observing from the mezzanine above, Caelen peered into the next small room along the outer wall. It served as a communal area, containing water features refugees drank from and a large table, now empty but clearly intended for food distribution. Examining the far wall – constructed of black Neutronium inlaid with the familiar ornate gold alloy seen in the Queen's sandworms and droids – Caelen initially found no access panel. However, a closer look upwards revealed a faint seam indicating a hatch high in the Neutronium ceiling. As he watched, the hatch slid open, and a robotic golden arm descended, carrying a fresh tray of food. It placed the tray on the table, triggering a swarm of hungry Graftians, before retracting and sealing the hatch once more. Assessing the hatch, Caelen judged it just large enough for a person to climb through and decided to report back to the others.
 
-# Troubling Discoveries and Difficult Decisions
+## Troubling Discoveries and Difficult Decisions
 As Caelen returned, Grace inquired about the Graftians' disposition. While most remained wary, having initially been warned the newcomers were "agents of Vexis," the Head Shaman and her immediate circle seemed disillusioned with their Queen after recent events. They stayed close, primarily because the group had provided safe food, but trust was fragile. Notably absent were Tanath, Triss, and the allied tribal scouts, their location unknown.
 
 Garrik Redstone proposed a defensive measure: collecting DNA samples from the creatures outside the windows to program Primus Rex for targeted defense. Causticus countered that the Queensguard posed a more immediate threat, while Caelen voiced ethical concerns about participating in what seemed like the Federation's potentially genocidal plan to acquire samples for extermination. Causticus suggested targeting the Queensguard or Caroline herself, though acquiring their DNA would require direct confrontation, something they were ill-equipped for. Primus Rex confirmed it could process a second sample concurrently with its ongoing weapon synthesis.
@@ -18,26 +20,26 @@ Observing another scuffle break out – this time between two elderly individual
 
 Caelen shared his discovery of the ceiling hatch and the robotic arms, proposing it as a potential escape route or a way to bypass the Queensguard. While Garrik and Joseph initially preferred waiting for Primus Rex to complete its weapon, Caelen argued against inaction. He volunteered to scout the hatch, and the Empire diplomat, Sandro Destroci, offered to accompany him. Grace agreed to join as well, hoping it might lead to a way to interact with the creatures outside.
 
-# Neutronium Negotiations and Splitting the Party
+## Neutronium Negotiations and Splitting the Party
 Ulric, agitated and desperate to escape, declared he would join the scouting party, citing Sandro's guarantee of diplomatic immunity. He then pressed Garrik for some of the Neutronium samples. This sparked a tense negotiation. Ulric, revealing his Syndicate ties were still relevant, wanted the Neutronium to secure favour (and wealth) upon returning to the Empire via the Syndicate. Garrik, wary of losing his only leverage, refused. Sandro and his bodyguard, Gary Gallagher, spoke up, supporting Ulric's plan – escape the enclosure, find an orb, and take the Neutronium back to the Empire as their best chance of survival.
 
 Ermine questioned the Empire's need for Neutronium. Sandro described it as a miracle material capable of revolutionising industry, claiming weaponisation hadn't crossed his mind, though acknowledging the potential for misuse. Garrik remained skeptical.
 
 Reluctant to give samples directly to Ulric, Garrik proposed distributing some among the departing group members he trusted more. Ermine decided to join the exploration team after hearing the discussion. Garrik ultimately agreed to keep four Neutronium samples for himself and Causticus (who was staying behind with Primus Rex) and give two samples each to Caelen and Ermine. Grace and Joseph declined to carry any. Joseph, reconsidering the risks, decided to stay behind with Garrik and Causticus after all.
 
-# The Ascent
+## The Ascent
 Caelen proceeded to one of the food distribution rooms and waited. Soon, a hatch slid open, and a golden arm descended with a food tray. As it reached its lowest point, Caelen grabbed onto it, intending to climb. He instantly felt an electrical charge build within the arm. Reacting with surprising speed and agility, he scrambled up through the opening just before the defensive shock could incapacitate him, disappearing into the ceiling space as the arm retracted and the hatch slammed shut.
 
 Witnessing Caelen's near-miss, the remaining explorers – Grace, Ermine, Sandro, Gary, and Ulric – realised the ascent was hazardous. They surmised the shock was likely non-lethal but incapacitating. Moving to another nearby food station, they waited for the next arm. Bolstered by Joseph's quick tactical advice and their own preparedness, Grace and Ermine managed the climb, enduring minor electrical jolts but successfully reaching the space above. Sandro, Gary, and Ulric followed, similarly managing the hazardous ascent, leaving Garrik, Causticus, Joseph, and Primus Rex below.
 
-# Above and Beyond the Enclosure
+## Above and Beyond the Enclosure
 The group found themselves in a cramped, hot space filled with the whirring machinery of an automated distribution system – a network of bots transporting food trays along tracks following the enclosure's curve. Gaps in the machinery suggested passages leading further outward, away from the jungle-view windows, and also potentially upward, over the enclosure's transparent ceiling.
 
 Moving cautiously, they narrowly avoided detection by several golden Sandworm constructs patrolling the attic space. Assessing their options, they could follow the curve of the enclosure in the rafters, scramble inwards over the glass ceiling towards the jungle habitat, or move outwards away from the entire structure. Ermine activated a short-range sensor sweep, detecting no unusual energy signatures or life forms nearby, though the Sandworms registered as constructs.
 
 Opting to move outwards, seeking escape, they scrambled over humming pipes and conduits. They reached what seemed like an outer wall and carefully climbed down, emerging into a vast, dimly lit cavern outside the enclosure structure. They now viewed the entire semicircular habitat – jungle, viewing windows, atriums and all – from an external perspective, like looking at a massive terrarium. The cavern floor was composed of fine, grey dust similar to lunar regolith, supported by massive Neutronium beams. The scale was immense, clearly designed for beings far larger than humans. Huge archways led off into darkness in different directions. From one direction (further outwards), they heard the rhythmic thrumming of heavy machinery. From another (leading inwards, back towards the enclosure's central jungle area), they heard the screeches and calls of unseen wildlife.
 
-# Confrontation on the Mezzanine
+## Confrontation on the Mezzanine
 Back inside the enclosure, Garrik, Causticus, and Joseph watched their companions disappear upwards. The Queensguard on the mezzanine above took notice, their posture becoming more overtly suspicious now that the group was smaller. Garrik called up, asking why they were staring, but received only silence as one guard turned and moved deeper into the terrace, presumably to report.
 
 Moments later, the guard returned and beckoned Garrik's group upstairs. Taking some of the potentially drugged food with them as a dubious offering, the three humans ascended, accompanied by Primus Rex, who activated an intimidation protocol, rearranging its plating to appear larger and more menacing. The Graftian refugees scattered before the imposing machine.
@@ -62,7 +64,7 @@ Joseph worried that if Fate arrived, she could instantly regain control of Primu
 
 Causticus pressed Malik about his wristwatch (access to the Queen's chambers) and his unwavering belief they were "Agents of Vexis" (the Queen's designation). Malik reiterated his belief that Caroline represented the benevolent Lyria, while the other demigods served the malevolent Vexis. He offered them a chance at "redemption" by fighting their supposed masters. When asked how the powerful Queen could need rescuing, he simply blamed "treachery." He insisted their previous encounter was merely the Queen defending her people. Seeing Malik was utterly convinced, Garrik suggested they agree to the alliance for now and asked how to get out. Malik replied his guards were currently scouting the perimeter.
 
-# Jungle Scouting and Eesha's Revelation
+## Jungle Scouting and Eesha's Revelation
 Meanwhile, outside the enclosure, Caelen's group debated their next move. Caelen favoured heading towards the distant machine thrumming, while Grace felt drawn to the jungle sounds, hoping to understand the creatures. They decided to cautiously scout the jungle area first as it was slightly closer.
 
 Jogging along the exterior of the enclosure wall, they rounded a corner and peered into the jungle region. They spotted numerous smaller myconid creatures – similar to those encountered on Graft – nesting among rock formations and fungal growths. The creatures noticed them but remained wary rather than aggressive. Far in the distance (about a kilometer away), they saw the four colossal lizard-avatars. Grace, relying on her biological knowledge, assessed that the large creatures appeared herbivorous based on their physiology, while the smaller myconids seemed omnivorous. The three surrounding lizards were roaring and posturing aggressively towards the lone orange one, which snarled back defiantly, but no physical combat had erupted yet.
@@ -79,7 +81,7 @@ Ermine, set down once they'd put distance between themselves and the encounter s
 
 As the rest of the group caught up, Eesha eyed Sandro and Gary warily. Ermine explained their cooperation had been necessary for survival. Eesha recounted Fate and Douji's extreme paranoia regarding the Empire. When pressed about venting crew, Eesha defended the actions as necessary protocol under a sudden "black alert" existential threat scenario, where insubordination couldn't be tolerated. Ermine argued that orders must sometimes be questioned, especially given the mission's dubious morality. Eesha, looking conflicted but resolute, acknowledged the discord among the crew (glancing pointedly at Grace and Caelen) but stated her current orders were to report to Ermine and follow her directives.
 
-# The Situation
+## The Situation
 The party remains divided.
 
 Outside Group (Caelen, Grace, Ermine, Eesha, Sandro, Gary, Ulric): Have escaped the enclosure and encountered Eesha, who brings a starkly different, Federation-loyalist perspective on the mission and recent events. They are heading towards unknown machine sounds in the vast cavern system, accompanied by Empire personnel. Eesha awaits Commander Ermine's orders.

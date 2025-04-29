@@ -1,4 +1,6 @@
-# The Neutronium Workshops
+# Episode 15 - Ominous Refuge
+
+## The Neutronium Workshops
 
 The vast, semi-circular enclosure faded behind them as the group pressed further into the alien complex beneath Vexis. Passing through immense, naturally formed rocky archways that separated the colossal underground chambers, they emerged into a central expanse. The space seemed almost limitless, stretching into darkness in most directions, but ahead, three distinct archways beckoned, similar to the one they had just traversed.
 
@@ -10,7 +12,7 @@ A third archway, the only other one clearly visible without moving further into 
 
 Commander Ermine Lakeford noted the sphere being constructed resembled the very transport pods they had arrived in, almost identical in form. It seemed like a miniature version of whatever technology had brought them here was being actively 3D-printed from neutronium. Caelen wondered if this was a continuous production line.
 
-# Cautious Exploration
+## Cautious Exploration
 
 Deciding to investigate the manufacturing area, Caelen moved forward slowly and cautiously, hoping the others – Ermine, Dr Grace Augustine, Eesha, Ulric, Sandro Destroci, and Gary Gallagher – would follow. The group advanced, attempting to remain undetected within the alien environment. Though their individual levels of stealth varied, they managed to proceed without immediate alarm. Ulric had joined them, eager to find any means of escape back towards Empire space and potential profit.
 
@@ -30,7 +32,7 @@ Sandro and Ulric were already conferring at the base of the structure supporting
 
 Caelen considered the risks of climbing. The fall would be several stories, but the lower gravity on Vexis (roughly half standard G) might make it harmful rather than instantly lethal. He consulted with Ermine and Grace, proposing they scale the structure. None of them possessed personal anti-gravity tech like feather fall devices. Just as they hesitated, a particularly loud roar from the colossal alien creatures battling back near the enclosure echoed through the chambers, accompanied by faint tremors in the ground – a reminder that this manufacturing room was just one part of a larger, potentially dangerous complex, and lingering too long might be unwise.
 
-# The Workshop Roof
+## The Workshop Roof
 
 With a shared sense of urgency, the decision was made. Eesha, utilising the strength of her powered armour, grabbed Ermine and began punching handholds into the structure's side, effortlessly carrying the Commander upwards. Caelen and Grace scrambled up after them, following the path Eesha forged, reaching the top shortly after Sandro, Ulric, and Gary.
 
@@ -48,7 +50,7 @@ Then, the connection clicked. The finished figure wore illustrious white robes, 
 
 While they absorbed this, Gary gave Sandro a boost as he attempted to clamber onto the hot, newly-formed surface of the transport sphere, only to jump back, remarking on the heat. He and Ulric conferred again, looking up at the still-active printing mechanism.
 
-# Orders and Objectives
+## Orders and Objectives
 
 Eesha turned discreetly to Ermine. "What are your orders, Commander? What are we doing here?" Before Ermine could fully process, Eesha added, "Fate did ask that we collect samples of everything that we can and then take them back to her."
 "For what purpose?" Ermine inquired.
@@ -75,7 +77,7 @@ Caelen countered, "But realistically, if we haven't figured out a way to get our
 Caelen recalled the viewing dome in the enclosure area. "The dome seemed like the only visual connection between our underground area and the upper balcony. If there's a way of attracting their attention and communicating there..." He confirmed that their standard gear likely included small, general-purpose devices capable of blinking messages via laser or coded light pulses – a sci-fi equivalent of semaphore or Morse code. If they could establish line-of-sight, communication was possible.
 "I'd like to scope out that opportunity," Caelen decided. "I want to go back to the dome area and just at least look for longer than just a quick glance, which is what we did last time."
 
-# The Sentry and the Revelation
+## The Sentry and the Revelation
 
 As Caelen turned, contemplating the long trek back towards the enclosure, he froze. From their elevated vantage point, looking across the expanse towards a different section of the far wall they hadn't inspected closely, stood one of the colossal Myconid aliens – a Keeper. It was stock still, unmoving. Caelen observed it patiently. It didn't react, didn't shift. It didn't look quite like the others they'd seen engaged in the conflict.
 

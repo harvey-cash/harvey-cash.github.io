@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ominous Refuge</title>
+    <title>Minimal Markdown Wiki</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
@@ -125,73 +125,117 @@
         /* --- End Home Page Styles --- */
 
 
-        /* Markdown Content Styling */
+        /* Markdown Content Styling (remains the same) */
         #markdown-output {
              display: none; /* Hidden by default */
         }
 
-        /* Styles for h1-h6, p, a, ul, ol, li, code, pre, blockquote, img, table remain the same... */
         #markdown-output h1,
         #markdown-output h2,
         #markdown-output h3,
         #markdown-output h4,
         #markdown-output h5,
         #markdown-output h6 {
-            color: #ffffff; margin-top: 1.5em; margin-bottom: 0.8em; border-bottom: 1px solid #444; padding-bottom: 0.3em; font-weight: 700;
-        }
-        #markdown-output h1 { font-size: 2em; } #markdown-output h2 { font-size: 1.75em; } #markdown-output h3 { font-size: 1.5em; }
-        #markdown-output p { margin-bottom: 1em; }
-        #markdown-output a { color: #64b5f6; text-decoration: none; }
-        #markdown-output a:hover { text-decoration: underline; }
-        #markdown-output ul, #markdown-output ol { margin-left: 20px; margin-bottom: 1em; }
-        #markdown-output li { margin-bottom: 0.5em; }
-        #markdown-output code { background-color: #2c2c2c; color: #f0f0f0; padding: 0.2em 0.4em; border-radius: 4px; font-family: 'Courier New', Courier, monospace; font-size: 0.9em; }
-        #markdown-output pre { background-color: #2c2c2c; color: #f0f0f0; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 1em; font-family: 'Courier New', Courier, monospace; }
-        #markdown-output pre code { background-color: transparent; padding: 0; border-radius: 0; font-size: inherit; }
-        #markdown-output blockquote { border-left: 4px solid #555; padding-left: 15px; margin: 1em 0; color: #c0c0c0; font-style: italic; }
-        #markdown-output img { max-width: 100%; height: auto; display: block; margin: 1em 0; border-radius: 4px; background-color: #fff; }
-        #markdown-output table { width: 100%; border-collapse: collapse; margin-bottom: 1em; }
-        #markdown-output th, #markdown-output td { border: 1px solid #444; padding: 8px 12px; text-align: left; }
-        #markdown-output th { background-color: #3a3a3a; color: #ffffff; font-weight: 700; }
-
-
-        /* --- Document Navigation Button Styles --- */
-        #doc-navigation {
-            display: none; /* Hidden by default, shown via JS */
-            margin-top: 40px; /* Space above the buttons */
-            padding-top: 20px; /* Space inside the container */
-            border-top: 1px solid #444; /* Separator line */
-            display: flex; /* Use flexbox for button layout */
-            justify-content: space-between; /* Space out buttons */
-            align-items: center;
+            color: #ffffff; /* White headings */
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            border-bottom: 1px solid #444; /* Separator for headings */
+            padding-bottom: 0.3em;
+            font-weight: 700; /* Bolder headings */
         }
 
-        .nav-button {
-            display: inline-block; /* Allow padding and margins */
-            background-color: #3a3a3a; /* Button background */
-            color: #e0e0e0; /* Button text color */
+        #markdown-output h1 { font-size: 2em; }
+        #markdown-output h2 { font-size: 1.75em; }
+        #markdown-output h3 { font-size: 1.5em; }
+
+        #markdown-output p {
+            margin-bottom: 1em;
+        }
+
+        #markdown-output a {
+            color: #64b5f6; /* Light blue for links */
             text-decoration: none;
-            padding: 10px 20px;
+        }
+
+        #markdown-output a:hover {
+            text-decoration: underline;
+        }
+
+        #markdown-output ul,
+        #markdown-output ol {
+            margin-left: 20px; /* Indent lists */
+            margin-bottom: 1em;
+        }
+
+        #markdown-output li {
+            margin-bottom: 0.5em;
+        }
+
+        /* Inline code */
+        #markdown-output code {
+            background-color: #2c2c2c; /* Dark background for code */
+            color: #f0f0f0; /* Light color for code text */
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace; /* Monospace font */
+            font-size: 0.9em;
+        }
+
+        /* Code blocks */
+        #markdown-output pre {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            padding: 15px;
             border-radius: 5px;
-            border: 1px solid #555;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            overflow-x: auto; /* Allow horizontal scrolling for long code */
+            margin-bottom: 1em;
+            font-family: 'Courier New', Courier, monospace; /* Monospace font */
+        }
+
+        /* Reset background for code elements within pre blocks */
+        #markdown-output pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: inherit; /* Inherit font size from pre */
+        }
+
+        #markdown-output blockquote {
+            border-left: 4px solid #555; /* Left border for blockquotes */
+            padding-left: 15px;
+            margin: 1em 0;
+            color: #c0c0c0; /* Slightly dimmer text for quotes */
+            font-style: italic;
+        }
+
+        #markdown-output img {
+            max-width: 100%; /* Ensure images are responsive */
+            height: auto;
+            display: block; /* Prevent extra space below images */
+            margin: 1em 0;
+            border-radius: 4px; /* Optional rounded corners */
+            background-color: #fff; /* Add white background for transparent images */
+        }
+
+        /* Basic table styling */
+        #markdown-output table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1em;
+        }
+
+        #markdown-output th,
+        #markdown-output td {
+            border: 1px solid #444; /* Borders for table cells */
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        #markdown-output th {
+            background-color: #3a3a3a; /* Darker background for table headers */
+            color: #ffffff; /* White text for headers */
             font-weight: 700;
-            text-align: center;
         }
-
-        .nav-button:hover {
-            background-color: #4a4a4a; /* Slightly lighter on hover */
-            border-color: #777;
-            color: #ffffff;
-        }
-
-        /* Style for hidden/disabled buttons (using a class) */
-        .nav-button.hidden {
-            visibility: hidden; /* Keep space but hide button */
-            pointer-events: none; /* Prevent interaction */
-        }
-        /* --- End Document Navigation Button Styles --- */
-
 
         /* Loading/Error Message Area */
         #message {
@@ -236,24 +280,15 @@
                  padding: 15px;
                  min-height: 100px;
              }
-
-             #doc-navigation {
-                 margin-top: 30px;
-                 padding-top: 15px;
-                 flex-direction: row; /* Ensure buttons stay in a row */
-             }
-
-             .nav-button {
-                 padding: 8px 15px;
-                 font-size: 0.9em;
-             }
         }
     </style>
 </head>
 <body>
     <aside id="sidebar">
-        <h2>Navigation</h2>
-        <ul><li><a href="">Home</a></li></ul>
+        <h2>Navigation</h2>  
+        <ul>
+            <li><a href="">Home</a></li>
+        </ul>
         <ul id="nav-list">
             <li><a href="#">Loading...</a></li>
         </ul>
@@ -261,18 +296,13 @@
 
     <main id="content">
         <div id="home-page">
-            <h1>Ominous Refuge - Home</h1>
+            <h1>Ominous Refuge</h1>
             <div id="home-tiles">
                 </div>
         </div>
 
         <div id="markdown-output">
             </div>
-
-        <div id="doc-navigation">
-             <a href="#" id="prev-button" class="nav-button">← Previous</a>
-             <a href="#" id="next-button" class="nav-button">Next →</a>
-        </div>
 
         <div id="message">Loading...</div>
     </main>
@@ -283,19 +313,15 @@
             const navList = document.getElementById('nav-list');
             const markdownOutput = document.getElementById('markdown-output');
             const messageDiv = document.getElementById('message');
-            const homePageDiv = document.getElementById('home-page');
-            const homeTilesContainer = document.getElementById('home-tiles');
-            const docNavigationDiv = document.getElementById('doc-navigation'); // Nav button container
-            const prevButton = document.getElementById('prev-button'); // Previous button
-            const nextButton = document.getElementById('next-button'); // Next button
-            const contentBase = 'docs/';
+            const homePageDiv = document.getElementById('home-page'); // Reference to home page container
+            const homeTilesContainer = document.getElementById('home-tiles'); // Reference to tiles container
+            const contentBase = 'docs/'; // Directory where your markdown files are stored
 
             // --- ------------------- ---
             // --- START CONFIGURATION ---
             // --- ------------------- ---
 
             // Define the list of Markdown files. Paths relative to `contentBase` ('docs/'). No '.md' extension.
-            // Order matters for Prev/Next buttons (latest/first = index 0).
             const markdownFiles = [
                 'OminousRefuge_Summarised',
                 'OminousRefuge_Recap_Ep15',
@@ -325,22 +351,27 @@
             // --- Core Logic ---
             // --- --- --- --- ---
 
-            /**
+             /**
              * Formats a filename into a more readable display name.
+             * Example: 'locations/neverwinter' -> 'Locations Neverwinter'
+             * Example: 'OminousRefuge_Recap_Ep15' -> 'OminousRefuge Recap Ep15'
+             * @param {string} filename - The filename string.
+             * @returns {string} A formatted display name.
              */
             function formatDisplayName(filename) {
+                 // Take the last part of the path, replace hyphens/underscores with spaces, capitalize words
                  return filename.split('/').pop().replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
             }
 
+
             /**
-             * Displays the home page.
+             * Displays the home page with tiles linking to documents.
              */
             function displayHomePage() {
-                // Hide markdown, messages, and doc navigation
+                // Clear previous content and hide other sections
                 markdownOutput.style.display = 'none';
                 messageDiv.style.display = 'none';
-                docNavigationDiv.style.display = 'none'; // Hide nav buttons on home
-                homeTilesContainer.innerHTML = '';
+                homeTilesContainer.innerHTML = ''; // Clear previous tiles
 
                 if (markdownFiles.length === 0) {
                     homeTilesContainer.innerHTML = '<p style="text-align: center; color: #aaa;">No documents configured yet.</p>';
@@ -348,31 +379,32 @@
                     // Populate tiles
                     markdownFiles.forEach(file => {
                         const tile = document.createElement('a');
-                        tile.href = `#${file}`;
-                        tile.classList.add('tile-link');
+                        tile.href = `#${file}`; // Link to the document hash
+                        tile.classList.add('tile-link'); // Apply tile styling
+
                         const tileText = document.createElement('span');
-                        tileText.textContent = formatDisplayName(file);
+                        tileText.textContent = formatDisplayName(file); // Use formatted name
                         tile.appendChild(tileText);
+
                         homeTilesContainer.appendChild(tile);
                     });
                 }
 
                 // Show the home page section
                 homePageDiv.style.display = 'block';
-                document.title = "Ominous Refuge Home";
-                updateActiveLink(null);
+                document.title = "Wiki Home"; // Set browser tab title for home page
+                updateActiveLink(null); // No active link in sidebar for home page
             }
 
             /**
-             * Fetches, displays a Markdown file, and updates navigation buttons.
+             * Fetches and displays a Markdown file.
              * @param {string} filename - The path of the markdown file (without .md extension).
              */
             async function loadMarkdown(filename) {
-                // Hide other sections, show loading message
+                // Hide other sections and show loading message
                 homePageDiv.style.display = 'none';
                 markdownOutput.innerHTML = '';
-                markdownOutput.style.display = 'none';
-                docNavigationDiv.style.display = 'none'; // Hide nav buttons initially
+                markdownOutput.style.display = 'none'; // Hide initially
                 messageDiv.textContent = 'Loading...';
                 messageDiv.style.display = 'block';
 
@@ -380,74 +412,41 @@
 
                 try {
                     const response = await fetch(filePath);
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status} - Could not load ${filename}.md`);
+                    }
+
                     const markdownText = await response.text();
 
                     // Configure Marked.js
-                    marked.setOptions({ gfm: true, breaks: true, mangle: false, headerIds: true, headerPrefix: '' });
+                    marked.setOptions({
+                        gfm: true,
+                        breaks: true,
+                        mangle: false,
+                        headerIds: true,
+                        headerPrefix: ''
+                    });
 
                     // Convert and display markdown
                     markdownOutput.innerHTML = marked.parse(markdownText);
-                    messageDiv.style.display = 'none';
-                    markdownOutput.style.display = 'block';
+                    messageDiv.style.display = 'none'; // Hide loading message
+                    markdownOutput.style.display = 'block'; // Show markdown content
 
-                    // Update title and active sidebar link
+                    // Update title and active link
                     document.title = formatDisplayName(filename) || "Wiki";
                     updateActiveLink(filename);
 
-                    // --- Update Navigation Buttons ---
-                    const currentIndex = markdownFiles.indexOf(filename);
-                    let prevFilename = null;
-                    let nextFilename = null;
-
-                    // Determine "Previous" (item at index + 1 in the array)
-                    if (currentIndex < markdownFiles.length - 1) {
-                        prevFilename = markdownFiles[currentIndex + 1];
-                    }
-
-                    // Determine "Next" (item at index - 1 in the array)
-                    if (currentIndex > 0) {
-                        nextFilename = markdownFiles[currentIndex - 1];
-                    }
-
-                    // Update Previous button
-                    if (prevFilename) {
-                        prevButton.href = `#${prevFilename}`;
-                        prevButton.classList.remove('hidden'); // Show button
-                        prevButton.setAttribute('aria-label', `Previous: ${formatDisplayName(prevFilename)}`);
-                    } else {
-                        prevButton.href = '#'; // No link
-                        prevButton.classList.add('hidden'); // Hide button
-                        prevButton.removeAttribute('aria-label');
-                    }
-
-                    // Update Next button
-                    if (nextFilename) {
-                        nextButton.href = `#${nextFilename}`;
-                        nextButton.classList.remove('hidden'); // Show button
-                        nextButton.setAttribute('aria-label', `Next: ${formatDisplayName(nextFilename)}`);
-                    } else {
-                        nextButton.href = '#'; // No link
-                        nextButton.classList.add('hidden'); // Hide button
-                        nextButton.removeAttribute('aria-label');
-                    }
-
-                    // Show the navigation container if at least one button is visible
-                    if (prevFilename || nextFilename) {
-                         docNavigationDiv.style.display = 'flex'; // Use flex to align buttons
-                    }
-                    // --- End Navigation Button Update ---
-
                 } catch (error) {
                     console.error('Error loading Markdown file:', error);
-                    markdownOutput.innerHTML = '';
-                    markdownOutput.style.display = 'none';
-                    homePageDiv.style.display = 'none';
-                    docNavigationDiv.style.display = 'none'; // Hide nav buttons on error
-                    messageDiv.textContent = `Error: Could not load '${filename}.md'. Check file existence and configuration.`;
+                    markdownOutput.innerHTML = ''; // Clear content on error
+                    markdownOutput.style.display = 'none'; // Hide markdown area
+                    homePageDiv.style.display = 'none'; // Ensure home page is hidden
+                    // Display error message
+                    messageDiv.textContent = `Error: Could not load '${filename}.md'. Please check the file exists in the '${contentBase}' folder and the filename is correctly listed in the 'markdownFiles' array in index.html.`;
                     messageDiv.style.display = 'block';
                     document.title = "Error Loading Page";
-                    updateActiveLink(null);
+                    updateActiveLink(null); // Remove active link highlight
                 }
             }
 
@@ -455,17 +454,18 @@
              * Populates the sidebar navigation list.
              */
             function populateNav() {
-                navList.innerHTML = '';
+                navList.innerHTML = ''; // Clear "Loading..."
                 if (markdownFiles.length === 0) {
                      navList.innerHTML = '<li>No pages configured.</li>';
                      return;
                 }
+
                 markdownFiles.forEach(file => {
                     const listItem = document.createElement('li');
                     const link = document.createElement('a');
                     link.href = `#${file}`;
-                    link.textContent = formatDisplayName(file);
-                    link.dataset.filename = file;
+                    link.textContent = formatDisplayName(file); // Use formatted name
+                    link.dataset.filename = file; // Store filename
                     listItem.appendChild(link);
                     navList.appendChild(listItem);
                 });
@@ -473,43 +473,62 @@
 
             /**
              * Updates the visual styling of the sidebar links.
+             * @param {string|null} activeFilename - The filename of the active page, or null for home.
              */
             function updateActiveLink(activeFilename) {
                 const links = navList.querySelectorAll('a');
                 links.forEach(link => {
-                    link.classList.toggle('active', link.dataset.filename === activeFilename);
+                    if (link.dataset.filename === activeFilename) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
                 });
             }
 
+
             /**
-             * Handles navigation based on the URL hash.
+             * Handles navigation based on the URL hash. Shows home page or loads a document.
              */
             function handleNavigation() {
                 let filename = window.location.hash.substring(1);
 
+                // If hash is empty or just '#', show the home page
                 if (!filename || filename === '#') {
                     displayHomePage();
-                    if(filename === '#') history.replaceState(null, '', window.location.pathname + window.location.search);
-                } else if (markdownFiles.includes(filename)) {
+                     // Optionally update history to clean URL (remove trailing #)
+                     if(filename === '#') {
+                         history.replaceState(null, '', window.location.pathname + window.location.search);
+                     }
+                }
+                // Check if the filename from hash exists in our configured list
+                else if (markdownFiles.includes(filename)) {
                     loadMarkdown(filename);
-                } else {
-                    // Handle invalid hash
-                    homePageDiv.style.display = 'none';
+                }
+                // Handle invalid hash (file not in list)
+                else {
+                    homePageDiv.style.display = 'none'; // Hide home
+                    markdownOutput.innerHTML = ''; // Hide markdown
                     markdownOutput.style.display = 'none';
-                    docNavigationDiv.style.display = 'none'; // Hide nav buttons
-                    messageDiv.textContent = `Error: Page not found for '#${filename}'.`;
+                    messageDiv.textContent = `Error: Page not found for '#${filename}'. Check the URL or the configuration in index.html.`;
                     messageDiv.style.display = 'block';
                     document.title = "Page Not Found";
-                    updateActiveLink(null);
+                    updateActiveLink(null); // Clear active link
                 }
             }
 
             // --- --- --- --- --- ---
             // --- Initialization ---
             // --- --- --- --- --- ---
+
+            // 1. Populate the navigation sidebar
             populateNav();
+
+            // 2. Listen for hash changes (user clicks links, uses back/forward)
             window.addEventListener('hashchange', handleNavigation);
-            handleNavigation(); // Initial load
+
+            // 3. Perform initial page load: Show home page or specific doc based on initial URL hash
+            handleNavigation();
         });
     </script>
 </body>
