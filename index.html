@@ -111,38 +111,48 @@
 
     <main class="pt-24">
         <!-- Hero Section -->
-        <section id="hero" class="container mx-auto px-6 py-24 md:py-32 text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
-                Building the Future with <span class="accent-colour">Code</span> and <span class="accent-colour">Creativity</span>.
-            </h1>
-            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">
-                A versatile engineer specialising in 3D simulation, embedded systems, and AI integration. Turning complex problems into elegant, high-performance solutions.
-            </p>
-            <div class="space-x-4">
-                <a href="#projects" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg transition-transform duration-300 inline-block transform hover:scale-105">View Projects</a>
-                <a href="#services" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition-transform duration-300 inline-block transform hover:scale-105">My Services</a>
+        <section id="hero" class="relative bg-cover bg-center bg-no-repeat py-20 md:py-32" style="background-image: url('https://picsum.photos/seed/techbg/1920/1080')">
+            <!-- Overlay for better text readability -->
+            <div class="absolute inset-0 bg-gray-900/70 backdrop-blur-sm"></div>
+            <!-- Content Container -->
+            <div class="relative container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
+                    Bridging the gap between <span class="accent-colour">Code</span> and <span class="accent-colour">Reality</span>.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                    A versatile engineer specialising in 3D simulation, embedded systems, and AI. Turning complex problems into robust, high-performance solutions.
+                </p>
+                <div class="space-x-4">
+                    <a href="#projects" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg transition-transform duration-300 inline-block transform hover:scale-105">View Projects</a>
+                    <a href="#services" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition-transform duration-300 inline-block transform hover:scale-105">My Services</a>
+                </div>
             </div>
         </section>
         
         <!-- About Section -->
-        <section id="about" class="py-20 bg-gray-900">
+        <section id="about" class="py-10 bg-gray-900">
             <div class="container mx-auto px-6">
                 <div class="flex flex-col md:flex-row items-center gap-12">
                     <div class="flex-shrink-0">
-                        <img class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-gray-700 shadow-lg" src="https://picsum.photos/seed/profile/300/300" alt="Harvey Cash profile picture">
+                        <img class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-gray-700 shadow-lg" src="./images/profile.png" alt="Harvey Cash profile picture" onerror="this.onerror=null;this.src='https://placehold.co/256x256/1F2937/38bdf8?text=HC';">
                     </div>
                     <div class="text-center md:text-left">
-                         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 section-title-underline">About Me</h2>
-                         <p class="text-lg text-gray-300">
-                            A results-driven engineer with a first-class Master's in Computer Science, I transform complex challenges into high-performance solutions. From life-saving medical simulations in VR to pioneering AI pipelines and embedded systems, I thrive on R&D and building the future of technology. Let's create something remarkable together.
-                         </p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 section-title-underline">About Harvey</h2>
+                        <p class="text-lg text-gray-300">I love building things, especially software that touches the <span class="accent-colour">real world</span>.</p>
+                        <p class="text-lg text-gray-300">That's why I've spent my career developing medical devices, haptic force-feedback engines for VR training, and RF electronics.</p>
+                        <br>
+                        <p class="text-lg text-gray-300">I believe in writing software <span class="accent-colour">test-first</span>, and in delivering value quickly and continuously.</p>
+                        <p class="text-lg text-gray-300">That's why my code works verifiably, and why it always flexibly evolves to meet changing requirements.</p>
+                        <br>
+                        <p class="text-lg text-gray-300">I am always learning, and excited to be on the <span class="accent-colour">cutting edge</span>.</p>
+                        <p class="text-lg text-gray-300">That's why I bring open-minded enthusiasm to everything, why I am passionate about R&D, and why I used AI to make this website!</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="py-20">
+        <section id="projects" class="py-10">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 section-title-underline">Projects Portfolio</h2>
                 <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -152,7 +162,7 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="py-20 bg-gray-900">
+        <section id="skills" class="py-10 bg-gray-900">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 section-title-underline">Skills</h2>
                 <div class="grid grid-cols-1 gap-8">
@@ -169,10 +179,10 @@
                         <div class="card-bg p-8 rounded-lg">
                             <h3 class="text-2xl font-bold text-white mb-4">Hardware</h3>
                             <ul class="space-y-3 text-gray-300">
-                                <li class="flex items-center">CAD (FreeCAD) & 3D Printing</li>
+                                <li class="flex items-center">CAD & 3D Printing</li>
                                 <li class="flex items-center">Arduino, Nordic nRF53/52</li>
                                 <li class="flex items-center">Haptics & Force Feedback Devices</li>
-                                <li class="flex items-center">VR Headsets & Peripherals</li>
+                                <li class="flex items-center">Virtual Reality</li>
                                 <li class="flex items-center">Android & Bluetooth Low Energy</li>
                                 <li class="flex items-center">Electronics Design & Soldering</li>
                                 <li class="flex items-center">Digital Logic Analyser & Oscilloscope</li>
@@ -196,7 +206,7 @@
         </section>
         
         <!-- Employment History Section -->
-        <section id="employment" class="py-20">
+        <section id="employment" class="py-10">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 section-title-underline">Employment History</h2>
                 <div id="employment-timeline" class="timeline-container">
@@ -206,7 +216,7 @@
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="py-20 bg-gray-900">
+        <section id="services" class="py-10 bg-gray-900">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 section-title-underline">Services</h2>
                 <div id="services-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -216,7 +226,7 @@
         </section>
 
         <!-- Achievements Section -->
-        <section id="achievements" class="py-20">
+        <section id="achievements" class="py-10">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 section-title-underline">Achievements</h2>
                 <div id="achievements-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -226,33 +236,38 @@
         </section>
 
         <!-- Education & Interests Section -->
-        <section id="education-interests" class="py-20 bg-gray-900">
+        <section id="education-interests" class="py-10 bg-gray-900">
             <div class="container mx-auto px-6 grid md:grid-cols-5 gap-12 items-start">
                 <div class="md:col-span-3">
                      <div class="card-bg p-6 rounded-lg">
-                        <h3 class="text-2xl font-bold text-white mb-4">Education</h3>
-                        <div class="mb-4">
-                            <p class="font-semibold text-white text-lg">Masters in Computer Science (1st)</p>
-                            <p class="text-gray-400">University of Sheffield</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-white text-lg">A-Levels (A*/A)</p>
-                            <p class="text-gray-400">Maths, Further Maths, Physics</p>
-                        </div>
+                         <h3 class="text-2xl font-bold text-white mb-4">Education</h3>
+                         <div class="mb-4">
+                             <p class="font-semibold text-white text-lg">Masters in Computer Science (1st)</p>
+                             <p class="text-gray-400">University of Sheffield</p>
+                         </div>
+                         <div>
+                             <p class="font-semibold text-white text-lg">A-Levels (A*/A)</p>
+                             <p class="text-gray-400">Maths, Further Maths, Physics</p>
+                         </div>
                      </div>
                 </div>
                 <div class="md:col-span-2">
                      <div class="card-bg p-6 rounded-lg">
-                        <h3 class="text-2xl font-bold text-white mb-4">Interests</h3>
-                        <div class="flex flex-wrap gap-2">
-                             <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">AI & Robotics</span>
-                             <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Simulation</span>
-                             <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Space</span>
-                             <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Medical Tech</span>
-                             <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Game Design</span>
-                             <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">TTRPGs</span>
-                             <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Renewable Energy</span>
-                        </div>
+                         <h3 class="text-2xl font-bold text-white mb-4">Interests</h3>
+                         <div class="flex flex-wrap gap-2">
+                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">AI</span>
+                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Large Language Models</span>
+                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Reinforcement Learning</span>
+                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Robotics</span>
+                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Simulation</span>
+                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">VR</span>
+                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Internet of Things</span>
+                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Space</span>
+                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Medical</span>
+                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Renewable Energy</span>
+                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Game Design</span>
+                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">D&D & TTRPGs</span>
+                         </div>
                      </div>
                 </div>
             </div>
@@ -263,21 +278,21 @@
     <!-- Footer -->
     <footer id="contact" class="bg-gray-800 border-t border-gray-700">
         <div class="container mx-auto px-6 py-12 text-center">
-            <h2 class="text-3xl font-bold text-white mb-4">Let's Build Something Remarkable</h2>
-            <p class="text-gray-400 mb-8 max-w-xl mx-auto">Contact me to discuss a project, request a quote, or explore a full-time opportunity.</p>
+            <h2 class="text-3xl font-bold text-white mb-4">Let's Build It</h2>
+            <p class="text-gray-400 mb-8 max-w-xl mx-auto">I am open to discussing freelance, contract, and full-time opportunities. Contact me to request a quote, or invite me to interview!</p>
             <a href="mailto:hello@harvey.cash" class="inline-block accent-bg hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg transition-transform duration-300 transform hover:scale-105 mb-8 text-lg">
                 hello@harvey.cash
             </a>
             <div class="flex justify-center space-x-6">
-                <a href="#" class="text-gray-400 interactive-icon">
+                <a href="https://github.com/harvey-cash" target="_blank" rel="noopener noreferrer" class="text-gray-400 interactive-icon">
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
                     <span class="sr-only">GitHub</span>
                 </a>
-                <a href="#" class="text-gray-400 interactive-icon">
+                <a href="https://www.linkedin.com/in/harvey-cash/" target="_blank" rel="noopener noreferrer" class="text-gray-400 interactive-icon">
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     <span class="sr-only">LinkedIn</span>
                 </a>
-                 <a href="#" class="text-gray-400 interactive-icon">
+                 <a href="https://www.youtube.com/HOCgaming" target="_blank" rel="noopener noreferrer" class="text-gray-400 interactive-icon">
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 C3.326,4.648,2.648,5.326,2.418,6.186C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
                     <span class="sr-only">YouTube</span>
                 </a>
@@ -291,45 +306,66 @@
         const projects = [
             {
                 title: "Digital Logic Simulator",
-                tags: ["Rust"],
+                tags: ["Rust", "Simulation"],
                 year: "2025-Present",
                 description: "A high-performance digital logic simulator built from the ground up in Rust, focusing on speed and accuracy for complex circuit simulations.",
                 image: "https://picsum.photos/seed/logic/600/300"
             },
             {
-                title: "3D Interactions & Haptic Force Feedback Engine",
-                tags: ["C#", "C++", "Unity", "Haptics"],
+                title: "3D Interactions & Force Feedback Engine",
+                tags: ["C#", "Unity", "C++", "Python", "Haptics"],
                 year: "2022-2025",
-                description: "A sophisticated engine for realistic 3D interactions with haptic force feedback, featuring low-level C++ plugins and a high-level C# API in Unity.",
+                description: "A sophisticated engine for realistic 3D interactions with haptic force feedback, deployed across Windows, Mac, Android, VisionOS, and even as a wireless server.",
                 image: "https://picsum.photos/seed/haptics/600/300"
             },
             {
-                title: "Client/Server HTTP Code Generator",
-                tags: ["Python", "C++"],
-                year: "2025",
-                description: "An automation tool that generates boilerplate C++ code for client/server HTTP networking, significantly speeding up development time.",
-                image: "https://picsum.photos/seed/codegen/600/300"
-            },
-            {
                 title: "Video-to-Recap LLM Pipeline",
-                tags: ["Python", "React", "AI"],
+                tags: ["Python", "React JS", "AI"],
                 year: "2025",
-                description: "A full-stack application that transcribes video audio and uses an LLM to generate a concise summary, with a React and TypeScript frontend.",
+                description: "A full-stack application that transcribes video audio and uses LLM APIs to generate detailed recaps and summaries, with a React and TypeScript frontend.",
                 image: "https://picsum.photos/seed/llm/600/300"
             },
             {
-                title: "Wireless Power Beaming Software",
-                tags: ["Python", "Arduino C++"],
+                title: "Microwave Power Beaming Software",
+                tags: ["Python", "Arduino C++", "Renewable Energy"],
                 year: "2020-2024",
-                description: "Firmware and control software for a proof-of-concept wireless power beaming system, managing power, safety, and data logging.",
+                description: "Firmware and control software for a proof-of-concept wireless power beaming system, managing power, phase angle, safety, sensor data and logging.",
                 image: "https://picsum.photos/seed/power/600/300"
             },
             {
                 title: "Ophthalmology VR Training Sim",
-                tags: ["C#", "Unity", "VR", "Medical"],
+                tags: ["C#", "Unity", "VR", "Medical", "Haptics"],
                 year: "2023",
-                description: "A VR simulation for training surgeons in Manual Small Incision Cataract Surgery (MSICS), focusing on realism and performance feedback.",
+                description: "A VR simulation for training surgeons in Manual Small Incision Cataract Surgery (MSICS), focusing on realistic haptic feedback and assessment.",
                 image: "https://picsum.photos/seed/vrsurgery/600/300"
+            },
+            {
+                title: "Laparoscopic Surgical Robot Simulation",
+                tags: ["C#", "Unity", "VR", "Medical"],
+                year: "2022",
+                description: "Bespoke simulation of a client's real-world surgical robot, with custom inverse kinematics and control systems to move and feel just like the real thing.",
+                image: "https://picsum.photos/seed/robotics/600/300"
+            },
+            {
+                title: "Wearable ECG Medical Device",
+                tags: ["C", "RTOS", "Medical"],
+                year: "2021-2022",
+                description: "Embedded firmware development for a Grade 2 ISO 13485 compliant medical device. Responsible for full software development process, from development to verification.",
+                image: "https://picsum.photos/seed/medicaldevice/600/300"
+            },
+            {
+                title: "Sleep Sounds Analysis Mobile App",
+                tags: ["Kotlin", "Vue JS", "Medical", "AI"],
+                year: "2018-2020",
+                description: "Cross platform web app with a Google Firebase backend. Collaborated with academia to integrate a Gaussian Mixture Model snoring sounds classifier into production code.",
+                image: "https://picsum.photos/seed/snoringsounds/600/300"
+            },
+            {
+                title: "VR Telepresence Robotics Research",
+                tags: ["C#", "Unity", "ROS", "Linux", "VR"],
+                year: "2018-2019",
+                description: "Researched and developed a novel approach to mitigate the impact of visual latency on motion sickness when tele-operating robots in VR.",
+                image: "https://picsum.photos/seed/telepresence/600/300"
             }
         ];
 
@@ -349,22 +385,24 @@
             { skill: "Test Driven Development, CI/CD, GitHub Actions", years: "3 yrs" },
             { skill: "Software Architecture, Project Leadership, Code Ownership", years: "3 yrs" },
             { skill: "LLMs & AI Image Diffusion Models", years: "2 yrs" },
-            { skill: "JS Cross Platform Web Apps", years: "1 yr" },
-            { skill: "Rust", years: "<1 yr" },
+            { skill: "Cross Platform Web Apps, Kotlin, Java, Vue JS", years: "1 yr" },
+            { skill: "Rust, MATLAB", years: "<1 yr" },
         ];
         
         const achievements = [
-            { title: "Published Research Paper", description: "Co-authored a paper on real-time haptic rendering techniques, published in the IEEE VR conference proceedings." },
-            { title: "Top Fundraiser Award", description: "Led a team that raised over £10,000 for Charity Water through a series of organised live streaming events." },
-            { title: "Open Source Contributor", description: "Recognised as a top contributor to a popular open-source embedded systems library for the nRF52 series." },
-            { title: "Innovation Grant Recipient", description: "Awarded a university innovation grant to develop the initial prototype of the wireless power beaming project." },
+            { title: "Automated Testing Advocate", description: "Led adoption of Unit Testing and TDD and creation of CI/CD pipelines. Transformed brittle systems into robust and flexible building blocks." },
+            { title: "Charity Fundraising Success", description: "Organised and hosted annual events which raised over $52,000 USD for Charity Water through a series of organised live streams." },
+            { title: "VR Research Publication", description: "Developed a novel latency mitigation approach for VR Telepresence Robotics. Published in the International Conference on Social Robotics (2019)." },
+            { title: "Student Researcher of the Year", description: "Funded by Sheffield University's SURE scheme to develop monitoring and classification algorithms for Obstructive Sleep Apnoea (OSA)." },
+            { title: "YouTube Content Creator", description: "Over 16 million views and 100 thousand subscribers on my videos of Virtual Reality, Spaceflight Simulation, and Video Games."},
+            { title: "2nd Dan Black Belt in Karate", description: "Athletic and competent across a range of sports, from Wado-Ryu Karate to outdoor rock climbing, wakeboarding and snowboarding."}
         ];
 
         const employmentHistory = [
-            { company: "Innovatech Dynamics", title: "Senior R&D Engineer", type: "Full-time", dateRange: "2023 - Present", tags: ["C#", "Unity", "Haptics", "R&D"], description: "Led the research and development of next-generation haptic feedback systems for industrial and medical training simulations. Architected the core software and mentored junior engineers." },
-            { company: "Bio-Signal Solutions", title: "Embedded Systems Engineer", type: "Full-time", dateRange: "2021 - 2023", tags: ["C", "Zephyr RTOS", "BLE", "Python"], description: "Developed and maintained firmware for a range of wireless medical sensors. Responsible for the full device lifecycle from prototyping to production and validation." },
-            { company: "VR MedSims Ltd.", title: "VR Developer", type: "Contract", dateRange: "2020 - 2021", tags: ["C#", "Unity", "VR", "3D Modelling"], description: "Contracted to develop two key surgical training modules, including the MSICS simulation. Worked closely with medical professionals to ensure clinical accuracy." },
-            { company: "University of Sheffield", title: "Research Assistant", type: "Part-time", dateRange: "2019 - 2020", tags: ["Python", "Data Analysis", "Research"], description: "Assisted with data collection and analysis for a study on machine learning models for predictive maintenance in renewable energy systems." },
+            { company: "FundamentalVR", title: "Senior Software Engineer", type: "Full-time", dateRange: "2022 - Present", tags: ["C#", "Unity", "C++", "Python"], description: "Led the research and development of next-generation haptic feedback systems for VR medical training simulations. Architected the core software and mentored junior engineers." },
+            { company: "International Electric Company Ltd", title: "Software Consultant", type: "Contract", dateRange: "2020 - 2025", tags: ["Python", "C++", "Arduino"], description: "Control systems for prototype microwave power beaming electronics. Writing code for rapidly evolving hardware. Data collection, visualisation, analysis and verification." },
+            { company: "Isansys Lifecare", title: "Development Engineer", type: "Full-time", dateRange: "2020 - 2021", tags: ["C", "Zephyr RTOS", "Java"], description: "Embedded firmware for ISO 13485 compliant medical devices. RTOS high frequency ECG sensor data analysis, BLE transmission to Android app and web server and OTA firmware updates." },
+            { company: "Passion For Life Healthcare.", title: "Software Developer", type: "Full-time", dateRange: "2018 - 2020", tags: ["Kotlin", "Vue JS"], description: "Full stack cross platform mobile apps for analysis of snoring and sleep sounds. Collaborated with academia to integrate AI models for classification of Obstructive Sleep Apnoea events." },
         ];
 
 
@@ -382,7 +420,7 @@
                 card.className = 'card-bg rounded-lg overflow-hidden shadow-lg flex flex-col transition-transform duration-300 hover:scale-105';
                 const tagsHtml = project.tags.map(tag => `<span class="bg-gray-600 text-sky-400 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">${tag}</span>`).join('');
                 card.innerHTML = `
-                    <img src="${project.image}" alt="${project.title}" class="w-full h-40 object-cover">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-40 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x300/1F2937/D1D5DB?text=Image';">
                     <div class="p-6 flex flex-col flex-grow">
                         <p class="text-sm text-gray-400">${project.year}</p>
                         <h3 class="text-xl font-bold text-white mt-1">${project.title}</h3>
@@ -399,7 +437,7 @@
                 const card = document.createElement('div');
                 card.className = 'card-bg rounded-lg overflow-hidden shadow-lg flex flex-col transition-transform duration-300 hover:scale-105';
                 card.innerHTML = `
-                    <img src="https://picsum.photos/seed/${service.imageSeed}/600/300" alt="${service.title}" class="w-full h-40 object-cover">
+                    <img src="https://picsum.photos/seed/${service.imageSeed}/600/300" alt="${service.title}" class="w-full h-40 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x300/1F2937/D1D5DB?text=Image';">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-white mb-3">${service.title}</h3>
                         <p class="text-gray-400 flex-grow">${service.description}</p>
