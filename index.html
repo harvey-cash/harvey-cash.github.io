@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,18 +12,40 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #111827; /* bg-gray-900 */
-            color: #D1D5DB; /* text-gray-300 */
+            background-color: #111827;
+            /* bg-gray-900 */
+            color: #D1D5DB;
+            /* text-gray-300 */
         }
-        .accent-colour { color: #38bdf8; } /* text-sky-400 */
-        .accent-bg { background-color: #38bdf8; }
-        .border-accent { border-color: #38bdf8; }
-        .card-bg { background-color: #1F2937; } /* bg-gray-800 */
-        .card-hover { background-color: #374151; } /* bg-gray-700 */
+
+        .accent-colour {
+            color: #38bdf8;
+        }
+
+        /* text-sky-400 */
+        .accent-bg {
+            background-color: #38bdf8;
+        }
+
+        .border-accent {
+            border-color: #38bdf8;
+        }
+
+        .card-bg {
+            background-color: #1F2937;
+        }
+
+        /* bg-gray-800 */
+        .card-hover {
+            background-color: #374151;
+        }
+
+        /* bg-gray-700 */
         .section-title-underline {
             position: relative;
             padding-bottom: 0.5rem;
         }
+
         .section-title-underline::after {
             content: '';
             position: absolute;
@@ -33,53 +56,68 @@
             background-color: #38bdf8;
             border-radius: 2px;
         }
+
         .interactive-icon {
             transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
         }
+
         .interactive-icon:hover {
             transform: scale(1.1);
             color: #38bdf8;
         }
+
         /* Horizontal scroll timeline */
         .timeline-container {
             display: flex;
             overflow-x: auto;
-            padding-bottom: 1.5rem; /* For scrollbar visibility */
+            padding-bottom: 1.5rem;
+            /* For scrollbar visibility */
             scrollbar-width: thin;
             scrollbar-color: #4B5563 #1F2937;
         }
+
         .timeline-container::-webkit-scrollbar {
             height: 8px;
         }
+
         .timeline-container::-webkit-scrollbar-track {
             background: #1F2937;
             border-radius: 10px;
         }
+
         .timeline-container::-webkit-scrollbar-thumb {
             background-color: #4B5563;
             border-radius: 10px;
             border: 2px solid #1F2937;
         }
+
         .timeline-item {
-            flex: 0 0 90%; /* On small screens, one item is almost full width */
+            flex: 0 0 90%;
+            /* On small screens, one item is almost full width */
             margin-right: 1rem;
         }
+
         @media (min-width: 768px) {
             .timeline-item {
-                flex: 0 0 45%; /* Two items on medium screens */
+                flex: 0 0 45%;
+                /* Two items on medium screens */
             }
         }
+
         @media (min-width: 1024px) {
             .timeline-item {
-                flex: 0 0 30%; /* Three items on large screens */
+                flex: 0 0 30%;
+                /* Three items on large screens */
             }
         }
     </style>
 </head>
+
 <body class="antialiased">
 
     <!-- Header -->
-    <header id="header" class="bg-gray-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <header id="header"
+        class="bg-gray-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <a href="#" class="text-2xl font-bold text-white">harvey<span class="accent-colour">.</span>cash</a>
@@ -91,9 +129,14 @@
                     <a href="#services" class="text-gray-300 hover:accent-colour transition-colors">Services</a>
                     <a href="#achievements" class="text-gray-300 hover:accent-colour transition-colors">Achievements</a>
                 </nav>
-                <a href="#contact" class="hidden md:inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-transform duration-300 transform hover:scale-105">Contact</a>
+                <a href="#contact"
+                    class="hidden md:inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-transform duration-300 transform hover:scale-105">Contact</a>
                 <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
                 </button>
             </div>
         </div>
@@ -109,43 +152,61 @@
         </div>
     </header>
 
-    <main class="pt-24">
+    <main class="pt-20">
         <!-- Hero Section -->
-        <section id="hero" class="relative bg-cover bg-center bg-no-repeat py-20 md:py-32" style="background-image: url('https://picsum.photos/seed/techbg/1920/1080')">
+        <section id="hero" class="relative bg-cover bg-center bg-no-repeat py-15 md:py-20"
+            style="background-image: url('https://picsum.photos/seed/techbg/1920/1080')">
             <!-- Overlay for better text readability -->
             <div class="absolute inset-0 bg-gray-900/70 backdrop-blur-sm"></div>
             <!-- Content Container -->
             <div class="relative container mx-auto px-6 text-center">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
-                    Bridging the gap between <span class="accent-colour">Code</span> and <span class="accent-colour">Reality</span>.
+                    Bridging the gap between <span class="accent-colour">Code</span> and <span
+                        class="accent-colour">Reality</span>.
                 </h1>
                 <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-                    A versatile engineer specialising in 3D simulation, embedded systems, and AI. Turning complex problems into robust, high-performance solutions.
+                    A versatile engineer specialising in 3D simulation, embedded systems, and AI. Turning complex
+                    problems into robust, high-performance solutions.
                 </p>
                 <div class="space-x-4">
-                    <a href="#projects" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg transition-transform duration-300 inline-block transform hover:scale-105">View Projects</a>
-                    <a href="#services" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition-transform duration-300 inline-block transform hover:scale-105">My Services</a>
+                    <a href="#projects"
+                        class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg transition-transform duration-300 inline-block transform hover:scale-105">View
+                        Projects</a>
+                    <a href="#services"
+                        class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition-transform duration-300 inline-block transform hover:scale-105">My
+                        Services</a>
                 </div>
             </div>
         </section>
-        
+
         <!-- About Section -->
         <section id="about" class="py-10 bg-gray-900">
             <div class="container mx-auto px-6">
                 <div class="flex flex-col md:flex-row items-center gap-12">
                     <div class="flex-shrink-0">
-                        <img class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-gray-700 shadow-lg" src="./images/profile.png" alt="Harvey Cash profile picture" onerror="this.onerror=null;this.src='https://placehold.co/256x256/1F2937/38bdf8?text=HC';">
+                        <img class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-gray-700 shadow-lg"
+                            src="./images/profile.png" alt="Harvey Cash profile picture"
+                            onerror="this.onerror=null;this.src='https://placehold.co/256x256/1F2937/38bdf8?text=HC';">
                     </div>
                     <div class="text-center md:text-left">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 section-title-underline">About Harvey</h2>
-                        <p class="text-lg text-gray-300">I love building things, especially software that touches the <span class="accent-colour">real world</span>.</p>
-                        <p class="text-lg text-gray-300">That's why I've spent my career developing medical devices, haptic force-feedback engines for VR training, and RF electronics.</p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 section-title-underline">About Harvey
+                        </h2>
+                        <p class="text-lg text-gray-300">I love building things, especially software that touches the
+                            <span class="accent-colour">real world</span>.
+                        </p>
+                        <p class="text-lg text-gray-300">That's why I've spent my career developing medical devices,
+                            haptic force-feedback engines for VR training, and RF electronics.</p>
                         <br>
-                        <p class="text-lg text-gray-300">I believe in writing software <span class="accent-colour">test-first</span>, and in delivering value quickly and continuously.</p>
-                        <p class="text-lg text-gray-300">That's why my code works verifiably, and why it always flexibly evolves to meet changing requirements.</p>
+                        <p class="text-lg text-gray-300">I believe in writing software <span
+                                class="accent-colour">test-first</span>, and in delivering value quickly and
+                            continuously.</p>
+                        <p class="text-lg text-gray-300">That's why my code works verifiably, and why it always flexibly
+                            evolves to meet changing requirements.</p>
                         <br>
-                        <p class="text-lg text-gray-300">I am always learning, and excited to be on the <span class="accent-colour">cutting edge</span>.</p>
-                        <p class="text-lg text-gray-300">That's why I bring open-minded enthusiasm to everything, why I am passionate about R&D, and why I used AI to make this website!</p>
+                        <p class="text-lg text-gray-300">I am always learning, and excited to be on the <span
+                                class="accent-colour">cutting edge</span>.</p>
+                        <p class="text-lg text-gray-300">That's why I bring open-minded enthusiasm to everything, why I
+                            am passionate about R&D, and why I used AI to make this website!</p>
                     </div>
                 </div>
             </div>
@@ -154,7 +215,8 @@
         <!-- Projects Section -->
         <section id="projects" class="py-10">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 section-title-underline">Projects Portfolio</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 section-title-underline">Projects Portfolio
+                </h2>
                 <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Project items will be injected here by JavaScript -->
                 </div>
@@ -185,30 +247,30 @@
                                 <li class="flex items-center">Virtual Reality</li>
                                 <li class="flex items-center">Android & Bluetooth Low Energy</li>
                                 <li class="flex items-center">Electronics Design & Soldering</li>
-                                <li class="flex items-center">Digital Logic Analyser & Oscilloscope</li>
                             </ul>
                         </div>
                         <!-- Media / Soft Skills -->
                         <div class="card-bg p-8 rounded-lg">
                             <h3 class="text-2xl font-bold text-white mb-4">Media & Soft Skills</h3>
                             <ul class="space-y-3 text-gray-300">
-                                 <li class="flex items-center">Narration & Voice Acting</li>
-                                 <li class="flex items-center">Video/Audio Production & Live Streaming</li>
-                                 <li class="flex items-center">Charity Fundraising & Event Organisation</li>
-                                 <li class="flex items-center">Public Speaking & Improvisation</li>
-                                 <li class="flex items-center">Creative & Script Writing</li>
-                                 <li class="flex items-center">Digital Brand Management</li>
+                                <li class="flex items-center">Narration & Voice Acting</li>
+                                <li class="flex items-center">Video/Audio Production & Livestreaming</li>
+                                <li class="flex items-center">Charity Fundraising & Event Organisation</li>
+                                <li class="flex items-center">Public Speaking & Technical Communication</li>
+                                <li class="flex items-center">Creative & Script Writing</li>
+                                <li class="flex items-center">Leadership and Mentoring</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <!-- Employment History Section -->
         <section id="employment" class="py-10">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 section-title-underline">Employment History</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 section-title-underline">Employment History
+                </h2>
                 <div id="employment-timeline" class="timeline-container">
                     <!-- Employment items will be injected here by JavaScript -->
                 </div>
@@ -239,36 +301,47 @@
         <section id="education-interests" class="py-10 bg-gray-900">
             <div class="container mx-auto px-6 grid md:grid-cols-5 gap-12 items-start">
                 <div class="md:col-span-3">
-                     <div class="card-bg p-6 rounded-lg">
-                         <h3 class="text-2xl font-bold text-white mb-4">Education</h3>
-                         <div class="mb-4">
-                             <p class="font-semibold text-white text-lg">Masters in Computer Science (1st)</p>
-                             <p class="text-gray-400">University of Sheffield</p>
-                         </div>
-                         <div>
-                             <p class="font-semibold text-white text-lg">A-Levels (A*/A)</p>
-                             <p class="text-gray-400">Maths, Further Maths, Physics</p>
-                         </div>
-                     </div>
+                    <div class="card-bg p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-white mb-4">Education</h3>
+                        <div class="mb-4">
+                            <p class="font-semibold text-white text-lg">Masters in Computer Science (1st)</p>
+                            <p class="text-gray-400">University of Sheffield</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-white text-lg">A-Levels (A*/A)</p>
+                            <p class="text-gray-400">Maths, Further Maths, Physics</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="md:col-span-2">
-                     <div class="card-bg p-6 rounded-lg">
-                         <h3 class="text-2xl font-bold text-white mb-4">Interests</h3>
-                         <div class="flex flex-wrap gap-2">
-                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">AI</span>
-                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Large Language Models</span>
-                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Reinforcement Learning</span>
-                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Robotics</span>
-                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Simulation</span>
-                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">VR</span>
-                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Internet of Things</span>
-                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Space</span>
-                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Medical</span>
-                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Renewable Energy</span>
-                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Game Design</span>
-                              <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">D&D & TTRPGs</span>
-                         </div>
-                     </div>
+                    <div class="card-bg p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-white mb-4">Interests</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">AI</span>
+                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Large
+                                Language Models</span>
+                            <span
+                                class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Reinforcement
+                                Learning</span>
+                            <span
+                                class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Robotics</span>
+                            <span
+                                class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Simulation</span>
+                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">VR</span>
+                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Internet
+                                of Things</span>
+                            <span
+                                class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Space</span>
+                            <span
+                                class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Medical</span>
+                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Renewable
+                                Energy</span>
+                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Game
+                                Design</span>
+                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">D&D &
+                                TTRPGs</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -279,21 +352,36 @@
     <footer id="contact" class="bg-gray-800 border-t border-gray-700">
         <div class="container mx-auto px-6 py-12 text-center">
             <h2 class="text-3xl font-bold text-white mb-4">Let's Build It</h2>
-            <p class="text-gray-400 mb-8 max-w-xl mx-auto">I am open to discussing freelance, contract, and full-time opportunities. Contact me to request a quote, or invite me to interview!</p>
-            <a href="mailto:hello@harvey.cash" class="inline-block accent-bg hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg transition-transform duration-300 transform hover:scale-105 mb-8 text-lg">
+            <p class="text-gray-400 mb-8 max-w-xl mx-auto">I am open to discussing freelance, contract, and full-time
+                opportunities. Contact me to request a quote, or invite me to interview!</p>
+            <a href="mailto:hello@harvey.cash"
+                class="inline-block accent-bg hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg transition-transform duration-300 transform hover:scale-105 mb-8 text-lg">
                 hello@harvey.cash
             </a>
             <div class="flex justify-center space-x-6">
-                <a href="https://github.com/harvey-cash" target="_blank" rel="noopener noreferrer" class="text-gray-400 interactive-icon">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                <a href="https://github.com/harvey-cash" target="_blank" rel="noopener noreferrer"
+                    class="text-gray-400 interactive-icon">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
+                            clip-rule="evenodd" />
+                    </svg>
                     <span class="sr-only">GitHub</span>
                 </a>
-                <a href="https://www.linkedin.com/in/harvey-cash/" target="_blank" rel="noopener noreferrer" class="text-gray-400 interactive-icon">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <a href="https://www.linkedin.com/in/harvey-cash/" target="_blank" rel="noopener noreferrer"
+                    class="text-gray-400 interactive-icon">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
                     <span class="sr-only">LinkedIn</span>
                 </a>
-                 <a href="https://www.youtube.com/HOCgaming" target="_blank" rel="noopener noreferrer" class="text-gray-400 interactive-icon">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 C3.326,4.648,2.648,5.326,2.418,6.186C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
+                <a href="https://www.youtube.com/HOCgaming" target="_blank" rel="noopener noreferrer"
+                    class="text-gray-400 interactive-icon">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 C3.326,4.648,2.648,5.326,2.418,6.186C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z" />
+                    </svg>
                     <span class="sr-only">YouTube</span>
                 </a>
             </div>
@@ -316,7 +404,7 @@
                 tags: ["C#", "Unity", "C++", "Python", "Haptics"],
                 year: "2022-2025",
                 description: "A sophisticated engine for realistic 3D interactions with haptic force feedback, deployed across Windows, Mac, Android, VisionOS, and even as a wireless server.",
-                image: "https://picsum.photos/seed/haptics/600/300"
+                image: "images/haptics.jpg"
             },
             {
                 title: "Video-to-Recap LLM Pipeline",
@@ -330,14 +418,14 @@
                 tags: ["Python", "Arduino C++", "Renewable Energy"],
                 year: "2020-2024",
                 description: "Firmware and control software for a proof-of-concept wireless power beaming system, managing power, phase angle, safety, sensor data and logging.",
-                image: "https://picsum.photos/seed/power/600/300"
+                image: "images/space-based-solar.jpg"
             },
             {
                 title: "Ophthalmology VR Training Sim",
                 tags: ["C#", "Unity", "VR", "Medical", "Haptics"],
                 year: "2023",
                 description: "A VR simulation for training surgeons in Manual Small Incision Cataract Surgery (MSICS), focusing on realistic haptic feedback and assessment.",
-                image: "https://picsum.photos/seed/vrsurgery/600/300"
+                image: "images/ophthalmology.jpg"
             },
             {
                 title: "Laparoscopic Surgical Robot Simulation",
@@ -351,7 +439,7 @@
                 tags: ["C", "RTOS", "Medical"],
                 year: "2021-2022",
                 description: "Embedded firmware development for a Grade 2 ISO 13485 compliant medical device. Responsible for full software development process, from development to verification.",
-                image: "https://picsum.photos/seed/medicaldevice/600/300"
+                image: "images/wearable-medical.jpg"
             },
             {
                 title: "Sleep Sounds Analysis Mobile App",
@@ -370,14 +458,14 @@
         ];
 
         const services = [
-            { title: "3D Simulation & VR Development", description: "Creating immersive training simulations, virtual prototypes, and interactive experiences using Unity 3D and C#.", imageSeed: "service1" },
-            { title: "Embedded Systems & Firmware", description: "Developing robust firmware for real-time applications, IoT devices, and wireless patient monitoring systems.", imageSeed: "service2" },
-            { title: "AI & LLM Integration", description: "Integrating Large Language Models and AI pipelines for tasks like video-to-recap transcription and intelligent automation.", imageSeed: "service3" },
-            { title: "Hardware Prototyping", description: "From CAD design to 3D printing and electronics integration, bringing hardware concepts to life.", imageSeed: "service4" },
-            { title: "Automation & TDD Consulting", description: "Implementing test-driven development and CI/CD pipelines to improve code quality and efficiency.", imageSeed: "service5" },
-            { title: "Technical Content & Voice Over", description: "Producing high-quality technical content, tutorials, and professional voice-over for various materials.", imageSeed: "service6" },
+            { title: "3D Simulation & VR Development", description: "Creating immersive training simulations, virtual prototypes, and interactive experiences using Unity 3D and C#.", image: "haptics-vr.png" },
+            { title: "Embedded Systems & Firmware", description: "Developing robust firmware for real-time applications, IoT devices, and wireless patient monitoring systems.", image: "electronics-prototyping.jpg" },
+            { title: "AI & LLM Integration", description: "Integrating Large Language Models and AI pipelines for tasks like video-to-recap transcription and intelligent automation.", image: "gpu.jpg" },
+            { title: "Hardware Prototyping", description: "From CAD design to 3D printing and electronics integration, bringing hardware concepts to life.", image: "3D-printing.jpg" },
+            { title: "Automation & TDD Consulting", description: "Implementing test-driven development and CI/CD pipelines to improve code quality and efficiency.", image: "automated-tests.jpg" },
+            { title: "Technical Content & Voice Over", description: "Producing high-quality technical content, tutorials, and professional voice-over for various materials.", image: "service6" },
         ];
-        
+
         const softwareSkills = [
             { skill: "C# & Unity 3D, Real Time Algorithms", years: "5 yrs" },
             { skill: "C/C++ Cross Platform & Embedded RTOS", years: "4 yrs" },
@@ -388,32 +476,32 @@
             { skill: "Cross Platform Web Apps, Kotlin, Java, Vue JS", years: "1 yr" },
             { skill: "Rust, MATLAB", years: "<1 yr" },
         ];
-        
+
         const achievements = [
             { title: "Automated Testing Advocate", description: "Led adoption of Unit Testing and TDD and creation of CI/CD pipelines. Transformed brittle systems into robust and flexible building blocks." },
             { title: "Charity Fundraising Success", description: "Organised and hosted annual events which raised over $52,000 USD for Charity Water through a series of organised live streams." },
             { title: "VR Research Publication", description: "Developed a novel latency mitigation approach for VR Telepresence Robotics. Published in the International Conference on Social Robotics (2019)." },
             { title: "Student Researcher of the Year", description: "Funded by Sheffield University's SURE scheme to develop monitoring and classification algorithms for Obstructive Sleep Apnoea (OSA)." },
-            { title: "YouTube Content Creator", description: "Over 16 million views and 100 thousand subscribers on my videos of Virtual Reality, Spaceflight Simulation, and Video Games."},
-            { title: "2nd Dan Black Belt in Karate", description: "Athletic and competent across a range of sports, from Wado-Ryu Karate to outdoor rock climbing, wakeboarding and snowboarding."}
+            { title: "YouTube Content Creator", description: "Over 16 million views and 100 thousand subscribers on my videos of Virtual Reality, Spaceflight Simulation, and Video Games." },
+            { title: "2nd Dan Black Belt in Karate", description: "Athletic and competent across a range of sports, from Wado-Ryu Karate to outdoor rock climbing, wakeboarding and snowboarding." }
         ];
 
         const employmentHistory = [
             { company: "FundamentalVR", title: "Senior Software Engineer", type: "Full-time", dateRange: "2022 - Present", tags: ["C#", "Unity", "C++", "Python"], description: "Led the research and development of next-generation haptic feedback systems for VR medical training simulations. Architected the core software and mentored junior engineers." },
             { company: "International Electric Company Ltd", title: "Software Consultant", type: "Contract", dateRange: "2020 - 2025", tags: ["Python", "C++", "Arduino"], description: "Control systems for prototype microwave power beaming electronics. Writing code for rapidly evolving hardware. Data collection, visualisation, analysis and verification." },
             { company: "Isansys Lifecare", title: "Development Engineer", type: "Full-time", dateRange: "2020 - 2021", tags: ["C", "Zephyr RTOS", "Java"], description: "Embedded firmware for ISO 13485 compliant medical devices. RTOS high frequency ECG sensor data analysis, BLE transmission to Android app and web server and OTA firmware updates." },
-            { company: "Passion For Life Healthcare.", title: "Software Developer", type: "Full-time", dateRange: "2018 - 2020", tags: ["Kotlin", "Vue JS"], description: "Full stack cross platform mobile apps for analysis of snoring and sleep sounds. Collaborated with academia to integrate AI models for classification of Obstructive Sleep Apnoea events." },
+            { company: "Passion For Life Healthcare", title: "Software Developer", type: "Full-time", dateRange: "2018 - 2020", tags: ["Kotlin", "Vue JS"], description: "Full stack cross platform mobile apps for analysis of snoring and sleep sounds. Collaborated with academia to integrate AI models for classification of Obstructive Sleep Apnoea events." },
         ];
 
 
         // --- JavaScript for Interactivity ---
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const projectsContainer = document.getElementById('projects-container');
             const servicesContainer = document.getElementById('services-container');
             const softwareSkillsList = document.getElementById('software-skills-list');
             const achievementsContainer = document.getElementById('achievements-container');
             const employmentTimeline = document.getElementById('employment-timeline');
-            
+
             // Populate Projects
             projects.forEach(project => {
                 const card = document.createElement('div');
@@ -431,13 +519,13 @@
                     </div>`;
                 projectsContainer.appendChild(card);
             });
-            
+
             // Populate Services
             services.forEach(service => {
                 const card = document.createElement('div');
                 card.className = 'card-bg rounded-lg overflow-hidden shadow-lg flex flex-col transition-transform duration-300 hover:scale-105';
                 card.innerHTML = `
-                    <img src="https://picsum.photos/seed/${service.imageSeed}/600/300" alt="${service.title}" class="w-full h-40 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x300/1F2937/D1D5DB?text=Image';">
+                    <img src="images/${service.image}" alt="${service.title}" class="w-full h-40 object-cover" onerror="this.onerror=null;this.src='https://picsum.photos/seed/${service.image}/600/300';">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-white mb-3">${service.title}</h3>
                         <p class="text-gray-400 flex-grow">${service.description}</p>
@@ -467,7 +555,7 @@
                     </div>`;
                 achievementsContainer.appendChild(card);
             });
-            
+
             // Populate Employment History
             employmentHistory.forEach(job => {
                 const card = document.createElement('div');
@@ -492,7 +580,7 @@
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
             mobileMenu.addEventListener('click', (e) => {
-                if(e.target.tagName === 'A') { mobileMenu.classList.add('hidden'); }
+                if (e.target.tagName === 'A') { mobileMenu.classList.add('hidden'); }
             });
 
             // Header shadow on scroll
@@ -503,4 +591,5 @@
         });
     </script>
 </body>
+
 </html>
