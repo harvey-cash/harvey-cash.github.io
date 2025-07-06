@@ -155,7 +155,7 @@
     <main class="pt-20">
         <!-- Hero Section -->
         <section id="hero" class="relative bg-cover bg-center bg-no-repeat py-15 md:py-20"
-            style="background-image: url('https://picsum.photos/seed/techbg/1920/1080')">
+            style="background-image: url('images/earth-from-space.jpg')">
             <!-- Overlay for better text readability -->
             <div class="absolute inset-0 bg-gray-900/70 backdrop-blur-sm"></div>
             <!-- Content Container -->
@@ -240,25 +240,15 @@
                         <!-- Hardware Skills -->
                         <div class="card-bg p-8 rounded-lg">
                             <h3 class="text-2xl font-bold text-white mb-4">Hardware</h3>
-                            <ul class="space-y-3 text-gray-300">
-                                <li class="flex items-center">CAD & 3D Printing</li>
-                                <li class="flex items-center">Arduino, Nordic nRF53/52</li>
-                                <li class="flex items-center">Haptics & Force Feedback Devices</li>
-                                <li class="flex items-center">Virtual Reality</li>
-                                <li class="flex items-center">Android & Bluetooth Low Energy</li>
-                                <li class="flex items-center">Electronics Design & Soldering</li>
+                            <ul id="hardware-skills-list" class="space-y-3 text-gray-300">
+                                <!-- JS will populate this -->
                             </ul>
                         </div>
-                        <!-- Media / Soft Skills -->
+                        <!-- Media / Other Skills -->
                         <div class="card-bg p-8 rounded-lg">
-                            <h3 class="text-2xl font-bold text-white mb-4">Media & Soft Skills</h3>
-                            <ul class="space-y-3 text-gray-300">
-                                <li class="flex items-center">Narration & Voice Acting</li>
-                                <li class="flex items-center">Video/Audio Production & Livestreaming</li>
-                                <li class="flex items-center">Charity Fundraising & Event Organisation</li>
-                                <li class="flex items-center">Public Speaking & Technical Communication</li>
-                                <li class="flex items-center">Creative & Script Writing</li>
-                                <li class="flex items-center">Leadership and Mentoring</li>
+                            <h3 class="text-2xl font-bold text-white mb-4">Media & Other Skills</h3>
+                            <ul id="other-skills-list" class="space-y-3 text-gray-300">
+                                <!-- JS will populate this -->
                             </ul>
                         </div>
                     </div>
@@ -316,30 +306,8 @@
                 <div class="md:col-span-2">
                     <div class="card-bg p-6 rounded-lg">
                         <h3 class="text-2xl font-bold text-white mb-4">Interests</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">AI</span>
-                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Large
-                                Language Models</span>
-                            <span
-                                class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Reinforcement
-                                Learning</span>
-                            <span
-                                class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Robotics</span>
-                            <span
-                                class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Simulation</span>
-                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">VR</span>
-                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Internet
-                                of Things</span>
-                            <span
-                                class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Space</span>
-                            <span
-                                class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Medical</span>
-                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Renewable
-                                Energy</span>
-                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">Game
-                                Design</span>
-                            <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">D&D &
-                                TTRPGs</span>
+                        <div id="interests-list" class="flex flex-wrap gap-2">
+                            <!-- JS will populate this -->
                         </div>
                     </div>
                 </div>
@@ -394,24 +362,24 @@
         const projects = [
             {
                 title: "Digital Logic Simulator",
-                tags: ["Rust", "Simulation"],
+                tags: ["Rust", "Simulation", "Open Source"],
                 year: "2025-Present",
                 description: "A high-performance digital logic simulator built from the ground up in Rust, focusing on speed and accuracy for complex circuit simulations.",
-                image: "https://picsum.photos/seed/logic/600/300"
+                image: "images/digital-logic.png"
             },
             {
                 title: "3D Interactions & Force Feedback Engine",
                 tags: ["C#", "Unity", "C++", "Python", "Haptics"],
                 year: "2022-2025",
                 description: "A sophisticated engine for realistic 3D interactions with haptic force feedback, deployed across Windows, Mac, Android, VisionOS, and even as a wireless server.",
-                image: "images/haptics.jpg"
+                image: "images/haptics-vr.png"
             },
             {
                 title: "Video-to-Recap LLM Pipeline",
-                tags: ["Python", "React JS", "AI"],
+                tags: ["Python", "React JS", "AI", "Open Source"],
                 year: "2025",
                 description: "A full-stack application that transcribes video audio and uses LLM APIs to generate detailed recaps and summaries, with a React and TypeScript frontend.",
-                image: "https://picsum.photos/seed/llm/600/300"
+                image: "images/canon-keeper.png"
             },
             {
                 title: "Microwave Power Beaming Software",
@@ -432,38 +400,38 @@
                 tags: ["C#", "Unity", "VR", "Medical"],
                 year: "2022",
                 description: "Bespoke simulation of a client's real-world surgical robot, with custom inverse kinematics and control systems to move and feel just like the real thing.",
-                image: "https://picsum.photos/seed/robotics/600/300"
+                image: "images/surgery.jpg"
             },
             {
                 title: "Wearable ECG Medical Device",
                 tags: ["C", "RTOS", "Medical"],
                 year: "2021-2022",
-                description: "Embedded firmware development for a Grade 2 ISO 13485 compliant medical device. Responsible for full software development process, from development to verification.",
-                image: "images/wearable-medical.jpg"
+                description: "Embedded firmware development for a Class IIa ISO 13485:2016 compliant medical device. Responsible for full software development process, from development to verification.",
+                image: "images/ecg.jpg"
             },
             {
                 title: "Sleep Sounds Analysis Mobile App",
                 tags: ["Kotlin", "Vue JS", "Medical", "AI"],
                 year: "2018-2020",
                 description: "Cross platform web app with a Google Firebase backend. Collaborated with academia to integrate a Gaussian Mixture Model snoring sounds classifier into production code.",
-                image: "https://picsum.photos/seed/snoringsounds/600/300"
+                image: "images/sleep-analysis.jpg"
             },
             {
                 title: "VR Telepresence Robotics Research",
                 tags: ["C#", "Unity", "ROS", "Linux", "VR"],
                 year: "2018-2019",
-                description: "Researched and developed a novel approach to mitigate the impact of visual latency on motion sickness when tele-operating robots in VR.",
-                image: "https://picsum.photos/seed/telepresence/600/300"
+                description: "Researched and developed a novel approach to mitigate the impact of visual latency on motion sickness when tele-operating robots in VR. Published in Social Robotics. ICSR 2019.",
+                image: "images/telepresence-research.png"
             }
         ];
 
         const services = [
             { title: "3D Simulation & VR Development", description: "Creating immersive training simulations, virtual prototypes, and interactive experiences using Unity 3D and C#.", image: "haptics-vr.png" },
-            { title: "Embedded Systems & Firmware", description: "Developing robust firmware for real-time applications, IoT devices, and wireless patient monitoring systems.", image: "electronics-prototyping.jpg" },
-            { title: "AI & LLM Integration", description: "Integrating Large Language Models and AI pipelines for tasks like video-to-recap transcription and intelligent automation.", image: "gpu.jpg" },
+            { title: "Embedded Systems & Firmware", description: "Developing robust firmware for real-time applications, IoT devices, and wireless patient monitoring systems.", image: "power-beaming.jpg" },
+            { title: "AI & LLM Integration", description: "Integrating Large Language Models and AI pipelines for tasks like video-to-recap transcription and intelligent automation.", image: "ai.jpg" },
             { title: "Hardware Prototyping", description: "From CAD design to 3D printing and electronics integration, bringing hardware concepts to life.", image: "3D-printing.jpg" },
             { title: "Automation & TDD Consulting", description: "Implementing test-driven development and CI/CD pipelines to improve code quality and efficiency.", image: "automated-tests.jpg" },
-            { title: "Technical Content & Voice Over", description: "Producing high-quality technical content, tutorials, and professional voice-over for various materials.", image: "service6" },
+            { title: "Technical Content & Voice Over", description: "Producing high-quality technical content, tutorials, and professional voice-over for various materials.", image: "mic-voice-over.jpg" },
         ];
 
         const softwareSkills = [
@@ -476,6 +444,24 @@
             { skill: "Cross Platform Web Apps, Kotlin, Java, Vue JS", years: "1 yr" },
             { skill: "Rust, MATLAB", years: "<1 yr" },
         ];
+
+        const hardwareSkills = [
+            { skill: "CAD & 3D Printing" },
+            { skill: "Arduino, Nordic nRF53/52" },
+            { skill: "Haptics & Force Feedback Devices" },
+            { skill: "VR Headsets & Peripherals" },
+            { skill: "Android & Bluetooth Low Energy" },
+            { skill: "Electronics Design & Soldering" },
+        ]
+
+        const otherSkills = [
+            { skill: "Narration & Voice Acting" },
+            { skill: "Video/Audio Production & Livestreaming" },
+            { skill: "Charity Fundraising & Event Organisation" },
+            { skill: "Public Speaking & Technical Communication" },
+            { skill: "Creative & Script Writing" },
+            { skill: "Leadership and Mentoring" },
+        ]
 
         const achievements = [
             { title: "Automated Testing Advocate", description: "Led adoption of Unit Testing and TDD and creation of CI/CD pipelines. Transformed brittle systems into robust and flexible building blocks." },
@@ -493,14 +479,32 @@
             { company: "Passion For Life Healthcare", title: "Software Developer", type: "Full-time", dateRange: "2018 - 2020", tags: ["Kotlin", "Vue JS"], description: "Full stack cross platform mobile apps for analysis of snoring and sleep sounds. Collaborated with academia to integrate AI models for classification of Obstructive Sleep Apnoea events." },
         ];
 
+        const interests = [
+            { name: "AI" },
+            { name: "Large Language Models" },
+            { name: "Reinforcement Learning" },
+            { name: "Robotics" },
+            { name: "Simulation" },
+            { name: "VR" },
+            { name: "Internet of Things" },
+            { name: "Space" },
+            { name: "Medical" },
+            { name: "Renewable Energy" },
+            { name: "Game Design" },
+            { name: "D&D & TTRPGs" },
+        ]
+
 
         // --- JavaScript for Interactivity ---
         document.addEventListener('DOMContentLoaded', function () {
             const projectsContainer = document.getElementById('projects-container');
             const servicesContainer = document.getElementById('services-container');
             const softwareSkillsList = document.getElementById('software-skills-list');
-            const achievementsContainer = document.getElementById('achievements-container');
+            const hardwareSkillsList = document.getElementById('hardware-skills-list');
+            const otherSkillsList = document.getElementById('other-skills-list');
             const employmentTimeline = document.getElementById('employment-timeline');
+            const achievementsContainer = document.getElementById('achievements-container');
+            const interestsList = document.getElementById('interests-list');
 
             // Populate Projects
             projects.forEach(project => {
@@ -541,6 +545,22 @@
                 softwareSkillsList.appendChild(li);
             });
 
+            // Populate Hardware Skills
+            hardwareSkills.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'flex items-center';
+                li.innerHTML = `${item.skill}`;
+                hardwareSkillsList.appendChild(li);
+            })
+
+            // Populate Other Skills
+            otherSkills.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'flex items-center';
+                li.innerHTML = `${item.skill}`;
+                otherSkillsList.appendChild(li);
+            })
+
             // Populate Achievements
             achievements.forEach(item => {
                 const card = document.createElement('div');
@@ -574,6 +594,14 @@
                     </div>`;
                 employmentTimeline.appendChild(card);
             });
+
+            // Populate Interests
+            interests.forEach(interest => {
+                const li = document.createElement('span');
+                li.className = 'bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full';
+                li.innerHTML = `${interest.name}`;
+                interestsList.appendChild(li);
+            })
 
             // Mobile menu toggle
             const mobileMenuButton = document.getElementById('mobile-menu-button');
