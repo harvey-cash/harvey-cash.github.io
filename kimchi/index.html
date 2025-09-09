@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvey's Kimchi Recipe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom styles for tooltip */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .tooltip-content {
+            visibility: hidden;
+            opacity: 0;
+            width: 220px;
+            background-color: #334155; /* slate-700 */
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            transition: opacity 0.3s, visibility 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .tooltip-content::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #334155 transparent transparent transparent;
+        }
+        .tooltip-container:hover .tooltip-content,
+        .tooltip-container.active .tooltip-content {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto max-w-4xl p-4 sm:p-8">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-5xl md:text-6xl font-bold text-red-600">Harvey's Kimchi</h1>
+            <p class="mt-4 text-lg text-slate-600">Your journey to tasty, funky, homemade kimchi starts here!</p>
+        </header>
+
+        <!-- Ingredients & Equipment Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 border-b-2 border-red-200 pb-2">What You'll Need</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Ingredients -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Ingredients</h3>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-lg mb-2 text-red-600">Mandatory</h4>
+                        <ul class="list-disc list-inside space-y-2 mb-4">
+                            <li>Cabbage (Napa / Chinese Leaf)</li>
+                            <li>Gochujang Paste</li>
+                            <li>Garlic</li>
+                            <li>Soy Sauce</li>
+                        </ul>
+                        <h4 class="font-bold text-lg mb-2 text-slate-500">Optional (but tasty!)</h4>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600">
+                            <li>Carrot</li>
+                            <li>Spring Onion</li>
+                            <li>Ginger</li>
+                            <li>Brown Sugar</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Equipment -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Equipment</h3>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-lg mb-2 text-red-600">Mandatory</h4>
+                        <ul class="list-disc list-inside space-y-2 mb-4">
+                            <li>Large Mixing Bowl</li>
+                            <li>Fermentation Jar (or any tall, clean, food-safe container with a lid)</li>
+                        </ul>
+                        <h4 class="font-bold text-lg mb-2 text-slate-500">Optional</h4>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600">
+                            <li>Glass Fermentation Weight</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recipe Section -->
+        <section>
+            <h2 class="text-3xl font-bold mb-6 border-b-2 border-red-200 pb-2">The Recipe</h2>
+            
+            <!-- Step 1: Soak -->
+            <div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+                <h3 class="text-2xl font-bold mb-4">Part 1: Soak the Cabbage <span class="text-slate-500 font-normal text-lg">(~6 hours)</span></h3>
+                <ol class="list-decimal list-inside space-y-4">
+                    <li>Wash and chop cabbage into bite-sized pieces (around 1-2 inches). Make sure a few larger leaves are wide enough to cover the opening of your jar - we'll need them later!</li>
+                    <li>Place cabbage in your large mixing bowl. For every 100g of cabbage, add 2g of salt and mix well to distribute.
+                        <div class="tooltip-container ml-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-sky-600 inline-block" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+                            <div class="tooltip-content">
+                                A typical supermarket cabbage is about 600g, so you'd use 12g of salt.
+                            </div>
+                        </div>
+                    </li>
+                    <li>Add enough water to completely submerge the cabbage.</li>
+                    <li>Sprinkle a few extra grams of salt on top.</li>
+                    <li>Use a small plate to weigh the cabbage down, keeping it all underwater.</li>
+                    <li>Cover the bowl and let it soak for 4-8 hours, or overnight.
+                         <div class="tooltip-container ml-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-sky-600 inline-block" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+                            <div class="tooltip-content">
+                                I use a large pan lid to cover my bowl. Anything works!
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Step 2: Prepare -->
+            <div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+                <h3 class="text-2xl font-bold mb-4">Part 2: Mix the Magic <span class="text-slate-500 font-normal text-lg">(~20 mins)</span></h3>
+                <ol class="list-decimal list-inside space-y-4">
+                    <li>Scoop out ~200ml (about a cup) of the salty cabbage water and set it aside. Drain the rest, but don't squeeze the cabbage dry.</li>
+                    <li>Peel and chop your garlic (and ginger, if using). Slice or peel any other veg into thin strips.</li>
+                    <li>Add the garlic, ginger, and other veg to the cabbage.</li>
+                    <li>Time for the sauce! Add 1 big tablespoon of Gochujang per 200g of cabbage (e.g., 3 tbsp for a 600g cabbage). Use more if you want it spicier!
+                        <div class="tooltip-container ml-1">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-sky-600 inline-block" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+                             <div class="tooltip-content">
+                                I use an ice cream scoop instead of a tablespoon. All my normal spoons kept bending when mixing and packing down the kimchi...
+                             </div>
+                        </div>
+                    </li>
+                    <li>Add 1 tablespoon of Soy Sauce per 300g of cabbage (2 tbsp for 600g). Add a teaspoon of brown sugar if you have it.</li>
+                    <li>Experiment with other seasonings! Go wild!
+                        <div class="tooltip-container ml-1">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-sky-600 inline-block" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+                             <div class="tooltip-content">
+                                Pastes work better than powders to avoid a gritty texture. I'm currently enjoying adding a spoonful of fermented soy bean paste.
+                             </div>
+                        </div>
+                    </li>
+                    <li>Mix everything thoroughly until the cabbage is evenly coated.</li>
+                    <li>Transfer the kimchi to your fermentation jar, leaving most of the sauce behind for now. Pack it down tightly to remove air gaps, leaving about 3-5cm of space at the top. Place your largest cabbage leaves on top.</li>
+                    <li>If you have a fermentation weight, place it on top of the big leaves. 
+                        <div class="tooltip-container ml-1">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-sky-600 inline-block" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+                             <div class="tooltip-content">
+                                No weight? No problem. A large cabbage leaf works fine. Or get creative! I've used the plastic insert from a jar of peppers, and even a small freezer bag filled with a little water. Just make sure it's clean and food-safe.
+                             </div>
+                        </div>
+                    </li>
+                    <li>Press down on the top layer. The juice should rise up and cover the cabbage. If not, add the leftover sauce from the bowl, and then the reserved cabbage water if you still need more liquid. Everything must be submerged!</li>
+                </ol>
+            </div>
+
+            <!-- Step 3: Ferment -->
+            <div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+                <h3 class="text-2xl font-bold mb-4">Part 3: Let it Ferment <span class="text-slate-500 font-normal text-lg">(3+ days)</span></h3>
+                 <ol class="list-decimal list-inside space-y-4">
+                     <li>Seal your jar and place it in a cool, dark spot. Put a small tray or plate underneath to catch any potential bubbly overflow.</li>
+                     <li>Let it ferment for 3 to 5 days. If your jar doesn't self-vent, "burp" it once a day by briefly loosening the lid to release pressure.
+                         <div class="tooltip-container ml-1">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-sky-600 inline-block" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+                             <div class="tooltip-content">
+                                Even with a self-venting jar, I like to check on it every day to see the bubbles!
+                             </div>
+                         </div>
+                     </li>
+                     <li>After 3 days, it'll be tangy and fresh. My sweet spot is 5 days. The longer you wait, the funkier and more flavourful it gets.</li>
+                     <li>Going past 7 days increases the risk of spoilage, so only do this if you're confident everything was sterilised and kept fully submerged.</li>
+                 </ol>
+            </div>
+
+            <!-- Step 4: Storage -->
+             <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="text-2xl font-bold mb-4">Part 4: Storage</h3>
+                 <ol class="list-decimal list-inside space-y-4">
+                     <li>Once it's fermented to your liking, move the jar to the fridge. This will mostly pause the fermentation process.</li>
+                     <li>It will keep in the fridge for up to 2 months, and likely even longer if you did a good job keeping things sterile!</li>
+                 </ol>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 py-4 border-t border-slate-200">
+            <p class="text-slate-600">Enjoy your homemade kimchi!</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Simple script to toggle tooltip visibility on click for mobile-friendliness
+        document.addEventListener('DOMContentLoaded', () => {
+            const tooltips = document.querySelectorAll('.tooltip-container');
+
+            tooltips.forEach(tooltip => {
+                tooltip.addEventListener('click', (e) => {
+                    // Prevent closing when clicking inside the tooltip
+                    e.stopPropagation(); 
+                    
+                    // Close other tooltips
+                    tooltips.forEach(t => {
+                        if (t !== tooltip) {
+                            t.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle the current one
+                    tooltip.classList.toggle('active');
+                });
+            });
+
+            // Close tooltips when clicking anywhere else on the page
+            document.addEventListener('click', () => {
+                tooltips.forEach(tooltip => {
+                    tooltip.classList.remove('active');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
