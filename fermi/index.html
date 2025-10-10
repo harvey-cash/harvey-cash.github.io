@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Guide to Looking After Fermi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1.5rem; /* More rounded corners */
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .gradient-text {
+            background-image: linear-gradient(to right, #3b82f6, #14b8a6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid #e2e8f0;
+        }
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+            padding-bottom: 0;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -0.6rem;
+            top: 0.1rem;
+            height: 1.125rem;
+            width: 1.125rem;
+            background-color: white;
+            border-radius: 9999px;
+            border: 4px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-5xl">
+
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-5xl md:text-6xl font-bold gradient-text">Fermi's Quickstart Guide</h1>
+            <p class="text-gray-600 mt-3 text-lg">Your go-to guide for taking care of this sweet, sensitive boy. Thanks for being his friend!</p>
+        </header>
+
+        <!-- Main Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Emergency Contacts -->
+            <div class="card p-6 md:col-span-2 lg:col-span-3">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <span class="text-3xl mr-3">🚨</span> Emergency Contacts
+                </h2>
+                <div class="space-y-4">
+                    <div class="flex items-center p-4 bg-blue-50 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        <div>
+                            <p class="font-semibold text-gray-700">Harvey Cash (Owner)</p>
+                            <a href="tel:+447735269400" class="text-blue-600 font-medium text-lg">+44 7735 269400</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-teal-50 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-teal-500 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 8v-4h1v4h-1z"/></svg>
+                        <div>
+                            <p class="font-semibold text-gray-700">Vets: Medivet Epsom Pound Lane</p>
+                            <a href="tel:01372720066" class="text-teal-600 font-medium text-lg mr-4">01372 720066</a>
+                            <a href="https://www.medivetgroup.com/vet-practices/epsom-pound-ln/" target="_blank" class="text-teal-600 hover:underline text-sm">Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Food & Diet -->
+            <div class="card p-6 lg:col-span-2">
+                <h2 class="text-2xl font-bold mb-4 flex items-center"><span class="text-3xl mr-3">🍽️</span> Food & Diet</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <div class="bg-gray-50 p-4 rounded-xl">
+                        <p class="font-bold text-gray-700">Breakfast: 9am</p>
+                        <p class="text-gray-600">~40g dry food</p>
+                        <p class="text-gray-600">~75g wet food</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-xl">
+                        <p class="font-bold text-gray-700">Dinner: 6pm</p>
+                        <p class="text-gray-600">~40g dry food</p>
+                        <p class="text-gray-600">~75g wet food</p>
+                    </div>
+                </div>
+                <p class="text-gray-700">Putting his kibble in a puzzle feeder or snuffle mat helps him eat more slowly and engages his brain.</p>
+                <br>
+                <div class="bg-yellow-100 border-l-4 border-yellow-400 text-yellow-800 p-4 rounded-lg mb-4">
+                    <strong>Mealtime Command:</strong> Say "Break!" once, enthusiastically, to let him eat.
+                </div>
+                <p class="font-semibold mb-2">✅ Approved Treats:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>Kibble (take from his daily portion)</li>
+                    <li>Pooch & Mutt Dental Treats (max 1 per day)</li>
+                    <li>Lily’s Treats & other miscellaneous animal bits</li>
+                </ul>
+                <p class="font-semibold mt-4 mb-2 text-red-600">🚫 Forbidden Foods:</p>
+                <p class="text-gray-700">Absolutely no human food; he has a sensitive stomach! Grapes, onions, garlic, and chocolate are especially toxic to dogs.</p>
+            </div>
+            
+            <!-- Toilet -->
+            <div class="card p-6">
+                <h2 class="text-2xl font-bold mb-4 flex items-center"><span class="text-3xl mr-3">🌳</span> Toilet Routine</h2>
+                <p class="text-gray-700 mb-2">He poops 1-2 times a day, usually morning or lunchtime.</p>
+                <p class="font-semibold text-blue-700">How he signals:</p>
+                <p class="text-gray-700">He'll sit patiently by whatever door leads outside. A true gentleman.</p>
+            </div>
+
+            <!-- Daily Routine -->
+            <div class="card p-6 md:col-span-2 lg:col-span-3">
+                <h2 class="text-2xl font-bold mb-4 flex items-center"><span class="text-3xl mr-3">☀️</span> A Day in the Life</h2>
+                <p class="text-gray-600 mb-6">Sticking to this routine helps him relax. Feel free to adjust to your needs!</p>
+                <div class="timeline">
+                    <div class="timeline-item"><div class="timeline-dot"></div><p><strong class="text-blue-600">7:30 AM:</strong> Wake up! Let out of crate for cuddles and snoozes.</p></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><p><strong class="text-blue-600">8:30 AM:</strong> Quick garden sniff / 10-min walk.</p></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><p><strong class="text-blue-600">9:00 AM:</strong> Breakfast time!</p></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><p><strong class="text-blue-600">9:30 - 11:30 AM:</strong> Crate time / nap.</p></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><p><strong class="text-blue-600">1:00 PM:</strong> Main walk/run of the day (30-60 mins).</p></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><p><strong class="text-blue-600">2:30 - 4:00 PM:</strong> Crate time / nap.</p></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><p><strong class="text-blue-600">6:00 PM:</strong> Dinner time!</p></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><p><strong class="text-blue-600">7:00 PM:</strong> Evening "Sniffari" (10 mins).</p></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><p><strong class="text-blue-600">10:30 PM:</strong> Bed time. Command: "Go to bed".</p></div>
+                </div>
+                <br>
+                <p class="text-gray-600 mb-6">If he seems unsettled during the day, especially on weekends, consider moving his longer walk to the morning to tire him out for the day.</p>
+            </div>
+
+            <!-- Walks & Anxiety -->
+            <div class="card p-6 lg:col-span-3">
+                <h2 class="text-2xl font-bold mb-4 flex items-center"><span class="text-3xl mr-3">🐾</span> Walks & Anxiety Management</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Walk Essentials</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Gear:</strong> Always wear both harness and collar.</li>
+                            <li><strong>Calm & Confident:</strong> If he's calm, clip lead to his <span class="tag bg-green-100 text-green-800">collar</span>. Say "heel" and treat for staying by your side.</li>
+                            <li><strong>Anxious & Pulling:</strong> If he's anxious, clip lead to his <span class="tag bg-yellow-100 text-yellow-800">harness</span> to protect his neck.</li>
+                             <li><strong>Freedom:</strong> He can't go off-leash near others. Use his long-line for some running freedom in safe, empty areas.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-red-700">Managing Reactivity (Dogs)</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Avoid if possible:</strong> Your main goal is a peaceful walk. Crossing the street is a success!</li>
+                            <li><strong>See a dog far away?</strong> Treat generously! Show him dogs from a distance are a good thing.</li>
+                            <li><strong>Dog gets too close?</strong>
+                                <ol class="list-decimal list-inside ml-4 mt-1 p-3 bg-red-50 rounded-lg">
+                                    <li>Stay calm, don't pull the lead.</li>
+                                    <li>Use high-value treats to lure him away.</li>
+                                    <li>Use the cue: <strong class="text-red-600">"Okay, let's go!"</strong></li>
+                                    <li>Praise and treat him once you're clear.</li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="mt-6 bg-blue-50 border-l-4 border-blue-400 text-blue-800 p-4 rounded-lg">
+                    <strong>Most Important Rule:</strong> You **do not** need to walk him if it is stressful for either of you. Short toilet breaks are fine. A happy dog is better than a stressed dog.
+                </div>
+            </div>
+
+             <!-- Crate & Separation Anxiety -->
+            <div class="card p-6 md:col-span-2 lg:col-span-3">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <span class="text-3xl mr-3">🏠</span> Crate & Separation Anxiety
+                </h2>
+                <div class="bg-indigo-50 p-6 rounded-2xl">
+                    <p class="font-semibold text-lg text-indigo-800">Crate Command: "Go to bed"</p>
+                    <p class="text-indigo-700 mt-2">He sleeps in his crate in our bedroom. Please put his panda blanket and a toy or yak cheese in with him, then cover the crate to make it cozy.</p>
+                    <div class="mt-4 p-4 rounded-xl bg-red-100 border border-red-200">
+                         <p class="font-bold text-red-800">He has severe separation anxiety and cannot be left completely alone at home.</p>
+                         <p class="text-red-700 mt-2">If he gets very stressed (howling/barking) in his crate, please let him out calmly. The goal is to avoid negative associations. Don't reward the behaviour with treats or fuss, just calmly open the door.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Commands & Play -->
+            <div class="card p-6 lg:col-span-3">
+                <h2 class="text-2xl font-bold mb-4 flex items-center"><span class="text-3xl mr-3">🎾</span> Commands & Play</h2>
+                <p class="mb-4 text-gray-600">Fermi is very treat-motivated! Training games are a great way to bond and tire him out indoors.</p>
+                <div class="bg-green-50 p-6 rounded-2xl mb-6">
+                    <p class="font-semibold text-lg text-green-800">Indoor Game: "Find It!"</p>
+                    <ol class="list-decimal list-inside space-y-2 mt-2 text-green-700">
+                        <li>Show him a toy, then have him "Stay".</li>
+                        <li>Hide it in another room.</li>
+                        <li>Return and say "Find It!" with open hands.</li>
+                        <li>When he brings it back, say "Give" and offer your hand.</li>
+                        <li>Reward him when he drops it in your hand. Repeat!</li>
+                    </ol>
+                </div>
+                <h3 class="font-bold text-lg mb-2">Commands He Knows:</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag bg-gray-100 text-gray-800">Sit</span>
+                    <span class="tag bg-gray-100 text-gray-800">Down</span>
+                    <span class="tag bg-gray-100 text-gray-800">Stand</span>
+                    <span class="tag bg-gray-100 text-gray-800">Up (onto furniture)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Off (of furniture)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Home (to a mat)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Go To Bed (to crate)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Paw</span>
+                    <span class="tag bg-gray-100 text-gray-800">Bump (with snout)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Chin (rest head on your hand)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Turn Around (clockwise)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Other Around (anti-clockwise)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Back (away from you a little)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Press (a button on the floor)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Break</span>
+                    <span class="tag bg-gray-100 text-gray-800">Stay</span>
+                    <span class="tag bg-gray-100 text-gray-800">Wait</span>
+                    <span class="tag bg-gray-100 text-gray-800">Come</span>
+                    <span class="tag bg-gray-100 text-gray-800">This Way (when running outside)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Heel</span>
+                    <span class="tag bg-gray-100 text-gray-800">Middle (between legs)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Weave (between legs)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Bang! (with finger guns: play dead)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Find It</span>
+                    <span class="tag bg-gray-100 text-gray-800">Fetch</span>
+                    <span class="tag bg-gray-100 text-gray-800">Give</span>
+                    <span class="tag bg-gray-100 text-gray-800">Tunnel (agility tunnel)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Circle (around garden furniture)</span>
+                    <span class="tag bg-gray-100 text-gray-800">Jump</span>
+                </div>
+            </div>
+
+            <!-- Other Dogs at Home -->
+            <div class="card p-6 md:col-span-2 lg:col-span-3 border-4 border-red-200">
+                <h2 class="text-2xl font-bold mb-4 flex items-center text-red-700">
+                    <span class="text-3xl mr-3">⚠️</span> IMPORTANT: With Other Dogs at Home
+                </h2>
+                <div class="space-y-4">
+                    <div class="bg-red-50 p-4 rounded-xl">
+                        <h3 class="font-bold text-red-800">He Displays Resource Guarding.</h3>
+                        <p class="text-red-700 mt-1">To keep everyone safe and happy, <strong>all toys and chews must be put away</strong> when Fermi is with other dogs. He can get aggressive if another dog shows interest in "his" things (even when they are not his). Shared water bowls are okay. Separate food bowls by some distance if feeding at the same time.</p>
+                    </div>
+                     <div class="bg-yellow-50 p-4 rounded-xl">
+                        <h3 class="font-bold text-yellow-800">He Can Get Overwhelmed.</h3>
+                        <p class="text-yellow-700 mt-1">Play sessions that get too wild or loud should be interrupted. Give the dogs a break from each other to calm down before they get too frustrated.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- End Main Grid -->
+
+        <!-- Footer -->
+        <footer class="text-center mt-10 py-6 border-t">
+            <p class="text-gray-500">Thank you so much for taking care of Fermi!</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
