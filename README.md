@@ -11,6 +11,7 @@ The landing page (`index.html`) is a professional portfolio covering Harvey's en
 ```
 index.html          # Portfolio landing page
 fermi/              # A guide to looking after Fermi (a pet)
+separation/         # Brave Paws landing page, app, and streamer
 kimchi/             # Harvey's kimchi recipe
 ominous-refuge/     # Ominous Refuge sub-page
 images/             # Shared image assets
