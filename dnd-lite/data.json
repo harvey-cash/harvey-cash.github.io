@@ -1,0 +1,280 @@
+{
+  "key_values": {
+    "modIncreasePerLevel": 1,
+    "baseHPPerLevel": 10,
+    "maxExhaustion": 3,
+    "minusHPPerExhaustion": 1,
+    "shortRestMinDurationMins": 30,
+    "longRestMinDurationHours": 6,
+    "shortRestHitDie": "1d6",
+    "loseExhaustionOnShortRestDC": 10,
+    "maxEquippedTrinkets": 3,
+    "maxEquippedWeapons": 2,
+    "maxEquippedOutfits": 1,
+    "baseAC": 10,
+    "unarmedStrikeDmgDie": "1d4",
+    "meleeRangeFt": 5,
+    "rangeMinRangeFt": 5,
+    "rangeMaxRangeFt": 50,
+    "spellSaveBaseDC": 10,
+    "partialCoverACBonus": 2
+  },
+  "sections": {
+    "characters": {
+      "abilityArray": [-2, -1, 0, 0, 1, 2]
+    },
+    "spells": {
+      "slotTableRows": [
+        [2, "-", "-"],
+        [3, 1, "-"],
+        [4, 2, 1],
+        [5, 3, 2],
+        [6, 4, 3]
+      ]
+    },
+    "appendix": {
+      "itemCatalogs": [
+        {
+          "title": "Weapons",
+          "icon": "combat",
+          "headingClass": "text-rose-400",
+          "items": [
+            {
+              "name": "Sword",
+              "descriptionHtml": "Melee 1d6 + STR. <span class=\"text-emerald-400\">+1 STR</span>, <span class=\"text-rose-400\">-1 WIS</span>"
+            },
+            {
+              "name": "Dagger",
+              "descriptionHtml": "Melee 1d6 + STR/DEX. Ranged 1d4 + DEX. <span class=\"italic text-slate-400\">Lost when thrown.</span>"
+            },
+            {
+              "name": "Warhammer",
+              "descriptionHtml": "Melee 1d8 + STR. <span class=\"text-rose-400\">-1 DEX</span>, <span class=\"text-emerald-400\">+1 CHA on intimidation checks.</span>"
+            },
+            {
+              "name": "Crossbow",
+              "descriptionHtml": "Ranged 1d6 + DEX."
+            }
+          ]
+        },
+        {
+          "title": "Outfits",
+          "icon": "outfit",
+          "headingClass": "text-slate-300",
+          "items": [
+            {
+              "name": "Robes",
+              "descriptionHtml": "AC 10. <span class=\"text-emerald-400\">+2 INT</span>, <span class=\"text-rose-400\">-1 WIS</span>"
+            },
+            {
+              "name": "Leathers",
+              "descriptionHtml": "AC 12. <span class=\"text-emerald-400\">+1 WIS</span>"
+            },
+            {
+              "name": "Chainmail",
+              "descriptionHtml": "AC 14. <span class=\"text-rose-400\">-1 CHA</span>"
+            },
+            {
+              "name": "Plate",
+              "descriptionHtml": "AC 16. <span class=\"text-rose-400\">-1 DEX</span>, <span class=\"text-emerald-400\">+1 CON</span>, <span class=\"text-rose-400 italic\">disadvantage on DEX sneak checks.</span>"
+            }
+          ]
+        },
+        {
+          "title": "Trinkets",
+          "icon": "star-outline",
+          "headingClass": "text-amber-400",
+          "items": [
+            {
+              "name": "Shield",
+              "descriptionHtml": "<span class=\"text-emerald-400\">AC +2</span>, <span class=\"text-rose-400\">-1 DEX</span>, <span class=\"text-emerald-400\">+1 WIS</span>"
+            },
+            {
+              "name": "Ruffian's Cloak",
+              "descriptionHtml": "<span class=\"text-emerald-400\">+1 DEX</span>, <span class=\"text-rose-400\">-1 CHA</span>"
+            },
+            {
+              "name": "Tiny Dictator",
+              "descriptionHtml": "<span class=\"text-emerald-400\">+2 INT</span>, advantage against bureaucrats."
+            },
+            {
+              "name": "Esoteric Lockpick",
+              "descriptionHtml": "<span class=\"text-emerald-400\">+1 DEX</span>, <span class=\"text-rose-400\">-1 WIS</span>, advantage on lockpicking."
+            }
+          ]
+        },
+        {
+          "title": "Consumables",
+          "icon": "flask",
+          "headingClass": "text-emerald-400",
+          "items": [
+            {
+              "name": "Healing Potion",
+              "descriptionHtml": "2d4+2 HP"
+            },
+            {
+              "name": "Supreme Healing Potion",
+              "descriptionHtml": "Fall unconscious for 1 turn. Then, heal 10d4+10 HP."
+            },
+            {
+              "name": "Shard of Divinity",
+              "descriptionHtml": "Restore one spell slot."
+            }
+          ]
+        }
+      ],
+      "spellGroups": [
+        {
+          "title": "Cantrips",
+          "subtitle": "Free to cast once learned",
+          "icon": "sun",
+          "iconClass": "text-amber-400",
+          "open": true,
+          "layout": "stack",
+          "entries": [
+            {
+              "name": "Dancing Light",
+              "description": "Create one hovering, torch-sized light which follows you. Lasts 1 hour."
+            },
+            {
+              "name": "Druidcraft",
+              "description": "Predict the weather, make a flower bloom, or instantly light/snuff a campfire."
+            },
+            {
+              "name": "Mage Hand",
+              "description": "Create a spectral hand that can manipulate objects or carry up to 10 lbs within 30ft."
+            },
+            {
+              "name": "Thaumaturgy",
+              "description": "Create harmless sensory effects (booming voice, flickering flames, tremors in the floor)."
+            }
+          ]
+        },
+        {
+          "title": "1st Level Spells",
+          "icon": "magic",
+          "iconClass": "text-rpg-magic",
+          "layout": "grid",
+          "entries": [
+            {
+              "name": "Bless",
+              "tag": "Conc.",
+              "description": "Choose up to 3 creatures. For 10 mins, they roll an extra 1d4 on all attacks and Ability checks."
+            },
+            {
+              "name": "Charm Person",
+              "tag": "Conc.",
+              "description": "Target rolls WIS vs. your CHA. Fail: they treat you as friendly for 1 hour."
+            },
+            {
+              "name": "Comprehend Languages",
+              "tag": "Conc.",
+              "description": "Understand all spoken/written languages encountered for 1 hour."
+            },
+            {
+              "name": "Cure Wounds",
+              "description": "Touch a creature to instantly heal them for 1d8 + your WIS."
+            },
+            {
+              "name": "Detect Alignment",
+              "description": "Sense the moral alignment of one creature."
+            },
+            {
+              "name": "Divine Hex",
+              "tag": "Conc.",
+              "description": "Target rolls WIS vs CHA. Fail: deal extra 1d4 damage when you hit them. 1 hour."
+            },
+            {
+              "name": "Grease",
+              "description": "Coat a 10ft square in slick grease, lasting 10 mins. Creatures entering/starting turn must pass DEX DC10 or fall prone."
+            },
+            {
+              "name": "Inflict Wounds",
+              "description": "Melee spell attack. 1d10 + INT"
+            },
+            {
+              "name": "Eldritch Blast",
+              "description": "Ranged spell attack. 1d8 + INT"
+            },
+            {
+              "name": "Protection from E/G/E",
+              "tag": "Conc.",
+              "description": "Touch creature. For 10 mins, otherworldly entities have disadvantage attacking them."
+            },
+            {
+              "name": "Shield of Faith",
+              "tag": "Conc.",
+              "description": "Grant a creature +2 AC for 10 minutes."
+            },
+            {
+              "name": "Speak with Animals",
+              "tag": "Conc.",
+              "description": "Communicate clearly with beasts for 10 minutes."
+            }
+          ]
+        },
+        {
+          "title": "2nd Level Spells",
+          "icon": "magic",
+          "iconClass": "text-rpg-magic",
+          "layout": "stack",
+          "entries": [
+            {
+              "name": "Barkskin",
+              "tag": "Conc.",
+              "description": "Touch a creature. Skin hardens, gaining resistance to physical damage for 10 minutes."
+            },
+            {
+              "name": "Detect Secrets",
+              "description": "Magically sense the presence of hidden doors, traps, or compartments within 30ft."
+            },
+            {
+              "name": "Enhance Ability",
+              "tag": "Conc.",
+              "description": "Touch a creature. Gain advantage on Ability checks for one chosen stat for 10 minutes."
+            },
+            {
+              "name": "Knock",
+              "description": "Instantly unlock a mundane or magical lock. Emits a loud ring heard up to 300ft away."
+            },
+            {
+              "name": "Prayer of Healing",
+              "description": "Takes 10 mins to cast. Up to 6 creatures within 30ft heal 2d8 + your CHA."
+            },
+            {
+              "name": "Speak with Plants",
+              "tag": "Conc.",
+              "description": "Communicate with plants for 10 minutes, commanding them to part or entangle."
+            }
+          ]
+        },
+        {
+          "title": "3rd Level Spells",
+          "icon": "magic",
+          "iconClass": "text-rpg-magic",
+          "layout": "stack",
+          "entries": [
+            {
+              "name": "Aura of Vitality",
+              "tag": "Conc.",
+              "description": "For 1 minute, on the start of your turn, allies within 15ft heal 2d4 + your CON."
+            },
+            {
+              "name": "Revivify",
+              "description": "Sacrifice a diamond. Touch a creature dead < 1 hour. Return to life with 1 HP + 1 Exhaustion."
+            },
+            {
+              "name": "Speak with Dead",
+              "tag": "Conc.",
+              "description": "Ask a corpse up to 5 questions. It knows only what it knew in life."
+            },
+            {
+              "name": "Turn Undead",
+              "description": "Undead within 30ft roll CHA vs your WIS. Fail: must spend turns running away for 1 minute."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

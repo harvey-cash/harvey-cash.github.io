@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvey's D&D-Lite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Lora', 'serif']
+                    },
+                    colors: {
+                        rpg: {
+                            bg: '#0f172a',
+                            card: '#1e293b',
+                            border: '#334155',
+                            text: '#cbd5e1',
+                            heading: '#f1f5f9',
+                            accent: '#d97706',
+                            accentLight: '#fbbf24',
+                            danger: '#e11d48',
+                            magic: '#8b5cf6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        body { background-color: #0f172a; color: #cbd5e1; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Lora', serif; color: #f1f5f9; }
+
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary ~ * { animation: sweep .3s ease-in-out; }
+        @keyframes sweep {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col md:flex-row min-h-screen">
+    <header class="md:hidden sticky top-0 z-50 bg-rpg-bg border-b border-rpg-border p-4 flex justify-between items-center shadow-md">
+        <div id="mobile-brand" class="font-serif font-bold text-xl text-rpg-accentLight flex items-center gap-2">
+            <svg class="w-6 h-6 text-rpg-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            D&D-Lite
+        </div>
+        <button id="mobile-menu-btn" class="text-rpg-text hover:text-white focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </header>
+
+    <nav id="sidebar" class="hidden md:flex flex-col w-full md:w-64 lg:w-72 bg-slate-950 border-r border-rpg-border p-6 md:sticky md:top-0 md:h-screen overflow-y-auto absolute z-40 inset-x-0 top-[60px] shadow-2xl md:shadow-none transition-all duration-300">
+        <div class="hidden md:block mb-8">
+            <h1 id="desktop-brand" class="text-2xl font-bold text-rpg-accentLight flex items-center gap-2">
+                <svg class="w-6 h-6 text-rpg-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                Harvey's<br>D&D-Lite
+            </h1>
+            <p id="desktop-tagline" class="text-sm text-rpg-text mt-2 italic">Stripped-back rules for one-shots.</p>
+        </div>
+        <ul id="sidebar-nav" class="space-y-3 font-medium text-sm lg:text-base"></ul>
+    </nav>
+
+    <main id="page-content" class="flex-1 p-5 md:p-8 lg:p-12 max-w-5xl">
+        <div class="bg-rpg-card rounded-xl border border-rpg-border px-5 py-4 text-sm text-rpg-text shadow-lg">Loading handbook...</div>
+    </main>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarNav = document.getElementById('sidebar-nav');
+        const pageContent = document.getElementById('page-content');
+        const mobileBrand = document.getElementById('mobile-brand');
+        const desktopBrand = document.getElementById('desktop-brand');
+        const desktopTagline = document.getElementById('desktop-tagline');
+
+        const iconMap = {
+            character: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>',
+            health: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>',
+            items: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>',
+            magic: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>',
+            combat: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>',
+            dc: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>',
+            appendix: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>',
+            trend: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>',
+            alert: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>',
+            clock: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>',
+            moon: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>',
+            star: '<svg class="CLASS_TOKEN" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>',
+            bolt: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>',
+            'bolt-solid': '<svg class="CLASS_TOKEN" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path></svg>',
+            outfit: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>',
+            'star-outline': '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>',
+            flask: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>',
+            sun: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>'
+        };
+
+        const PAGE_META = {
+            pageTitle: "Harvey's D&D-Lite",
+            brand: 'D&D-Lite',
+            desktopBrandHtml: "Harvey's<br>D&D-Lite",
+            tagline: 'Stripped-back rules for one-shots.',
+            heroTitleHtml: 'Harvey\'s <span class="text-rpg-accentLight">D&D-Lite</span>',
+            heroSubtitleHtml: 'Stripped-back rules for one-shots and mini-arcs, inspired by <em class="text-rpg-accent">Esoteric Ebb</em>.'
+        };
+
+        const NAV_ITEMS = [
+            { id: 'characters', label: 'Characters & Abilities', icon: 'character' },
+            { id: 'health', label: 'Health, Death & Rest', icon: 'health' },
+            { id: 'items', label: 'Items & Equipment', icon: 'items' },
+            { id: 'spells', label: 'Magic & Spells', icon: 'magic' },
+            { id: 'combat', label: 'Turns & Combat', icon: 'combat' },
+            { id: 'dc', label: 'Difficulty Classes', icon: 'dc' },
+            { type: 'divider', label: 'Appendices' },
+            { id: 'appendix', label: 'Medieval Fantasy', icon: 'appendix' }
+        ];
+
+        const SECTION_STYLES = {
+            characters: { title: 'Characters and Abilities', icon: 'character', borderClass: 'border-rpg-accent', iconClass: 'text-rpg-accent' },
+            health: { title: 'Health, Death, and Resting', icon: 'health', borderClass: 'border-rpg-accent', iconClass: 'text-rpg-danger' },
+            items: { title: 'Items and Equipment', icon: 'items', borderClass: 'border-rpg-accent', iconClass: 'text-rpg-accent' },
+            spells: { title: 'Magic and Spells', icon: 'magic', borderClass: 'border-rpg-magic', iconClass: 'text-rpg-magic' },
+            combat: { title: 'Turns and Combat', icon: 'combat', borderClass: 'border-rose-500', iconClass: 'text-rose-500' },
+            dc: { title: 'Difficulty Classes (DC)', icon: 'dc', borderClass: 'border-slate-500', iconClass: 'text-slate-400' }
+        };
+
+        const ABILITIES = [
+            { code: 'STR', name: 'Strength' },
+            { code: 'DEX', name: 'Dexterity' },
+            { code: 'CON', name: 'Constitution' },
+            { code: 'INT', name: 'Intelligence' },
+            { code: 'WIS', name: 'Wisdom' },
+            { code: 'CHA', name: 'Charisma' }
+        ];
+
+        const DC_TIERS = [
+            { label: 'Effortless', value: 5, cardClass: 'border-slate-700', labelClass: 'text-slate-400' },
+            { label: 'Easy', value: 10, cardClass: 'border-emerald-700/50', labelClass: 'text-emerald-400' },
+            { label: 'Challenging', value: 15, cardClass: 'border-amber-700/50', labelClass: 'text-amber-400' },
+            { label: 'Daunting', value: 20, cardClass: 'border-rose-700/50', labelClass: 'text-rose-400' },
+            { label: 'Legendary', value: 25, cardClass: 'border-purple-700/50', labelClass: 'text-purple-400' },
+            { label: 'Impossible', value: 30, cardClass: 'border-white-700/50', labelClass: 'text-white-400' }
+        ];
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function resolvePath(root, path) {
+            return path.split('.').reduce((current, key) => (current == null ? undefined : current[key]), root);
+        }
+
+        function resolveTemplates(value, root) {
+            if (Array.isArray(value)) {
+                return value.map((entry) => resolveTemplates(entry, root));
+            }
+
+            if (value && typeof value === 'object') {
+                return Object.fromEntries(
+                    Object.entries(value).map(([key, entry]) => [key, resolveTemplates(entry, root)])
+                );
+            }
+
+            if (typeof value === 'string') {
+                return value.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (_, path) => {
+                    const resolved = resolvePath(root, path);
+                    return resolved == null ? '' : String(resolved);
+                });
+            }
+
+            return value;
+        }
+
+        function icon(name, className) {
+            return (iconMap[name] || iconMap.appendix).replace('CLASS_TOKEN', className);
+        }
+
+        function validateData(data) {
+            if (!data || typeof data !== 'object') {
+                throw new Error('Config file did not return an object.');
+            }
+            if (!data.key_values || !data.sections) {
+                throw new Error('Config file is missing required top-level keys.');
+            }
+            if (!Array.isArray(data.sections.characters?.abilityArray)) {
+                throw new Error('Config file is missing characters.abilityArray.');
+            }
+            if (!Array.isArray(data.sections.spells?.slotTableRows)) {
+                throw new Error('Config file is missing spells.slotTableRows.');
+            }
+            if (!Array.isArray(data.sections.appendix?.itemCatalogs) || !Array.isArray(data.sections.appendix?.spellGroups)) {
+                throw new Error('Config file is missing appendix catalogs or spell groups.');
+            }
+        }
+
+        function renderNav() {
+            return NAV_ITEMS.map((item) => {
+                if (item.type === 'divider') {
+                    return `<li class="pt-4 border-t border-rpg-border mt-2"><span class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-2">${escapeHtml(item.label)}</span></li>`;
+                }
+                return `<li><a href="#${escapeHtml(item.id)}" class="nav-link flex items-center gap-3 text-rpg-text hover:text-rpg-accentLight transition-colors p-2 rounded-lg hover:bg-rpg-card">${icon(item.icon, 'w-4 h-4')} ${escapeHtml(item.label)}</a></li>`;
+            }).join('');
+        }
+
+        function renderHero() {
+            return `<header class="mb-12 text-center md:text-left md:hidden block"><h1 class="text-4xl md:text-5xl font-bold text-rpg-heading mb-3">${PAGE_META.heroTitleHtml}</h1><p class="text-lg text-rpg-text max-w-2xl">${PAGE_META.heroSubtitleHtml}</p></header>`;
+        }
+
+        function sectionStart(id, section) {
+            return `<section id="${id}" class="mb-16 scroll-mt-24"><h2 class="text-3xl font-bold border-b-2 ${section.borderClass} pb-2 mb-6 flex items-center gap-3">${icon(section.icon, `w-8 h-8 ${section.iconClass}`)} ${escapeHtml(section.title)}</h2>`;
+        }
+
+        function renderCharacters(data) {
+            const section = SECTION_STYLES.characters;
+            const abilityArray = data.sections.characters.abilityArray;
+            const keyValues = data.key_values;
+
+            return `${sectionStart('characters', section)}<div class="bg-rpg-card rounded-xl p-6 border border-rpg-border shadow-lg"><p class="mb-4 text-lg">No species, no classes. Assign the standard array directly to your six Ability Modifiers:</p><div class="flex justify-center mb-6"><div class="bg-rpg-bg py-3 px-6 rounded-lg border border-rpg-border font-mono text-xl tracking-widest text-rpg-accentLight shadow-inner">${escapeHtml(JSON.stringify(abilityArray))}</div></div><div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-6 text-center">${ABILITIES.map((ability) => `<div class="bg-slate-700/50 p-3 rounded-lg border border-slate-600"><div class="font-bold text-rpg-heading">${escapeHtml(ability.code)}</div><div class="text-xs text-slate-400">${escapeHtml(ability.name)}</div></div>`).join('')}</div><ul class="space-y-3"><li class="flex items-start gap-3">${icon('trend', 'w-5 h-5 text-rpg-accent mt-1 flex-shrink-0')}<div><strong class="text-rpg-heading">Leveling Up</strong> Choose one modifier to increase by +${escapeHtml(keyValues.modIncreasePerLevel)} at each level after 1st. Milestone leveling at GM's discretion.</div></li><li class="flex items-start gap-3">${icon('alert', 'w-5 h-5 text-rpg-accent mt-1 flex-shrink-0')}<div><strong class="text-rpg-heading">Critical Rules</strong> A Natural 20 <span class="text-emerald-400 font-bold">always succeeds</span>. A Natural 1 <span class="text-rpg-danger font-bold">always fails</span>.</div></li></ul></div></section>`;
+        }
+
+        function renderHealth(data) {
+            const section = SECTION_STYLES.health;
+            const keyValues = data.key_values;
+
+            return `${sectionStart('health', section)}<div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-rpg-card rounded-xl p-6 border border-rpg-border shadow-lg"><h3 class="text-xl font-bold text-rpg-heading mb-4 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-rpg-danger"></span> HP & Mortality</h3><div class="mb-4 p-3 bg-rpg-bg rounded-lg border border-rpg-border"><span class="text-sm uppercase tracking-wide text-slate-400 block mb-1">Hit Points</span><span class="text-lg font-bold text-white">Max HP = (${escapeHtml(keyValues.baseHPPerLevel)} + CON) × Level</span><p class="text-xs text-slate-400 mt-1">Worn Items do not contribute.</p></div><ul class="space-y-2 text-sm"><li><strong class="text-rpg-danger">Downed (0 HP):</strong> Roll a d20 Death Save (DC 10) at the start of your turn.</li><li class="pl-4 flex items-center gap-2"><strong class="text-emerald-400 font-bold">✓ 3 Successes:</strong> Wake up at 1 HP, gain 1 Exhaustion.</li><li class="pl-4 flex items-center gap-2"><strong class="text-rpg-danger font-bold">✗ 3 Failures:</strong> Die permanently.</li></ul><div class="mt-4 pt-4 border-t border-slate-700"><h4 class="font-bold text-rpg-accentLight mb-1">Exhaustion</h4><p class="text-sm mb-2">Die permanently upon reaching ${escapeHtml(keyValues.maxExhaustion)} levels of exhaustion.</p><p class="text-sm text-slate-400">While exhausted, you have <span class="text-rose-400">disadvantage on all Ability rolls</span>, and your Max HP is reduced by ${escapeHtml(keyValues.minusHPPerExhaustion)} per level.</p></div></div><div class="bg-rpg-card rounded-xl p-6 border border-rpg-border shadow-lg"><h3 class="text-xl font-bold text-rpg-heading mb-4 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Recovery</h3><div class="space-y-6"><div><div class="flex items-center gap-2 mb-1">${icon('clock', 'w-5 h-5 text-emerald-500')}<strong class="text-lg text-white">Short Rest</strong><span class="text-slate-400 text-sm">(${escapeHtml(keyValues.shortRestMinDurationMins)}+ mins)</span></div><p class="text-sm pl-7">Heal <strong>${escapeHtml(keyValues.shortRestHitDie)} + CON</strong> HP. If exhausted, pass a CON DC ${escapeHtml(keyValues.loseExhaustionOnShortRestDC)} check to lose 1 level of exhaustion.</p></div><div><div class="flex items-center gap-2 mb-1">${icon('moon', 'w-5 h-5 text-sky-400')}<strong class="text-lg text-white">Long Rest</strong><span class="text-slate-400 text-sm">(${escapeHtml(keyValues.longRestMinDurationHours)}+ hours)</span></div><p class="text-sm pl-7">Fully restore HP and remove all levels of exhaustion. Restore all spell slots.</p></div></div></div></div></section>`;
+        }
+
+        function renderItems(data) {
+            const section = SECTION_STYLES.items;
+            const keyValues = data.key_values;
+
+            return `${sectionStart('items', section)}<p class="mb-6 text-lg">Carry unlimited items in your backpack, but you can only equip: <strong class="text-rpg-accentLight">${escapeHtml(keyValues.maxEquippedTrinkets)} Trinkets, ${escapeHtml(keyValues.maxEquippedWeapons)} Weapons, and ${escapeHtml(keyValues.maxEquippedOutfits)} Outfit</strong>.</p><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-amber-500 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Trinkets <span class="bg-slate-700 text-sm px-2 py-1 rounded text-amber-300">Max ${escapeHtml(keyValues.maxEquippedTrinkets)}</span></h3><p class="text-sm">Grant passive benefits, situational advantages, or static modifier bonuses.</p></div><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-slate-400 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Outfits <span class="bg-slate-700 text-sm px-2 py-1 rounded text-slate-300">Max ${escapeHtml(keyValues.maxEquippedOutfits)}</span></h3><p class="text-sm mb-3">Set your flat Armor Class (AC). Cannot be equipped or removed in combat.</p><div class="grid grid-cols-2 gap-2 text-xs font-mono text-center"><div class="bg-slate-900 p-1 rounded">Unarmored = ${escapeHtml(keyValues.baseAC)}</div><div class="bg-slate-900 p-1 rounded">Light = 12</div><div class="bg-slate-900 p-1 rounded">Medium = 14</div><div class="bg-slate-900 p-1 rounded">Heavy = 16</div></div></div><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-rose-500 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Weapons <span class="bg-slate-700 text-sm px-2 py-1 rounded text-rose-300">Max ${escapeHtml(keyValues.maxEquippedWeapons)}</span></h3><p class="text-sm mb-2">Unarmed strikes deal <strong>${escapeHtml(keyValues.unarmedStrikeDmgDie)} + STR</strong>. Typical weapons deal <strong>1d6 + Modifier</strong>.</p><ul class="text-xs space-y-1 mt-2 bg-slate-900 p-2 rounded"><li><span class="text-rose-400 font-bold">Melee:</span> STR vs AC (${escapeHtml(keyValues.meleeRangeFt)}ft).</li><li><span class="text-sky-400 font-bold">Ranged:</span> DEX vs AC (disadv. within ${escapeHtml(keyValues.rangeMinRangeFt)}ft or beyond ${escapeHtml(keyValues.rangeMaxRangeFt)}ft).</li></ul></div></div></section>`;
+        }
+
+        function renderSpells(data) {
+            const section = SECTION_STYLES.spells;
+            const keyValues = data.key_values;
+            const slotRows = data.sections.spells.slotTableRows;
+
+            return `${sectionStart('spells', section)}<p class="text-lg mb-6">All spells exist as physical <strong class="text-rpg-magic font-serif tracking-wide">Scrolls</strong>. Total spell slots scale dynamically by character level:</p><div class="bg-rpg-card rounded-xl p-1 border border-rpg-border overflow-hidden mb-6 shadow-lg"><div class="grid grid-cols-6 bg-slate-900 text-xs md:text-sm font-bold text-slate-400 p-3 text-center border-b border-rpg-border"><div class="col-span-2 text-left pl-2">Character Level</div><div>1st Level</div><div>2nd Level</div><div>3rd Level</div></div><div class="divide-y divide-slate-700/50">${slotRows.map((slots, index) => `<div class="grid grid-cols-6 p-3 text-center hover:bg-slate-700/30 transition-colors"><div class="col-span-2 text-left pl-2 font-bold text-white">Level ${index + 1}</div>${slots.map((slot) => `<div class="${slot === '-' ? '' : 'text-rpg-magic font-bold'}">${escapeHtml(slot)}</div>`).join('')}</div>`).join('')}</div></div><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-slate-800/50 rounded-xl p-5 border border-slate-700"><h3 class="font-bold text-white mb-2 flex items-center gap-2">${icon('star', 'w-5 h-5 text-amber-300')} Mechanics</h3><ul class="space-y-3 text-sm"><li><strong class="text-rpg-accentLight">Cantrips:</strong> Simple magic. Find a Cantrip Scroll once, read it, and you can cast it for free forever without slots.</li><li><strong class="text-rpg-accentLight">Leveled Spells:</strong> Complex magic. During a rest, prepare a total number of spells up to your character Level. Prepared scrolls must be on your body; unprepared in your backpack. All revert to unprepared on resting.</li><li><strong class="text-rpg-accentLight">Concentration:</strong> You can only concentrate on one spell at a time.</li></ul></div><div class="bg-slate-800/50 rounded-xl p-5 border border-slate-700"><h3 class="font-bold text-white mb-2 flex items-center gap-2">${icon('bolt', 'w-5 h-5 text-sky-400')} Resolution</h3><ul class="space-y-4 text-sm mt-3"><li class="bg-slate-900 p-3 rounded border border-slate-700 border-l-4 border-l-rpg-magic"><strong class="block text-white mb-1">Caster Rolls (Attacks):</strong>Use the listed Ability vs. target AC (or a GM set DC).</li><li class="bg-slate-900 p-3 rounded border border-slate-700 border-l-4 border-l-amber-500"><strong class="block text-white mb-1">Target Rolls (Saves):</strong>Use the listed Ability vs. the <strong>Caster's DC (${escapeHtml(keyValues.spellSaveBaseDC)} + caster's matching modifier)</strong>.</li></ul></div></div></section>`;
+        }
+
+        function renderCombat(data) {
+            const section = SECTION_STYLES.combat;
+            const keyValues = data.key_values;
+
+            return `${sectionStart('combat', section)}<p class="text-lg mb-4">Turns represent 6 seconds of real time. On your turn, you get (in any order):</p><div class="flex flex-wrap gap-3 mb-8"><span class="bg-rose-900/50 text-rose-200 border-rose-700 border px-4 py-2 rounded-full font-bold shadow-sm">1 Action</span><span class="bg-amber-900/50 text-amber-200 border-amber-700 border px-4 py-2 rounded-full font-bold shadow-sm">1 Object Interaction</span><span class="bg-sky-900/50 text-sky-200 border-sky-700 border px-4 py-2 rounded-full font-bold shadow-sm">30ft Movement</span></div><div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"><div class="bg-rpg-card rounded-xl p-5 border border-rpg-border shadow-md"><h3 class="text-lg font-bold text-white border-b border-slate-700 pb-2 mb-3">Actions include:</h3><ul class="list-disc list-inside space-y-1 text-sm"><li>Attacking</li><li>Casting a spell</li><li>Interacting with creatures</li><li>Changing an equipped weapon/trinket</li></ul></div><div class="bg-rpg-card rounded-xl p-5 border border-rpg-border shadow-md"><h3 class="text-lg font-bold text-white border-b border-slate-700 pb-2 mb-3">Object Interactions include:</h3><ul class="list-disc list-inside space-y-1 text-sm"><li>Retrieving/stowing a backpack item</li><li>Opening doors</li><li>Pulling levers</li></ul></div></div><div class="bg-slate-800/50 rounded-xl p-5 border border-slate-700 mb-8 flex flex-col md:flex-row gap-6"><div class="flex-1"><h4 class="font-bold text-white mb-1">Initiative</h4><p class="text-sm">Roll a DEX check when combat begins.</p></div><div class="flex-1"><h4 class="font-bold text-emerald-400 mb-1">Critical Damage</h4><p class="text-sm">Double the number of damage dice rolled on a Nat 20 (weapons & spells).</p></div><div class="flex-1"><h4 class="font-bold text-white mb-1">Cover</h4><p class="text-sm">Partial cover grants a flat +${escapeHtml(keyValues.partialCoverACBonus)} bonus to AC.</p></div></div><div class="bg-rpg-bg border border-rpg-border rounded-xl overflow-hidden shadow-lg"><div class="bg-slate-800 px-5 py-3 border-b border-slate-700"><h3 class="text-xl font-bold text-white flex items-center gap-2">${icon('bolt-solid', 'w-5 h-5 text-rose-500')} Surprise</h3></div><div class="p-5"><p class="text-sm mb-4">Initiate surprise via contested Ability checks (e.g., Attacker's active stat vs. Target's DEX, at GM discretion).</p><div class="grid md:grid-cols-2 gap-4"><div class="bg-slate-900 p-4 rounded-lg border border-slate-700"><h4 class="font-bold text-rpg-accentLight mb-2 text-sm uppercase">Restrictions</h4><p class="text-sm text-slate-400">Already-engaged creatures cannot be surprised. Unconscious targets are surprised automatically.</p></div><div class="bg-slate-900 p-4 rounded-lg border border-slate-700"><h4 class="font-bold text-rpg-accentLight mb-2 text-sm uppercase">Effects</h4><p class="text-sm text-slate-400">Surprised targets roll initiative with disadvantage but join immediately. Attacks against them have advantage. Expires end of round 1.</p></div></div></div></div></section>`;
+        }
+
+        function renderDc() {
+            const section = SECTION_STYLES.dc;
+            return `${sectionStart('dc', section)}<div class="flex flex-wrap gap-4 justify-between lg:justify-start">${DC_TIERS.map((tier) => `<div class="bg-rpg-card p-4 rounded-xl border ${tier.cardClass} text-center w-[45%] lg:w-32 shadow-md"><div class="text-xs ${tier.labelClass} uppercase font-bold tracking-wider mb-1">${escapeHtml(tier.label)}</div><div class="text-3xl font-serif font-bold text-white">${escapeHtml(tier.value)}</div></div>`).join('')}</div></section>`;
+        }
+
+        function renderAppendix(section) {
+            return `<div class="w-full h-px bg-gradient-to-r from-transparent via-rpg-border to-transparent my-16"></div><section id="appendix" class="scroll-mt-24"><div class="bg-slate-800/30 rounded-2xl p-6 border border-slate-700"><h1 class="text-4xl font-serif font-bold text-center text-rpg-heading mb-2">Appendix A</h1><h2 class="text-xl text-center text-rpg-accent mb-10 font-serif italic">Medieval Fantasy</h2><h3 class="text-2xl font-bold border-b border-slate-600 pb-2 mb-6 text-white">Basic Items</h3><div class="grid md:grid-cols-2 gap-8 mb-12">${section.itemCatalogs.map((catalog) => `<div><h4 class="text-lg font-bold ${catalog.headingClass} mb-3 flex items-center gap-2">${icon(catalog.icon, 'w-5 h-5')} ${escapeHtml(catalog.title)}</h4><ul class="space-y-3">${catalog.items.map((item) => `<li class="text-sm bg-slate-900/50 p-3 rounded border border-slate-700"><strong class="text-white">${escapeHtml(item.name)}:</strong> ${item.descriptionHtml}</li>`).join('')}</ul></div>`).join('')}</div><h3 class="text-2xl font-bold border-b border-slate-600 pb-2 mb-6 text-white mt-8">Basic Spells</h3><div class="space-y-4">${section.spellGroups.map((group) => `<details class="group bg-slate-900 border border-slate-700 rounded-lg overflow-hidden [&_summary::-webkit-details-marker]:hidden" ${group.open ? 'open' : ''}><summary class="flex justify-between items-center font-bold cursor-pointer p-4 bg-slate-800 text-rpg-heading hover:bg-slate-700 transition"><span class="flex items-center gap-2">${icon(group.icon, `w-5 h-5 ${group.iconClass}`)} ${escapeHtml(group.title)}${group.subtitle ? ` <span class="text-xs font-normal text-slate-400 ml-2">(${escapeHtml(group.subtitle)})</span>` : ''}</span><span class="transition group-open:rotate-180"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary><div class="p-4 ${group.layout === 'grid' ? 'space-y-3 grid md:grid-cols-2 gap-x-6 gap-y-3' : 'space-y-3'}">${group.entries.map((entry) => `<p class="text-sm"><strong class="text-white">${escapeHtml(entry.name)}:</strong> ${entry.tag ? `<span class="italic text-slate-400 border border-slate-600 rounded px-1 text-xs">${escapeHtml(entry.tag)}</span> ` : ''}${escapeHtml(entry.description)}</p>`).join('')}</div></details>`).join('')}</div></div></section><div class="h-24"></div>`;
+        }
+
+        function applyMeta() {
+            document.title = PAGE_META.pageTitle;
+            mobileBrand.innerHTML = `${icon('appendix', 'w-6 h-6 text-rpg-accent')} ${escapeHtml(PAGE_META.brand)}`;
+            desktopBrand.innerHTML = `${icon('appendix', 'w-6 h-6 text-rpg-accent')} ${PAGE_META.desktopBrandHtml}`;
+            desktopTagline.textContent = PAGE_META.tagline;
+        }
+
+        function renderPage(data) {
+            applyMeta();
+            sidebarNav.innerHTML = renderNav();
+            pageContent.innerHTML = [
+                renderHero(),
+                renderCharacters(data),
+                renderHealth(data),
+                renderItems(data),
+                renderSpells(data),
+                renderCombat(data),
+                renderDc(),
+                renderAppendix(data.sections.appendix)
+            ].join('');
+        }
+
+        function showError(message) {
+            pageContent.innerHTML = `<div class="bg-rose-950/50 border border-rose-700 rounded-xl px-5 py-4 shadow-lg"><h2 class="text-xl font-bold text-rose-200 mb-2">Content failed to load</h2><p class="text-sm text-rose-100">${escapeHtml(message)}</p><p class="text-sm text-rose-200/80 mt-2">Serve this folder over HTTP and confirm that data.json exists and is valid JSON.</p></div>`;
+        }
+
+        function syncSidebarVisibility() {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('hidden');
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+        });
+
+        sidebar.addEventListener('click', (event) => {
+            if (event.target.closest('.nav-link') && window.innerWidth < 768) {
+                sidebar.classList.add('hidden');
+            }
+        });
+
+        window.addEventListener('resize', syncSidebarVisibility);
+
+        async function loadPage() {
+            try {
+                const response = await fetch('./data.json', { cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error(`Request failed with status ${response.status}.`);
+                }
+                const data = await response.json();
+                const resolvedData = resolveTemplates(data, data);
+                validateData(resolvedData);
+                renderPage(resolvedData);
+                syncSidebarVisibility();
+            } catch (error) {
+                showError(error.message);
+            }
+        }
+
+        syncSidebarVisibility();
+        loadPage();
+    </script>
+</body>
+</html>
