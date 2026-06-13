@@ -227,6 +227,105 @@
             return `<section id="${id}" class="mb-16 scroll-mt-24"><h2 class="text-3xl font-bold border-b-2 ${section.borderClass} pb-2 mb-6 flex items-center gap-3">${icon(section.icon, `w-8 h-8 ${section.iconClass}`)} ${escapeHtml(section.title)}</h2>`;
         }
 
+        function titleCase(value) {
+            if (!value) {
+                return '';
+            }
+            return value.charAt(0).toUpperCase() + value.slice(1);
+        }
+
+        function formatSignedNumber(value) {
+            const numericValue = Number(value);
+            return `${numericValue >= 0 ? '+' : ''}${numericValue}`;
+        }
+
+        function renderItemChip(text, className) {
+            return `<span class="inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold ${className}">${escapeHtml(text)}</span>`;
+        }
+
+        function pushModifierChips(chips, modifiers) {
+            if (!modifiers) {
+                return;
+            }
+
+            for (const [stat, value] of Object.entries(modifiers)) {
+                chips.push({
+                    text: `${formatSignedNumber(value)} ${stat}`,
+                    className: Number(value) >= 0
+                        ? 'border-emerald-700/50 bg-emerald-950/30 text-emerald-300'
+                        : 'border-rose-700/50 bg-rose-950/30 text-rose-300'
+                });
+            }
+        }
+
+        function renderItemDetails(item) {
+            const itemData = item.data || {};
+            const chips = [];
+            const notes = [];
+
+            if (itemData.kind === 'weapon') {
+                for (const mode of itemData.modes || []) {
+                    chips.push({
+                        text: `${titleCase(mode.name)} ${mode.damageDie} + ${mode.attackStats.join('/')}`,
+                        className: 'border-rose-700/50 bg-rose-950/30 text-rose-200'
+                    });
+                }
+            }
+
+            if (itemData.kind === 'outfit' && itemData.armorClass != null) {
+                chips.push({
+                    text: `AC ${itemData.armorClass}`,
+                    className: 'border-slate-600 bg-slate-800 text-slate-100'
+                });
+            }
+
+            if (itemData.kind === 'trinket' && itemData.armorClassBonus != null) {
+                chips.push({
+                    text: `AC ${formatSignedNumber(itemData.armorClassBonus)}`,
+                    className: 'border-sky-700/50 bg-sky-950/30 text-sky-200'
+                });
+            }
+
+            if (itemData.kind === 'consumable') {
+                if (itemData.healing) {
+                    chips.push({
+                        text: itemData.healing,
+                        className: 'border-emerald-700/50 bg-emerald-950/30 text-emerald-300'
+                    });
+                }
+                if (itemData.restore) {
+                    chips.push({
+                        text: itemData.restore,
+                        className: 'border-sky-700/50 bg-sky-950/30 text-sky-200'
+                    });
+                }
+            }
+
+            pushModifierChips(chips, itemData.modifiers);
+
+            for (const bonus of itemData.conditionalBonuses || []) {
+                chips.push({
+                    text: `${formatSignedNumber(bonus.value)} ${bonus.stat} ${bonus.context}`,
+                    className: Number(bonus.value) >= 0
+                        ? 'border-amber-700/50 bg-amber-950/30 text-amber-200'
+                        : 'border-rose-700/50 bg-rose-950/30 text-rose-300'
+                });
+            }
+
+            for (const note of itemData.notes || []) {
+                notes.push(note);
+            }
+
+            const chipsHtml = chips.length
+                ? `<div class="mt-2 flex flex-wrap gap-2">${chips.map((chip) => renderItemChip(chip.text, chip.className)).join('')}</div>`
+                : '';
+            const notesHtml = notes.length
+                ? `<div class="mt-2 space-y-1">${notes.map((note) => `<p class="text-xs italic text-slate-400">${escapeHtml(note)}</p>`).join('')}</div>`
+                : '';
+
+            return `${chipsHtml}${notesHtml}`;
+        }
+
         function renderCharacters(data) {
             const section = SECTION_STYLES.characters;
             const abilityArray = data.sections.characters.abilityArray;
@@ -246,7 +345,10 @@
             const section = SECTION_STYLES.items;
             const keyValues = data.key_values;
 
-            return `${sectionStart('items', section)}<p class="mb-6 text-lg">Carry unlimited items in your backpack, but you can only equip: <strong class="text-rpg-accentLight">${escapeHtml(keyValues.maxEquippedTrinkets)} Trinkets, ${escapeHtml(keyValues.maxEquippedWeapons)} Weapons, and ${escapeHtml(keyValues.maxEquippedOutfits)} Outfit</strong>.</p><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-amber-500 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Trinkets <span class="bg-slate-700 text-sm px-2 py-1 rounded text-amber-300">Max ${escapeHtml(keyValues.maxEquippedTrinkets)}</span></h3><p class="text-sm">Grant passive benefits, situational advantages, or static modifier bonuses.</p></div><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-slate-400 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Outfits <span class="bg-slate-700 text-sm px-2 py-1 rounded text-slate-300">Max ${escapeHtml(keyValues.maxEquippedOutfits)}</span></h3><p class="text-sm mb-3">Set your flat Armor Class (AC). Cannot be equipped or removed in combat.</p><div class="grid grid-cols-2 gap-2 text-xs font-mono text-center"><div class="bg-slate-900 p-1 rounded">Unarmored = ${escapeHtml(keyValues.baseAC)}</div><div class="bg-slate-900 p-1 rounded">Light = 12</div><div class="bg-slate-900 p-1 rounded">Medium = 14</div><div class="bg-slate-900 p-1 rounded">Heavy = 16</div></div></div><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-rose-500 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Weapons <span class="bg-slate-700 text-sm px-2 py-1 rounded text-rose-300">Max ${escapeHtml(keyValues.maxEquippedWeapons)}</span></h3><p class="text-sm mb-2">Unarmed strikes deal <strong>${escapeHtml(keyValues.unarmedStrikeDmgDie)} + STR</strong>. Typical weapons deal <strong>1d6 + Modifier</strong>.</p><ul class="text-xs space-y-1 mt-2 bg-slate-900 p-2 rounded"><li><span class="text-rose-400 font-bold">Melee:</span> STR vs AC (${escapeHtml(keyValues.meleeRangeFt)}ft).</li><li><span class="text-sky-400 font-bold">Ranged:</span> DEX vs AC (disadv. within ${escapeHtml(keyValues.rangeMinRangeFt)}ft or beyond ${escapeHtml(keyValues.rangeMaxRangeFt)}ft).</li></ul></div></div></section>`;
+            const outfitCatalog = data.sections.appendix.itemCatalogs.find((catalog) => catalog.title === 'Outfits');
+            const outfitValues = Object.fromEntries((outfitCatalog?.items || []).map((item) => [item.name, item.data?.armorClass]));
+
+            return `${sectionStart('items', section)}<p class="mb-6 text-lg">Carry unlimited items in your backpack, but you can only equip: <strong class="text-rpg-accentLight">${escapeHtml(keyValues.maxEquippedTrinkets)} Trinkets, ${escapeHtml(keyValues.maxEquippedWeapons)} Weapons, and ${escapeHtml(keyValues.maxEquippedOutfits)} Outfit</strong>.</p><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-amber-500 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Trinkets <span class="bg-slate-700 text-sm px-2 py-1 rounded text-amber-300">Max ${escapeHtml(keyValues.maxEquippedTrinkets)}</span></h3><p class="text-sm">Grant passive benefits, situational advantages, or static modifier bonuses.</p></div><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-slate-400 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Outfits <span class="bg-slate-700 text-sm px-2 py-1 rounded text-slate-300">Max ${escapeHtml(keyValues.maxEquippedOutfits)}</span></h3><p class="text-sm mb-3">Set your flat Armor Class (AC). Cannot be equipped or removed in combat.</p><div class="grid grid-cols-2 gap-2 text-xs font-mono text-center"><div class="bg-slate-900 p-1 rounded">Unarmored = ${escapeHtml(keyValues.baseAC)}</div><div class="bg-slate-900 p-1 rounded">Robes = ${escapeHtml(outfitValues.Robes ?? '10')}</div><div class="bg-slate-900 p-1 rounded">Leathers = ${escapeHtml(outfitValues.Leathers ?? '12')}</div><div class="bg-slate-900 p-1 rounded">Chainmail = ${escapeHtml(outfitValues.Chainmail ?? '14')}</div><div class="bg-slate-900 p-1 rounded col-span-2">Plate = ${escapeHtml(outfitValues.Plate ?? '16')}</div></div></div><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-rose-500 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Weapons <span class="bg-slate-700 text-sm px-2 py-1 rounded text-rose-300">Max ${escapeHtml(keyValues.maxEquippedWeapons)}</span></h3><p class="text-sm mb-2">Unarmed strikes deal <strong>${escapeHtml(keyValues.unarmedStrikeDmgDie)} + STR</strong>. Typical weapons deal <strong>1d6 + Modifier</strong>.</p><ul class="text-xs space-y-1 mt-2 bg-slate-900 p-2 rounded"><li><span class="text-rose-400 font-bold">Melee:</span> STR vs AC (${escapeHtml(keyValues.meleeRangeFt)}ft).</li><li><span class="text-sky-400 font-bold">Ranged:</span> DEX vs AC (disadv. within ${escapeHtml(keyValues.rangeMinRangeFt)}ft or beyond ${escapeHtml(keyValues.rangeMaxRangeFt)}ft).</li></ul></div></div></section>`;
         }
 
         function renderSpells(data) {
@@ -270,7 +372,7 @@
         }
 
         function renderAppendix(section) {
-            return `<div class="w-full h-px bg-gradient-to-r from-transparent via-rpg-border to-transparent my-16"></div><section id="appendix" class="scroll-mt-24"><div class="bg-slate-800/30 rounded-2xl p-6 border border-slate-700"><h1 class="text-4xl font-serif font-bold text-center text-rpg-heading mb-2">Appendix A</h1><h2 class="text-xl text-center text-rpg-accent mb-10 font-serif italic">Medieval Fantasy</h2><h3 class="text-2xl font-bold border-b border-slate-600 pb-2 mb-6 text-white">Basic Items</h3><div class="grid md:grid-cols-2 gap-8 mb-12">${section.itemCatalogs.map((catalog) => `<div><h4 class="text-lg font-bold ${catalog.headingClass} mb-3 flex items-center gap-2">${icon(catalog.icon, 'w-5 h-5')} ${escapeHtml(catalog.title)}</h4><ul class="space-y-3">${catalog.items.map((item) => `<li class="text-sm bg-slate-900/50 p-3 rounded border border-slate-700"><strong class="text-white">${escapeHtml(item.name)}:</strong> ${item.descriptionHtml}</li>`).join('')}</ul></div>`).join('')}</div><h3 class="text-2xl font-bold border-b border-slate-600 pb-2 mb-6 text-white mt-8">Basic Spells</h3><div class="space-y-4">${section.spellGroups.map((group) => `<details class="group bg-slate-900 border border-slate-700 rounded-lg overflow-hidden [&_summary::-webkit-details-marker]:hidden" ${group.open ? 'open' : ''}><summary class="flex justify-between items-center font-bold cursor-pointer p-4 bg-slate-800 text-rpg-heading hover:bg-slate-700 transition"><span class="flex items-center gap-2">${icon(group.icon, `w-5 h-5 ${group.iconClass}`)} ${escapeHtml(group.title)}${group.subtitle ? ` <span class="text-xs font-normal text-slate-400 ml-2">(${escapeHtml(group.subtitle)})</span>` : ''}</span><span class="transition group-open:rotate-180"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary><div class="p-4 ${group.layout === 'grid' ? 'space-y-3 grid md:grid-cols-2 gap-x-6 gap-y-3' : 'space-y-3'}">${group.entries.map((entry) => `<p class="text-sm"><strong class="text-white">${escapeHtml(entry.name)}:</strong> ${entry.tag ? `<span class="italic text-slate-400 border border-slate-600 rounded px-1 text-xs">${escapeHtml(entry.tag)}</span> ` : ''}${escapeHtml(entry.description)}</p>`).join('')}</div></details>`).join('')}</div></div></section><div class="h-24"></div>`;
+            return `<div class="w-full h-px bg-gradient-to-r from-transparent via-rpg-border to-transparent my-16"></div><section id="appendix" class="scroll-mt-24"><div class="bg-slate-800/30 rounded-2xl p-6 border border-slate-700"><h1 class="text-4xl font-serif font-bold text-center text-rpg-heading mb-2">Appendix A</h1><h2 class="text-xl text-center text-rpg-accent mb-10 font-serif italic">Medieval Fantasy</h2><h3 class="text-2xl font-bold border-b border-slate-600 pb-2 mb-6 text-white">Basic Items</h3><div class="grid md:grid-cols-2 gap-8 mb-12">${section.itemCatalogs.map((catalog) => `<div><h4 class="text-lg font-bold ${catalog.headingClass} mb-3 flex items-center gap-2">${icon(catalog.icon, 'w-5 h-5')} ${escapeHtml(catalog.title)}</h4><ul class="space-y-3">${catalog.items.map((item) => `<li class="text-sm bg-slate-900/50 p-3 rounded border border-slate-700"><strong class="text-white">${escapeHtml(item.name)}</strong>${renderItemDetails(item)}</li>`).join('')}</ul></div>`).join('')}</div><h3 class="text-2xl font-bold border-b border-slate-600 pb-2 mb-6 text-white mt-8">Basic Spells</h3><div class="space-y-4">${section.spellGroups.map((group) => `<details class="group bg-slate-900 border border-slate-700 rounded-lg overflow-hidden [&_summary::-webkit-details-marker]:hidden" ${group.open ? 'open' : ''}><summary class="flex justify-between items-center font-bold cursor-pointer p-4 bg-slate-800 text-rpg-heading hover:bg-slate-700 transition"><span class="flex items-center gap-2">${icon(group.icon, `w-5 h-5 ${group.iconClass}`)} ${escapeHtml(group.title)}${group.subtitle ? ` <span class="text-xs font-normal text-slate-400 ml-2">(${escapeHtml(group.subtitle)})</span>` : ''}</span><span class="transition group-open:rotate-180"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary><div class="p-4 ${group.layout === 'grid' ? 'space-y-3 grid md:grid-cols-2 gap-x-6 gap-y-3' : 'space-y-3'}">${group.entries.map((entry) => `<p class="text-sm"><strong class="text-white">${escapeHtml(entry.name)}:</strong> ${entry.tag ? `<span class="italic text-slate-400 border border-slate-600 rounded px-1 text-xs">${escapeHtml(entry.tag)}</span> ` : ''}${escapeHtml(entry.description)}</p>`).join('')}</div></details>`).join('')}</div></div></section><div class="h-24"></div>`;
         }
 
         function applyMeta() {

@@ -41,19 +41,82 @@
           "items": [
             {
               "name": "Sword",
-              "descriptionHtml": "Melee 1d6 + STR. <span class=\"text-emerald-400\">+1 STR</span>, <span class=\"text-rose-400\">-1 WIS</span>"
+              "data": {
+                "kind": "weapon",
+                "modes": [
+                  {
+                    "name": "melee",
+                    "damageDie": "1d6",
+                    "attackStats": ["STR"],
+                    "rangeFeet": 5
+                  }
+                ],
+                "modifiers": {
+                  "STR": 1,
+                  "WIS": -1
+                }
+              }
             },
             {
               "name": "Dagger",
-              "descriptionHtml": "Melee 1d6 + STR/DEX. Ranged 1d4 + DEX. <span class=\"italic text-slate-400\">Lost when thrown.</span>"
+              "data": {
+                "kind": "weapon",
+                "modes": [
+                  {
+                    "name": "melee",
+                    "damageDie": "1d6",
+                    "attackStats": ["STR", "DEX"],
+                    "rangeFeet": 5
+                  },
+                  {
+                    "name": "ranged",
+                    "damageDie": "1d4",
+                    "attackStats": ["DEX"],
+                    "rangeFeet": 50
+                  }
+                ],
+                "notes": [
+                  "Lost when thrown."
+                ]
+              }
             },
             {
               "name": "Warhammer",
-              "descriptionHtml": "Melee 1d8 + STR. <span class=\"text-rose-400\">-1 DEX</span>, <span class=\"text-emerald-400\">+1 CHA on intimidation checks.</span>"
+              "data": {
+                "kind": "weapon",
+                "modes": [
+                  {
+                    "name": "melee",
+                    "damageDie": "1d10",
+                    "attackStats": ["STR"],
+                    "rangeFeet": 5
+                  }
+                ],
+                "modifiers": {
+                  "DEX": -1
+                },
+                "conditionalBonuses": [
+                  {
+                    "stat": "CHA",
+                    "value": 1,
+                    "context": "on intimidation checks"
+                  }
+                ]
+              }
             },
             {
               "name": "Crossbow",
-              "descriptionHtml": "Ranged 1d6 + DEX."
+              "data": {
+                "kind": "weapon",
+                "modes": [
+                  {
+                    "name": "ranged",
+                    "damageDie": "1d6",
+                    "attackStats": ["DEX"],
+                    "rangeFeet": 50
+                  }
+                ]
+              }
             }
           ]
         },
@@ -64,19 +127,48 @@
           "items": [
             {
               "name": "Robes",
-              "descriptionHtml": "AC 10. <span class=\"text-emerald-400\">+2 INT</span>, <span class=\"text-rose-400\">-1 WIS</span>"
+              "data": {
+                "kind": "outfit",
+                "armorClass": 10,
+                "modifiers": {
+                  "INT": 2,
+                  "WIS": -1
+                }
+              }
             },
             {
               "name": "Leathers",
-              "descriptionHtml": "AC 12. <span class=\"text-emerald-400\">+1 WIS</span>"
+              "data": {
+                "kind": "outfit",
+                "armorClass": 12,
+                "modifiers": {
+                  "WIS": 1
+                }
+              }
             },
             {
               "name": "Chainmail",
-              "descriptionHtml": "AC 14. <span class=\"text-rose-400\">-1 CHA</span>"
+              "data": {
+                "kind": "outfit",
+                "armorClass": 14,
+                "modifiers": {
+                  "CHA": -1
+                }
+              }
             },
             {
               "name": "Plate",
-              "descriptionHtml": "AC 16. <span class=\"text-rose-400\">-1 DEX</span>, <span class=\"text-emerald-400\">+1 CON</span>, <span class=\"text-rose-400 italic\">disadvantage on DEX sneak checks.</span>"
+              "data": {
+                "kind": "outfit",
+                "armorClass": 16,
+                "modifiers": {
+                  "DEX": -1,
+                  "CON": 1
+                },
+                "notes": [
+                  "Disadvantage on DEX sneak checks."
+                ]
+              }
             }
           ]
         },
@@ -87,19 +179,49 @@
           "items": [
             {
               "name": "Shield",
-              "descriptionHtml": "<span class=\"text-emerald-400\">AC +2</span>, <span class=\"text-rose-400\">-1 DEX</span>, <span class=\"text-emerald-400\">+1 WIS</span>"
+              "data": {
+                "kind": "trinket",
+                "armorClassBonus": 2,
+                "modifiers": {
+                  "DEX": -1,
+                  "WIS": 1
+                }
+              }
             },
             {
               "name": "Ruffian's Cloak",
-              "descriptionHtml": "<span class=\"text-emerald-400\">+1 DEX</span>, <span class=\"text-rose-400\">-1 CHA</span>"
+              "data": {
+                "kind": "trinket",
+                "modifiers": {
+                  "DEX": 1,
+                  "CHA": -1
+                }
+              }
             },
             {
               "name": "Tiny Dictator",
-              "descriptionHtml": "<span class=\"text-emerald-400\">+2 INT</span>, advantage against bureaucrats."
+              "data": {
+                "kind": "trinket",
+                "modifiers": {
+                  "INT": 2
+                },
+                "notes": [
+                  "Advantage against bureaucrats."
+                ]
+              }
             },
             {
               "name": "Esoteric Lockpick",
-              "descriptionHtml": "<span class=\"text-emerald-400\">+1 DEX</span>, <span class=\"text-rose-400\">-1 WIS</span>, advantage on lockpicking."
+              "data": {
+                "kind": "trinket",
+                "modifiers": {
+                  "DEX": 1,
+                  "WIS": -1
+                },
+                "notes": [
+                  "Advantage on lockpicking."
+                ]
+              }
             }
           ]
         },
@@ -110,15 +232,27 @@
           "items": [
             {
               "name": "Healing Potion",
-              "descriptionHtml": "2d4+2 HP"
+              "data": {
+                "kind": "consumable",
+                "healing": "2d4+2 HP"
+              }
             },
             {
               "name": "Supreme Healing Potion",
-              "descriptionHtml": "Fall unconscious for 1 turn. Then, heal 10d4+10 HP."
+              "data": {
+                "kind": "consumable",
+                "healing": "10d4+10 HP",
+                "notes": [
+                  "Fall unconscious for 1 turn before the healing takes effect."
+                ]
+              }
             },
             {
               "name": "Shard of Divinity",
-              "descriptionHtml": "Restore one spell slot."
+              "data": {
+                "kind": "consumable",
+                "restore": "Restore one spell slot."
+              }
             }
           ]
         }
@@ -275,6 +409,73 @@
           ]
         }
       ]
+    }
+  },
+  "data": {
+    "dice": {
+      "attackDie": "1d20"
+    },
+    "derivedStats": {
+      "hitPoints": {
+        "basePerLevelKey": "baseHPPerLevel",
+        "ability": "CON"
+      },
+      "armorClass": {
+        "baseKey": "baseAC"
+      }
+    },
+    "combat": {
+      "criticalOn": 20,
+      "criticalDamageDiceMultiplier": 2,
+      "hitRule": "attack_total_gte_ac",
+      "natural1AlwaysMisses": true,
+      "natural20AlwaysHits": true,
+      "initiative": {
+        "die": "1d20",
+        "stat": "DEX"
+      },
+      "endsWhen": "unconscious_at_zero_hp"
+    },
+    "actors": {
+      "balanced_novice": {
+        "label": "Balanced novice",
+        "level": 1,
+        "abilityModifiers": {
+          "STR": 1,
+          "DEX": 1,
+          "CON": 1,
+          "INT": 0,
+          "WIS": 0,
+          "CHA": -1
+        },
+        "weapon": "Sword"
+      },
+      "balanced_swordsman": {
+        "label": "Balanced swordsman",
+        "level": 1,
+        "abilityModifiers": {
+          "STR": 2,
+          "DEX": 1,
+          "CON": 1,
+          "INT": 0,
+          "WIS": -1,
+          "CHA": -1
+        },
+        "weapon": "Sword"
+      },
+      "armour_test_subject": {
+        "label": "Armour test subject",
+        "level": 1,
+        "abilityModifiers": {
+          "STR": 1,
+          "DEX": 1,
+          "CON": 1,
+          "INT": 0,
+          "WIS": 0,
+          "CHA": -1
+        },
+        "weapon": "Sword"
+      }
     }
   }
 }
