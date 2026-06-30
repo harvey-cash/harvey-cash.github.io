@@ -21,7 +21,7 @@
   },
   "sections": {
     "characters": {
-      "abilityArray": [-2, -1, 0, 0, 1, 2]
+      "abilityArray": [-2, -1, 0, 1, 2, 4]
     },
     "spells": {
       "slotTableRows": [
@@ -32,384 +32,774 @@
         [6, 4, 3]
       ]
     },
-    "appendix": {
-      "itemCatalogs": [
-        {
-          "title": "Weapons",
-          "icon": "combat",
-          "headingClass": "text-rose-400",
-          "items": [
-            {
-              "name": "Sword",
-              "data": {
-                "kind": "weapon",
-                "modes": [
-                  {
-                    "name": "melee",
-                    "damageDie": "1d6",
-                    "attackStats": ["STR"],
-                    "rangeFeet": 5
+    "appendices": [
+      {
+        "id": "appendix-medieval-fantasy",
+        "title": "Medieval Fantasy",
+        "navLabel": "Medieval Fantasy",
+        "itemsHeading": "Basic Items",
+        "spellsHeading": "Basic Spells",
+        "itemCatalogs": [
+          {
+            "title": "Weapons",
+            "icon": "combat",
+            "headingClass": "text-rose-400",
+            "items": [
+              {
+                "name": "Sword",
+                "data": {
+                  "kind": "weapon",
+                  "modes": [
+                    {
+                      "name": "melee",
+                      "damageDie": "1d6",
+                      "attackStats": ["STR"],
+                      "rangeFeet": 5
+                    }
+                  ],
+                  "modifiers": {
+                    "STR": 1,
+                    "WIS": -1
                   }
-                ],
-                "modifiers": {
-                  "STR": 1,
-                  "WIS": -1
                 }
-              }
-            },
-            {
-              "name": "Dagger",
-              "data": {
-                "kind": "weapon",
-                "modes": [
-                  {
-                    "name": "melee",
-                    "damageDie": "1d6",
-                    "attackStats": ["STR", "DEX"],
-                    "rangeFeet": 5
+              },
+              {
+                "name": "Dagger",
+                "data": {
+                  "kind": "weapon",
+                  "modes": [
+                    {
+                      "name": "melee",
+                      "damageDie": "1d6",
+                      "attackStats": ["STR", "DEX"],
+                      "rangeFeet": 5
+                    },
+                    {
+                      "name": "ranged",
+                      "damageDie": "1d4",
+                      "attackStats": ["DEX"],
+                      "rangeFeet": 50
+                    }
+                  ],
+                  "notes": [
+                    "Lost when thrown."
+                  ]
+                }
+              },
+              {
+                "name": "Warhammer",
+                "data": {
+                  "kind": "weapon",
+                  "modes": [
+                    {
+                      "name": "melee",
+                      "damageDie": "1d10",
+                      "attackStats": ["STR"],
+                      "rangeFeet": 5
+                    }
+                  ],
+                  "modifiers": {
+                    "DEX": -1
                   },
-                  {
-                    "name": "ranged",
-                    "damageDie": "1d4",
-                    "attackStats": ["DEX"],
-                    "rangeFeet": 50
+                  "conditionalBonuses": [
+                    {
+                      "stat": "CHA",
+                      "value": 1,
+                      "context": "on intimidation checks"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Crossbow",
+                "data": {
+                  "kind": "weapon",
+                  "modes": [
+                    {
+                      "name": "ranged",
+                      "damageDie": "1d6",
+                      "attackStats": ["DEX"],
+                      "rangeFeet": 50
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "title": "Outfits",
+            "icon": "outfit",
+            "headingClass": "text-slate-300",
+            "items": [
+              {
+                "name": "Robes",
+                "data": {
+                  "kind": "outfit",
+                  "armorClass": 10,
+                  "modifiers": {
+                    "INT": 2,
+                    "WIS": -1
                   }
-                ],
-                "notes": [
-                  "Lost when thrown."
-                ]
-              }
-            },
-            {
-              "name": "Warhammer",
-              "data": {
-                "kind": "weapon",
-                "modes": [
-                  {
-                    "name": "melee",
-                    "damageDie": "1d10",
-                    "attackStats": ["STR"],
-                    "rangeFeet": 5
+                }
+              },
+              {
+                "name": "Leathers",
+                "data": {
+                  "kind": "outfit",
+                  "armorClass": 12,
+                  "modifiers": {
+                    "WIS": 1
                   }
-                ],
-                "modifiers": {
-                  "DEX": -1
-                },
-                "conditionalBonuses": [
-                  {
-                    "stat": "CHA",
-                    "value": 1,
-                    "context": "on intimidation checks"
+                }
+              },
+              {
+                "name": "Chainmail",
+                "data": {
+                  "kind": "outfit",
+                  "armorClass": 14,
+                  "modifiers": {
+                    "CHA": -1
                   }
-                ]
+                }
+              },
+              {
+                "name": "Plate",
+                "data": {
+                  "kind": "outfit",
+                  "armorClass": 16,
+                  "modifiers": {
+                    "DEX": -1,
+                    "CON": 1
+                  },
+                  "notes": [
+                    "Disadvantage on DEX sneak checks."
+                  ]
+                }
               }
-            },
-            {
-              "name": "Crossbow",
-              "data": {
-                "kind": "weapon",
-                "modes": [
-                  {
-                    "name": "ranged",
-                    "damageDie": "1d6",
-                    "attackStats": ["DEX"],
-                    "rangeFeet": 50
+            ]
+          },
+          {
+            "title": "Trinkets",
+            "icon": "star-outline",
+            "headingClass": "text-amber-400",
+            "items": [
+              {
+                "name": "Shield",
+                "data": {
+                  "kind": "trinket",
+                  "armorClassBonus": 2,
+                  "modifiers": {
+                    "DEX": -1,
+                    "WIS": 1
                   }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "title": "Outfits",
-          "icon": "outfit",
-          "headingClass": "text-slate-300",
-          "items": [
-            {
-              "name": "Robes",
-              "data": {
-                "kind": "outfit",
-                "armorClass": 10,
-                "modifiers": {
-                  "INT": 2,
-                  "WIS": -1
+                }
+              },
+              {
+                "name": "Ruffian's Cloak",
+                "data": {
+                  "kind": "trinket",
+                  "modifiers": {
+                    "DEX": 1,
+                    "CHA": -1
+                  }
+                }
+              },
+              {
+                "name": "Tiny Dictator",
+                "data": {
+                  "kind": "trinket",
+                  "modifiers": {
+                    "INT": 2
+                  },
+                  "notes": [
+                    "Advantage against bureaucrats."
+                  ]
+                }
+              },
+              {
+                "name": "Esoteric Lockpick",
+                "data": {
+                  "kind": "trinket",
+                  "modifiers": {
+                    "DEX": 1,
+                    "WIS": -1
+                  },
+                  "notes": [
+                    "Advantage on lockpicking."
+                  ]
                 }
               }
-            },
-            {
-              "name": "Leathers",
-              "data": {
-                "kind": "outfit",
-                "armorClass": 12,
-                "modifiers": {
-                  "WIS": 1
+            ]
+          },
+          {
+            "title": "Consumables",
+            "icon": "flask",
+            "headingClass": "text-emerald-400",
+            "items": [
+              {
+                "name": "Healing Potion",
+                "data": {
+                  "kind": "consumable",
+                  "healing": "2d4+2 HP"
+                }
+              },
+              {
+                "name": "Supreme Healing Potion",
+                "data": {
+                  "kind": "consumable",
+                  "healing": "10d4+10 HP",
+                  "notes": [
+                    "Fall unconscious for 1 turn before the healing takes effect."
+                  ]
+                }
+              },
+              {
+                "name": "Shard of Divinity",
+                "data": {
+                  "kind": "consumable",
+                  "restore": "Restore one spell slot."
                 }
               }
-            },
-            {
-              "name": "Chainmail",
-              "data": {
-                "kind": "outfit",
-                "armorClass": 14,
-                "modifiers": {
-                  "CHA": -1
+            ]
+          }
+        ],
+        "spellGroups": [
+          {
+            "title": "Cantrips",
+            "subtitle": "Free to cast once learned",
+            "icon": "sun",
+            "iconClass": "text-amber-400",
+            "open": true,
+            "layout": "stack",
+            "entries": [
+              {
+                "name": "Dancing Light",
+                "description": "Create one hovering, torch-sized light which follows you. Lasts 1 hour."
+              },
+              {
+                "name": "Druidcraft",
+                "description": "Predict the weather, make a flower bloom, or instantly light/snuff a campfire."
+              },
+              {
+                "name": "Mage Hand",
+                "description": "Create a spectral hand that can manipulate objects or carry up to 10 lbs within 30ft."
+              },
+              {
+                "name": "Thaumaturgy",
+                "description": "Create harmless sensory effects (booming voice, flickering flames, tremors in the floor)."
+              }
+            ]
+          },
+          {
+            "title": "1st Level Spells",
+            "icon": "magic",
+            "iconClass": "text-rpg-magic",
+            "layout": "grid",
+            "entries": [
+              {
+                "name": "Bless",
+                "tag": "Conc.",
+                "description": "Choose up to 3 creatures. For 10 mins, they roll an extra 1d4 on all attacks and Ability checks."
+              },
+              {
+                "name": "Charm Person",
+                "tag": "Conc.",
+                "description": "Target rolls WIS vs. your CHA. Fail: they treat you as friendly for 1 hour."
+              },
+              {
+                "name": "Comprehend Languages",
+                "tag": "Conc.",
+                "description": "Understand all spoken/written languages encountered for 1 hour."
+              },
+              {
+                "name": "Cure Wounds",
+                "description": "Touch a creature to instantly heal them for 1d8 + your WIS."
+              },
+              {
+                "name": "Detect Alignment",
+                "description": "Sense the moral alignment of one creature."
+              },
+              {
+                "name": "Divine Hex",
+                "tag": "Conc.",
+                "description": "Target rolls WIS vs CHA. Fail: deal extra 1d4 damage when you hit them. 1 hour."
+              },
+              {
+                "name": "Grease",
+                "description": "Coat a 10ft square in slick grease, lasting 10 mins. Creatures entering/starting turn must pass DEX DC10 or fall prone."
+              },
+              {
+                "name": "Inflict Wounds",
+                "description": "Melee spell attack. 1d10 + INT"
+              },
+              {
+                "name": "Eldritch Blast",
+                "description": "Ranged spell attack. 1d8 + INT"
+              },
+              {
+                "name": "Protection from E/G/E",
+                "tag": "Conc.",
+                "description": "Touch creature. For 10 mins, otherworldly entities have disadvantage attacking them."
+              },
+              {
+                "name": "Shield of Faith",
+                "tag": "Conc.",
+                "description": "Grant a creature +2 AC for 10 minutes."
+              },
+              {
+                "name": "Speak with Animals",
+                "tag": "Conc.",
+                "description": "Communicate clearly with beasts for 10 minutes."
+              }
+            ]
+          },
+          {
+            "title": "2nd Level Spells",
+            "icon": "magic",
+            "iconClass": "text-rpg-magic",
+            "layout": "stack",
+            "entries": [
+              {
+                "name": "Barkskin",
+                "tag": "Conc.",
+                "description": "Touch a creature. Skin hardens, gaining resistance to physical damage for 10 minutes."
+              },
+              {
+                "name": "Detect Secrets",
+                "description": "Magically sense the presence of hidden doors, traps, or compartments within 30ft."
+              },
+              {
+                "name": "Enhance Ability",
+                "tag": "Conc.",
+                "description": "Touch a creature. Gain advantage on Ability checks for one chosen stat for 10 minutes."
+              },
+              {
+                "name": "Knock",
+                "description": "Instantly unlock a mundane or magical lock. Emits a loud ring heard up to 300ft away."
+              },
+              {
+                "name": "Prayer of Healing",
+                "description": "Takes 10 mins to cast. Up to 6 creatures within 30ft heal 2d8 + your CHA."
+              },
+              {
+                "name": "Speak with Plants",
+                "tag": "Conc.",
+                "description": "Communicate with plants for 10 minutes, commanding them to part or entangle."
+              }
+            ]
+          },
+          {
+            "title": "3rd Level Spells",
+            "icon": "magic",
+            "iconClass": "text-rpg-magic",
+            "layout": "stack",
+            "entries": [
+              {
+                "name": "Aura of Vitality",
+                "tag": "Conc.",
+                "description": "For 1 minute, on the start of your turn, allies within 15ft heal 2d4 + your CON."
+              },
+              {
+                "name": "Revivify",
+                "description": "Sacrifice a diamond. Touch a creature dead < 1 hour. Return to life with 1 HP + 1 Exhaustion."
+              },
+              {
+                "name": "Speak with Dead",
+                "tag": "Conc.",
+                "description": "Ask a corpse up to 5 questions. It knows only what it knew in life."
+              },
+              {
+                "name": "Turn Undead",
+                "description": "Undead within 30ft roll CHA vs your WIS. Fail: must spend turns running away for 1 minute."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "appendix-science-fiction",
+        "title": "Science Fiction",
+        "navLabel": "Science Fiction",
+        "itemsHeading": "Basic Gear",
+        "spellsHeading": "Basic Tech",
+        "itemCatalogs": [
+          {
+            "title": "Weapons",
+            "icon": "combat",
+            "headingClass": "text-rose-400",
+            "items": [
+              {
+                "name": "Mono Blade",
+                "data": {
+                  "kind": "weapon",
+                  "modes": [
+                    {
+                      "name": "melee",
+                      "damageDie": "1d6",
+                      "attackStats": ["STR"],
+                      "rangeFeet": 5
+                    }
+                  ],
+                  "modifiers": {
+                    "STR": 1,
+                    "WIS": -1
+                  }
+                }
+              },
+              {
+                "name": "Tactical Vibroknife",
+                "data": {
+                  "kind": "weapon",
+                  "modes": [
+                    {
+                      "name": "melee",
+                      "damageDie": "1d6",
+                      "attackStats": ["STR", "DEX"],
+                      "rangeFeet": 5
+                    },
+                    {
+                      "name": "ranged",
+                      "damageDie": "1d4",
+                      "attackStats": ["DEX"],
+                      "rangeFeet": 50
+                    }
+                  ],
+                  "notes": [
+                    "Easy to lose when thrown."
+                  ]
+                }
+              },
+              {
+                "name": "Breach Maul",
+                "data": {
+                  "kind": "weapon",
+                  "modes": [
+                    {
+                      "name": "melee",
+                      "damageDie": "1d10",
+                      "attackStats": ["STR"],
+                      "rangeFeet": 5
+                    }
+                  ],
+                  "modifiers": {
+                    "DEX": -1
+                  },
+                  "conditionalBonuses": [
+                    {
+                      "stat": "CHA",
+                      "value": 1,
+                      "context": "on intimidation checks"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Coil Carbine",
+                "data": {
+                  "kind": "weapon",
+                  "modes": [
+                    {
+                      "name": "ranged",
+                      "damageDie": "1d6",
+                      "attackStats": ["DEX"],
+                      "rangeFeet": 50
+                    }
+                  ]
                 }
               }
-            },
-            {
-              "name": "Plate",
-              "data": {
-                "kind": "outfit",
-                "armorClass": 16,
-                "modifiers": {
-                  "DEX": -1,
-                  "CON": 1
-                },
-                "notes": [
-                  "Disadvantage on DEX sneak checks."
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "title": "Trinkets",
-          "icon": "star-outline",
-          "headingClass": "text-amber-400",
-          "items": [
-            {
-              "name": "Shield",
-              "data": {
-                "kind": "trinket",
-                "armorClassBonus": 2,
-                "modifiers": {
-                  "DEX": -1,
-                  "WIS": 1
+            ]
+          },
+          {
+            "title": "Outfits",
+            "icon": "outfit",
+            "headingClass": "text-slate-300",
+            "items": [
+              {
+                "name": "Research Mantle",
+                "data": {
+                  "kind": "outfit",
+                  "armorClass": 10,
+                  "modifiers": {
+                    "INT": 2,
+                    "WIS": -1
+                  }
+                }
+              },
+              {
+                "name": "Scout Mesh",
+                "data": {
+                  "kind": "outfit",
+                  "armorClass": 12,
+                  "modifiers": {
+                    "WIS": 1
+                  }
+                }
+              },
+              {
+                "name": "Security Harness",
+                "data": {
+                  "kind": "outfit",
+                  "armorClass": 14,
+                  "modifiers": {
+                    "CHA": -1
+                  }
+                }
+              },
+              {
+                "name": "Powered Exosuit",
+                "data": {
+                  "kind": "outfit",
+                  "armorClass": 16,
+                  "modifiers": {
+                    "DEX": -1,
+                    "CON": 1
+                  },
+                  "notes": [
+                    "Disadvantage on DEX sneak checks from servo noise."
+                  ]
                 }
               }
-            },
-            {
-              "name": "Ruffian's Cloak",
-              "data": {
-                "kind": "trinket",
-                "modifiers": {
-                  "DEX": 1,
-                  "CHA": -1
+            ]
+          },
+          {
+            "title": "Trinkets",
+            "icon": "star-outline",
+            "headingClass": "text-amber-400",
+            "items": [
+              {
+                "name": "Kinetic Buckler",
+                "data": {
+                  "kind": "trinket",
+                  "armorClassBonus": 2,
+                  "modifiers": {
+                    "DEX": -1,
+                    "WIS": 1
+                  }
+                }
+              },
+              {
+                "name": "Smuggler's Fieldcloak",
+                "data": {
+                  "kind": "trinket",
+                  "modifiers": {
+                    "DEX": 1,
+                    "CHA": -1
+                  }
+                }
+              },
+              {
+                "name": "Pocket Compliance AI",
+                "data": {
+                  "kind": "trinket",
+                  "modifiers": {
+                    "INT": 2
+                  },
+                  "notes": [
+                    "Advantage against bureaucrats."
+                  ]
+                }
+              },
+              {
+                "name": "Intrusion Spike",
+                "data": {
+                  "kind": "trinket",
+                  "modifiers": {
+                    "DEX": 1,
+                    "WIS": -1
+                  },
+                  "notes": [
+                    "Advantage on lockpicking."
+                  ]
                 }
               }
-            },
-            {
-              "name": "Tiny Dictator",
-              "data": {
-                "kind": "trinket",
-                "modifiers": {
-                  "INT": 2
-                },
-                "notes": [
-                  "Advantage against bureaucrats."
-                ]
+            ]
+          },
+          {
+            "title": "Consumables",
+            "icon": "flask",
+            "headingClass": "text-emerald-400",
+            "items": [
+              {
+                "name": "Nano Med Gel",
+                "data": {
+                  "kind": "consumable",
+                  "healing": "2d4+2 HP"
+                }
+              },
+              {
+                "name": "Emergency Nanite Flood",
+                "data": {
+                  "kind": "consumable",
+                  "healing": "10d4+10 HP",
+                  "notes": [
+                    "Fall unconscious for 1 turn while your body reboots."
+                  ]
+                }
+              },
+              {
+                "name": "Capacitor Shard",
+                "data": {
+                  "kind": "consumable",
+                  "restore": "Restore one spent slot."
+                }
               }
-            },
-            {
-              "name": "Esoteric Lockpick",
-              "data": {
-                "kind": "trinket",
-                "modifiers": {
-                  "DEX": 1,
-                  "WIS": -1
-                },
-                "notes": [
-                  "Advantage on lockpicking."
-                ]
+            ]
+          }
+        ],
+        "spellGroups": [
+          {
+            "title": "Cantrips",
+            "subtitle": "Free to run once installed",
+            "icon": "sun",
+            "iconClass": "text-amber-400",
+            "open": false,
+            "layout": "stack",
+            "entries": [
+              {
+                "name": "Companion Light Drone",
+                "description": "Deploy one hovering, torch-sized light drone which follows you. Lasts 1 hour."
+              },
+              {
+                "name": "Field Utility Suite",
+                "description": "Predict the weather, trigger a flower bloom, or instantly light/snuff a camp stove."
+              },
+              {
+                "name": "Grav-Lift Manipulator",
+                "description": "Deploy a remote manipulator that can handle objects or carry up to 10 lbs within 30ft."
+              },
+              {
+                "name": "Atmos Modulator",
+                "description": "Create harmless sensory effects such as a booming voice, flickering lights, or tremors in the floor."
               }
-            }
-          ]
-        },
-        {
-          "title": "Consumables",
-          "icon": "flask",
-          "headingClass": "text-emerald-400",
-          "items": [
-            {
-              "name": "Healing Potion",
-              "data": {
-                "kind": "consumable",
-                "healing": "2d4+2 HP"
+            ]
+          },
+          {
+            "title": "1st Level Spells",
+            "icon": "magic",
+            "iconClass": "text-rpg-magic",
+            "layout": "grid",
+            "entries": [
+              {
+                "name": "Combat Uplink",
+                "tag": "Conc.",
+                "description": "Choose up to 3 creatures. For 10 mins, their HUD grants an extra 1d4 on all attacks and Ability checks."
+              },
+              {
+                "name": "Empathy Hack",
+                "tag": "Conc.",
+                "description": "Target rolls WIS vs. your CHA. Fail: they treat you as friendly for 1 hour."
+              },
+              {
+                "name": "Universal Translator",
+                "tag": "Conc.",
+                "description": "Understand all spoken and written languages encountered for 1 hour."
+              },
+              {
+                "name": "Nanite Patch",
+                "description": "Touch a creature to instantly heal them for 1d8 + your WIS."
+              },
+              {
+                "name": "Motive Scanner",
+                "description": "Sense the moral alignment profile of one creature."
+              },
+              {
+                "name": "Hunter-Killer Tag",
+                "tag": "Conc.",
+                "description": "Target rolls WIS vs CHA. Fail: deal extra 1d4 damage when you hit them. 1 hour."
+              },
+              {
+                "name": "Coolant Slick",
+                "description": "Coat a 10ft square in slick coolant, lasting 10 mins. Creatures entering or starting turn must pass DEX DC10 or fall prone."
+              },
+              {
+                "name": "Shock Gauntlet",
+                "description": "Melee tech attack. 1d10 + INT"
+              },
+              {
+                "name": "Arc Bolt",
+                "description": "Ranged tech attack. 1d8 + INT"
+              },
+              {
+                "name": "Anomaly Firewall",
+                "tag": "Conc.",
+                "description": "Touch creature. For 10 mins, anomalous entities have disadvantage attacking them."
+              },
+              {
+                "name": "Aegis Field",
+                "tag": "Conc.",
+                "description": "Grant a creature +2 AC for 10 minutes."
+              },
+              {
+                "name": "Beast Interface",
+                "tag": "Conc.",
+                "description": "Communicate clearly with beasts for 10 minutes."
               }
-            },
-            {
-              "name": "Supreme Healing Potion",
-              "data": {
-                "kind": "consumable",
-                "healing": "10d4+10 HP",
-                "notes": [
-                  "Fall unconscious for 1 turn before the healing takes effect."
-                ]
+            ]
+          },
+          {
+            "title": "2nd Level Spells",
+            "icon": "magic",
+            "iconClass": "text-rpg-magic",
+            "layout": "stack",
+            "entries": [
+              {
+                "name": "Reactive Carapace",
+                "tag": "Conc.",
+                "description": "Touch a creature. A nanofilm hardens their skin, granting resistance to physical damage for 10 minutes."
+              },
+              {
+                "name": "Resonance Scanner",
+                "description": "Sense the presence of hidden doors, traps, or compartments within 30ft."
+              },
+              {
+                "name": "Performance Booster",
+                "tag": "Conc.",
+                "description": "Touch a creature. Gain advantage on Ability checks for one chosen stat for 10 minutes."
+              },
+              {
+                "name": "Bypass Pulse",
+                "description": "Instantly unlock a mundane or digital lock. Emits a loud ring heard up to 300ft away."
+              },
+              {
+                "name": "Medbay Sync",
+                "description": "Takes 10 mins to cast. Up to 6 creatures within 30ft heal 2d8 + your CHA."
+              },
+              {
+                "name": "Botanical Interface",
+                "tag": "Conc.",
+                "description": "Communicate with plants for 10 minutes, commanding them to part or entangle."
               }
-            },
-            {
-              "name": "Shard of Divinity",
-              "data": {
-                "kind": "consumable",
-                "restore": "Restore one spell slot."
+            ]
+          },
+          {
+            "title": "3rd Level Spells",
+            "icon": "magic",
+            "iconClass": "text-rpg-magic",
+            "layout": "stack",
+            "entries": [
+              {
+                "name": "Regeneration Field",
+                "tag": "Conc.",
+                "description": "For 1 minute, on the start of your turn, allies within 15ft heal 2d4 + your CON."
+              },
+              {
+                "name": "Emergency Reanimation",
+                "description": "Sacrifice a rare power core. Touch a creature dead < 1 hour. Return to life with 1 HP + 1 Exhaustion."
+              },
+              {
+                "name": "Neural Echo Interrogation",
+                "tag": "Conc.",
+                "description": "Ask a corpse up to 5 questions. It knows only what it knew in life."
+              },
+              {
+                "name": "Signal Purge",
+                "description": "Undead or necrotech husks within 30ft roll CHA vs your WIS. Fail: must spend turns running away for 1 minute."
               }
-            }
-          ]
-        }
-      ],
-      "spellGroups": [
-        {
-          "title": "Cantrips",
-          "subtitle": "Free to cast once learned",
-          "icon": "sun",
-          "iconClass": "text-amber-400",
-          "open": true,
-          "layout": "stack",
-          "entries": [
-            {
-              "name": "Dancing Light",
-              "description": "Create one hovering, torch-sized light which follows you. Lasts 1 hour."
-            },
-            {
-              "name": "Druidcraft",
-              "description": "Predict the weather, make a flower bloom, or instantly light/snuff a campfire."
-            },
-            {
-              "name": "Mage Hand",
-              "description": "Create a spectral hand that can manipulate objects or carry up to 10 lbs within 30ft."
-            },
-            {
-              "name": "Thaumaturgy",
-              "description": "Create harmless sensory effects (booming voice, flickering flames, tremors in the floor)."
-            }
-          ]
-        },
-        {
-          "title": "1st Level Spells",
-          "icon": "magic",
-          "iconClass": "text-rpg-magic",
-          "layout": "grid",
-          "entries": [
-            {
-              "name": "Bless",
-              "tag": "Conc.",
-              "description": "Choose up to 3 creatures. For 10 mins, they roll an extra 1d4 on all attacks and Ability checks."
-            },
-            {
-              "name": "Charm Person",
-              "tag": "Conc.",
-              "description": "Target rolls WIS vs. your CHA. Fail: they treat you as friendly for 1 hour."
-            },
-            {
-              "name": "Comprehend Languages",
-              "tag": "Conc.",
-              "description": "Understand all spoken/written languages encountered for 1 hour."
-            },
-            {
-              "name": "Cure Wounds",
-              "description": "Touch a creature to instantly heal them for 1d8 + your WIS."
-            },
-            {
-              "name": "Detect Alignment",
-              "description": "Sense the moral alignment of one creature."
-            },
-            {
-              "name": "Divine Hex",
-              "tag": "Conc.",
-              "description": "Target rolls WIS vs CHA. Fail: deal extra 1d4 damage when you hit them. 1 hour."
-            },
-            {
-              "name": "Grease",
-              "description": "Coat a 10ft square in slick grease, lasting 10 mins. Creatures entering/starting turn must pass DEX DC10 or fall prone."
-            },
-            {
-              "name": "Inflict Wounds",
-              "description": "Melee spell attack. 1d10 + INT"
-            },
-            {
-              "name": "Eldritch Blast",
-              "description": "Ranged spell attack. 1d8 + INT"
-            },
-            {
-              "name": "Protection from E/G/E",
-              "tag": "Conc.",
-              "description": "Touch creature. For 10 mins, otherworldly entities have disadvantage attacking them."
-            },
-            {
-              "name": "Shield of Faith",
-              "tag": "Conc.",
-              "description": "Grant a creature +2 AC for 10 minutes."
-            },
-            {
-              "name": "Speak with Animals",
-              "tag": "Conc.",
-              "description": "Communicate clearly with beasts for 10 minutes."
-            }
-          ]
-        },
-        {
-          "title": "2nd Level Spells",
-          "icon": "magic",
-          "iconClass": "text-rpg-magic",
-          "layout": "stack",
-          "entries": [
-            {
-              "name": "Barkskin",
-              "tag": "Conc.",
-              "description": "Touch a creature. Skin hardens, gaining resistance to physical damage for 10 minutes."
-            },
-            {
-              "name": "Detect Secrets",
-              "description": "Magically sense the presence of hidden doors, traps, or compartments within 30ft."
-            },
-            {
-              "name": "Enhance Ability",
-              "tag": "Conc.",
-              "description": "Touch a creature. Gain advantage on Ability checks for one chosen stat for 10 minutes."
-            },
-            {
-              "name": "Knock",
-              "description": "Instantly unlock a mundane or magical lock. Emits a loud ring heard up to 300ft away."
-            },
-            {
-              "name": "Prayer of Healing",
-              "description": "Takes 10 mins to cast. Up to 6 creatures within 30ft heal 2d8 + your CHA."
-            },
-            {
-              "name": "Speak with Plants",
-              "tag": "Conc.",
-              "description": "Communicate with plants for 10 minutes, commanding them to part or entangle."
-            }
-          ]
-        },
-        {
-          "title": "3rd Level Spells",
-          "icon": "magic",
-          "iconClass": "text-rpg-magic",
-          "layout": "stack",
-          "entries": [
-            {
-              "name": "Aura of Vitality",
-              "tag": "Conc.",
-              "description": "For 1 minute, on the start of your turn, allies within 15ft heal 2d4 + your CON."
-            },
-            {
-              "name": "Revivify",
-              "description": "Sacrifice a diamond. Touch a creature dead < 1 hour. Return to life with 1 HP + 1 Exhaustion."
-            },
-            {
-              "name": "Speak with Dead",
-              "tag": "Conc.",
-              "description": "Ask a corpse up to 5 questions. It knows only what it knew in life."
-            },
-            {
-              "name": "Turn Undead",
-              "description": "Undead within 30ft roll CHA vs your WIS. Fail: must spend turns running away for 1 minute."
-            }
-          ]
-        }
-      ]
-    }
+            ]
+          }
+        ]
+      }
+    ]
   },
   "data": {
     "dice": {

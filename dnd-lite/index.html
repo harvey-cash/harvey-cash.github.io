@@ -18,29 +18,243 @@
                     },
                     colors: {
                         rpg: {
-                            bg: '#0f172a',
-                            card: '#1e293b',
-                            border: '#334155',
-                            text: '#cbd5e1',
-                            heading: '#f1f5f9',
-                            accent: '#d97706',
-                            accentLight: '#fbbf24',
-                            danger: '#e11d48',
-                            magic: '#8b5cf6'
+                            bg: 'rgb(var(--rpg-bg) / <alpha-value>)',
+                            card: 'rgb(var(--rpg-card) / <alpha-value>)',
+                            border: 'rgb(var(--rpg-border) / <alpha-value>)',
+                            text: 'rgb(var(--rpg-text) / <alpha-value>)',
+                            heading: 'rgb(var(--rpg-heading) / <alpha-value>)',
+                            accent: 'rgb(var(--rpg-accent) / <alpha-value>)',
+                            accentLight: 'rgb(var(--rpg-accent-light) / <alpha-value>)',
+                            danger: 'rgb(var(--rpg-danger) / <alpha-value>)',
+                            magic: 'rgb(var(--rpg-magic) / <alpha-value>)'
                         }
                     }
                 }
             }
         }
     </script>
+    <script>
+        try {
+            if (localStorage.getItem('dnd-lite-theme') === 'light') {
+                document.documentElement.classList.add('theme-light');
+            }
+        } catch (error) {
+            // Ignore storage access failures and fall back to the default theme.
+        }
+    </script>
     <style>
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        :root {
+            --rpg-bg: 15 23 42;
+            --rpg-card: 30 41 59;
+            --rpg-border: 51 65 85;
+            --rpg-text: 203 213 225;
+            --rpg-heading: 241 245 249;
+            --rpg-accent: 217 119 6;
+            --rpg-accent-light: 251 191 36;
+            --rpg-danger: 225 29 72;
+            --rpg-magic: 139 92 246;
+            --rpg-scroll-track: 15 23 42;
+            --rpg-scroll-thumb: 51 65 85;
+            --rpg-scroll-thumb-hover: 71 85 105;
+        }
 
-        body { background-color: #0f172a; color: #cbd5e1; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Lora', serif; color: #f1f5f9; }
+        html.theme-light {
+            --rpg-bg: 248 250 252;
+            --rpg-card: 255 255 255;
+            --rpg-border: 203 213 225;
+            --rpg-text: 51 65 85;
+            --rpg-heading: 15 23 42;
+            --rpg-accent: 194 65 12;
+            --rpg-accent-light: 180 83 9;
+            --rpg-danger: 190 24 93;
+            --rpg-magic: 124 58 237;
+            --rpg-scroll-track: 226 232 240;
+            --rpg-scroll-thumb: 148 163 184;
+            --rpg-scroll-thumb-hover: 100 116 139;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgb(var(--rpg-scroll-track)); }
+        ::-webkit-scrollbar-thumb { background: rgb(var(--rpg-scroll-thumb)); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgb(var(--rpg-scroll-thumb-hover)); }
+
+        body { background-color: rgb(var(--rpg-bg)); color: rgb(var(--rpg-text)); transition: background-color 0.25s ease, color 0.25s ease; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Lora', serif; color: rgb(var(--rpg-heading)); transition: color 0.25s ease; }
+
+        .ability-score { font-weight: 700; text-shadow: 0 0 10px rgba(255, 255, 255, 0.08); }
+        .ability-badge { display: inline-flex; align-items: center; padding: 0.08rem 0.38rem; border-radius: 9999px; border: 1px solid currentColor; background: rgba(15, 23, 42, 0.42); line-height: 1.1; }
+        .ability-str { color: #f87171; }
+        .ability-dex { color: #facc15; }
+        .ability-con { color: #b45309; }
+        .ability-int { color: #60a5fa; }
+        .ability-wis { color: #4ade80; }
+        .ability-cha { color: #c084fc; }
+
+        .chip-accent-neutral { border-color: rgb(var(--rpg-border) / 0.9); background: rgb(var(--rpg-card) / 0.88); color: rgb(var(--rpg-heading)); }
+
+        .turn-economy-chip { transition: color 0.25s ease; }
+        .printing-rules #appendices-content { display: none; }
+
+        html.theme-light .ability-badge { background: rgb(var(--rpg-card) / 0.92); }
+        html.theme-light .ability-score { text-shadow: none; }
+        html.theme-light [class~="bg-slate-950"] { background-color: #e2e8f0 !important; }
+        html.theme-light [class~="bg-slate-900"] { background-color: #ffffff !important; }
+        html.theme-light [class~="bg-slate-900/50"] { background-color: rgba(255, 255, 255, 0.88) !important; }
+        html.theme-light [class~="bg-slate-800"] { background-color: #e2e8f0 !important; }
+        html.theme-light [class~="bg-slate-800/30"] { background-color: rgba(226, 232, 240, 0.58) !important; }
+        html.theme-light [class~="bg-slate-800/50"] { background-color: rgba(226, 232, 240, 0.72) !important; }
+        html.theme-light [class~="bg-slate-700/30"] { background-color: rgba(203, 213, 225, 0.46) !important; }
+        html.theme-light [class~="bg-slate-700/50"] { background-color: #ffffff !important; }
+        html.theme-light [class~="border-slate-700"] { border-color: #cbd5e1 !important; }
+        html.theme-light [class~="border-slate-700/50"] { border-color: rgba(203, 213, 225, 0.8) !important; }
+        html.theme-light [class~="border-slate-600"] { border-color: #cbd5e1 !important; }
+        html.theme-light [class~="border-slate-500"] { border-color: #94a3b8 !important; }
+        html.theme-light .appendix-catalog-title.text-slate-300 { color: #334155 !important; }
+        html.theme-light .outfits-limit-chip { color: #e2e8f0 !important; }
+        html.theme-light [class~="text-slate-500"] { color: #64748b !important; }
+        html.theme-light [class~="text-slate-400"] { color: #475569 !important; }
+        html.theme-light [class~="text-white"] { color: #0f172a !important; }
+        html.theme-light .turn-economy-chip { color: #1f2937 !important; }
+        html.theme-light [class~="hover:bg-slate-700"]:hover { background-color: #cbd5e1 !important; }
+        html.theme-light [class~="hover:bg-slate-700/30"]:hover { background-color: rgba(203, 213, 225, 0.6) !important; }
+
+        @media print {
+            @page { size: A4 portrait; margin: 6mm; }
+
+            body.printing-rules {
+                background: #ffffff !important;
+                color: #111827 !important;
+                min-height: auto !important;
+                font-size: 9px !important;
+                line-height: 1.2 !important;
+            }
+
+            body.printing-rules #theme-toggle,
+            body.printing-rules header,
+            body.printing-rules nav,
+            body.printing-rules #appendices-content {
+                display: none !important;
+            }
+
+            body.printing-rules #page-content {
+                max-width: none !important;
+                width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            body.printing-rules #rules-hero {
+                display: none !important;
+            }
+
+            body.printing-rules #rules-content {
+                width: 100% !important;
+                transform: none !important;
+                font-size: 1em !important;
+            }
+
+            body.printing-rules #rules-content section {
+                margin-bottom: 0.45rem !important;
+                break-inside: auto;
+                page-break-inside: auto;
+            }
+
+            body.printing-rules #rules-content section > h2,
+            body.printing-rules #rules-content h3,
+            body.printing-rules #rules-content h4 {
+                break-after: avoid;
+                page-break-after: avoid;
+                margin-bottom: 0.3rem !important;
+            }
+
+            body.printing-rules #rules-content .grid,
+            body.printing-rules #rules-content .flex,
+            body.printing-rules #rules-content details,
+            body.printing-rules #rules-content li,
+            body.printing-rules #rules-content .bg-rpg-card,
+            body.printing-rules #rules-content .bg-rpg-bg,
+            body.printing-rules #rules-content .bg-slate-800\/50,
+            body.printing-rules #rules-content .bg-slate-900,
+            body.printing-rules #rules-content .bg-slate-900\/50 {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            body.printing-rules #rules-content .p-6 {
+                padding: 0.55rem !important;
+            }
+
+            body.printing-rules #rules-content .p-5,
+            body.printing-rules #rules-content .px-5,
+            body.printing-rules #rules-content .py-5 {
+                padding: 0.45rem !important;
+            }
+
+            body.printing-rules #rules-content .p-4,
+            body.printing-rules #rules-content .px-4,
+            body.printing-rules #rules-content .py-4,
+            body.printing-rules #rules-content .p-3,
+            body.printing-rules #rules-content .px-3,
+            body.printing-rules #rules-content .py-3 {
+                padding: 0.35rem !important;
+            }
+
+            body.printing-rules #rules-content .mb-12,
+            body.printing-rules #rules-content .mb-10,
+            body.printing-rules #rules-content .mb-8,
+            body.printing-rules #rules-content .mb-6,
+            body.printing-rules #rules-content .mb-4,
+            body.printing-rules #rules-content .mb-3,
+            body.printing-rules #rules-content .mb-2 {
+                margin-bottom: 0.35rem !important;
+            }
+
+            body.printing-rules #rules-content .mt-8,
+            body.printing-rules #rules-content .mt-6,
+            body.printing-rules #rules-content .mt-4,
+            body.printing-rules #rules-content .mt-3,
+            body.printing-rules #rules-content .mt-2 {
+                margin-top: 0.25rem !important;
+            }
+
+            body.printing-rules #rules-content .gap-6,
+            body.printing-rules #rules-content .gap-4,
+            body.printing-rules #rules-content .gap-3,
+            body.printing-rules #rules-content .gap-2,
+            body.printing-rules #rules-content .space-y-6,
+            body.printing-rules #rules-content .space-y-4,
+            body.printing-rules #rules-content .space-y-3,
+            body.printing-rules #rules-content .space-y-2,
+            body.printing-rules #rules-content .space-y-1 {
+                gap: 0.25rem !important;
+            }
+
+            body.printing-rules #rules-content .text-4xl,
+            body.printing-rules #rules-content .text-3xl {
+                font-size: 1rem !important;
+                line-height: 1.15 !important;
+            }
+
+            body.printing-rules #rules-content .text-2xl,
+            body.printing-rules #rules-content .text-xl,
+            body.printing-rules #rules-content .text-lg {
+                font-size: 0.88rem !important;
+                line-height: 1.15 !important;
+            }
+
+            body.printing-rules #rules-content .text-sm,
+            body.printing-rules #rules-content .text-xs {
+                font-size: 0.72rem !important;
+                line-height: 1.15 !important;
+            }
+
+            body.printing-rules #rules-content .shadow-lg,
+            body.printing-rules #rules-content .shadow-md,
+            body.printing-rules #rules-content .shadow-sm,
+            body.printing-rules #rules-content .shadow-inner {
+                box-shadow: none !important;
+            }
+        }
 
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
@@ -52,12 +266,16 @@
     </style>
 </head>
 <body class="antialiased flex flex-col md:flex-row min-h-screen">
+    <button id="theme-toggle" type="button" aria-pressed="false" class="fixed top-3 right-3 md:top-4 md:right-4 z-[60] inline-flex items-center gap-2 rounded-full border border-rpg-border bg-rpg-card/90 px-3 py-2 text-sm font-semibold text-rpg-heading shadow-lg backdrop-blur transition hover:bg-rpg-bg/60 focus:outline-none focus:ring-2 focus:ring-rpg-accent">
+        <span id="theme-toggle-icon" class="flex items-center"></span>
+        <span id="theme-toggle-label">Dark</span>
+    </button>
     <header class="md:hidden sticky top-0 z-50 bg-rpg-bg border-b border-rpg-border p-4 flex justify-between items-center shadow-md">
         <div id="mobile-brand" class="font-serif font-bold text-xl text-rpg-accentLight flex items-center gap-2">
             <svg class="w-6 h-6 text-rpg-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
             D&D-Lite
         </div>
-        <button id="mobile-menu-btn" class="text-rpg-text hover:text-white focus:outline-none">
+        <button id="mobile-menu-btn" class="text-rpg-text hover:text-rpg-heading focus:outline-none">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
     </header>
@@ -71,6 +289,12 @@
             <p id="desktop-tagline" class="text-sm text-rpg-text mt-2 italic">Stripped-back rules for one-shots.</p>
         </div>
         <ul id="sidebar-nav" class="space-y-3 font-medium text-sm lg:text-base"></ul>
+        <div class="mt-6 pt-4 border-t border-rpg-border">
+            <button id="print-rules-btn" type="button" class="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-rpg-border bg-rpg-card px-4 py-3 text-sm font-semibold text-rpg-heading transition hover:bg-rpg-bg focus:outline-none focus:ring-2 focus:ring-rpg-accent">
+                <svg class="w-4 h-4 text-rpg-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9V4h12v5M6 18H5a2 2 0 01-2-2v-5a2 2 0 012-2h14a2 2 0 012 2v5a2 2 0 01-2 2h-1M6 14h12v6H6v-6z"></path></svg>
+                Print Rules PDF
+            </button>
+        </div>
     </nav>
 
     <main id="page-content" class="flex-1 p-5 md:p-8 lg:p-12 max-w-5xl">
@@ -85,6 +309,13 @@
         const mobileBrand = document.getElementById('mobile-brand');
         const desktopBrand = document.getElementById('desktop-brand');
         const desktopTagline = document.getElementById('desktop-tagline');
+        const themeToggleButton = document.getElementById('theme-toggle');
+        const themeToggleIcon = document.getElementById('theme-toggle-icon');
+        const themeToggleLabel = document.getElementById('theme-toggle-label');
+        const printRulesButton = document.getElementById('print-rules-btn');
+        const rootElement = document.documentElement;
+        const documentBody = document.body;
+        let activePrintSession = null;
 
         const iconMap = {
             character: '<svg class="CLASS_TOKEN" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>',
@@ -116,15 +347,13 @@
             heroSubtitleHtml: 'Stripped-back rules for one-shots and mini-arcs, inspired by <em class="text-rpg-accent">Esoteric Ebb</em>.'
         };
 
-        const NAV_ITEMS = [
+        const STATIC_NAV_ITEMS = [
             { id: 'characters', label: 'Characters & Abilities', icon: 'character' },
             { id: 'health', label: 'Health, Death & Rest', icon: 'health' },
             { id: 'items', label: 'Items & Equipment', icon: 'items' },
             { id: 'spells', label: 'Magic & Spells', icon: 'magic' },
             { id: 'combat', label: 'Turns & Combat', icon: 'combat' },
-            { id: 'dc', label: 'Difficulty Classes', icon: 'dc' },
-            { type: 'divider', label: 'Appendices' },
-            { id: 'appendix', label: 'Medieval Fantasy', icon: 'appendix' }
+            { id: 'dc', label: 'Difficulty Classes', icon: 'dc' }
         ];
 
         const SECTION_STYLES = {
@@ -144,6 +373,17 @@
             { code: 'WIS', name: 'Wisdom' },
             { code: 'CHA', name: 'Charisma' }
         ];
+
+        const ABILITY_COLOR_CLASSES = {
+            STR: 'ability-str',
+            DEX: 'ability-dex',
+            CON: 'ability-con',
+            INT: 'ability-int',
+            WIS: 'ability-wis',
+            CHA: 'ability-cha'
+        };
+
+        const ABILITY_NAME_TO_CODE = Object.fromEntries(ABILITIES.map((ability) => [ability.name, ability.code]));
 
         const DC_TIERS = [
             { label: 'Effortless', value: 5, cardClass: 'border-slate-700', labelClass: 'text-slate-400' },
@@ -192,6 +432,101 @@
             return (iconMap[name] || iconMap.appendix).replace('CLASS_TOKEN', className);
         }
 
+        function isLightTheme() {
+            return rootElement.classList.contains('theme-light');
+        }
+
+        function updateThemeToggle() {
+            const lightThemeActive = isLightTheme();
+            themeToggleButton.setAttribute('aria-pressed', String(lightThemeActive));
+            themeToggleButton.setAttribute('title', lightThemeActive ? 'Switch to dark mode' : 'Switch to light mode');
+            themeToggleLabel.textContent = lightThemeActive ? 'Light' : 'Dark';
+            themeToggleIcon.innerHTML = lightThemeActive
+                ? icon('moon', 'w-4 h-4 text-rpg-heading')
+                : icon('sun', 'w-4 h-4 text-rpg-heading');
+        }
+
+        function setTheme(theme) {
+            const lightThemeActive = theme === 'light';
+            rootElement.classList.toggle('theme-light', lightThemeActive);
+
+            try {
+                localStorage.setItem('dnd-lite-theme', lightThemeActive ? 'light' : 'dark');
+            } catch (error) {
+                // Ignore storage access failures and keep the current page theme.
+            }
+
+            updateThemeToggle();
+        }
+
+        function restoreRulesPrintMode() {
+            if (!activePrintSession) {
+                return;
+            }
+
+            documentBody.classList.remove('printing-rules');
+            rootElement.classList.toggle('theme-light', activePrintSession.wasLightTheme);
+            activePrintSession = null;
+            updateThemeToggle();
+        }
+
+        function printRulesPdf() {
+            if (activePrintSession || typeof window.print !== 'function') {
+                return;
+            }
+
+            activePrintSession = {
+                wasLightTheme: isLightTheme()
+            };
+
+            documentBody.classList.add('printing-rules');
+            rootElement.classList.add('theme-light');
+            updateThemeToggle();
+            window.print();
+            setTimeout(restoreRulesPrintMode, 0);
+        }
+
+        function getAppendices(data) {
+            const configuredAppendices = data.sections?.appendices;
+            if (Array.isArray(configuredAppendices)) {
+                return configuredAppendices;
+            }
+
+            const legacyAppendix = data.sections?.appendix;
+            if (!legacyAppendix) {
+                return [];
+            }
+
+            return [{
+                id: 'appendix-medieval-fantasy',
+                title: 'Medieval Fantasy',
+                navLabel: 'Medieval Fantasy',
+                itemsHeading: 'Basic Items',
+                spellsHeading: 'Basic Spells',
+                ...legacyAppendix
+            }];
+        }
+
+        function getAppendixAnchorId(appendix, index) {
+            return appendix.id || `appendix-${index + 1}`;
+        }
+
+        function getAppendixById(data, appendixId) {
+            return getAppendices(data).find((appendix) => appendix.id === appendixId);
+        }
+
+        function buildNavItems(data) {
+            return [
+                ...STATIC_NAV_ITEMS,
+                { type: 'divider', label: 'Appendices' },
+                ...getAppendices(data).map((appendix, index) => ({
+                    id: getAppendixAnchorId(appendix, index),
+                    label: appendix.navLabel || appendix.title || `Appendix ${index + 1}`,
+                    icon: appendix.icon || 'appendix'
+                }))
+            ];
+        }
+
         function validateData(data) {
             if (!data || typeof data !== 'object') {
                 throw new Error('Config file did not return an object.');
@@ -205,13 +540,21 @@
             if (!Array.isArray(data.sections.spells?.slotTableRows)) {
                 throw new Error('Config file is missing spells.slotTableRows.');
             }
-            if (!Array.isArray(data.sections.appendix?.itemCatalogs) || !Array.isArray(data.sections.appendix?.spellGroups)) {
-                throw new Error('Config file is missing appendix catalogs or spell groups.');
+
+            const appendices = getAppendices(data);
+            if (!appendices.length) {
+                throw new Error('Config file is missing appendices.');
+            }
+
+            for (const appendix of appendices) {
+                if (!Array.isArray(appendix.itemCatalogs) || !Array.isArray(appendix.spellGroups)) {
+                    throw new Error('One appendix is missing item catalogs or spell groups.');
+                }
             }
         }
 
-        function renderNav() {
-            return NAV_ITEMS.map((item) => {
+        function renderNav(data) {
+            return buildNavItems(data).map((item) => {
                 if (item.type === 'divider') {
                     return `<li class="pt-4 border-t border-rpg-border mt-2"><span class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-2">${escapeHtml(item.label)}</span></li>`;
                 }
@@ -239,8 +582,27 @@
             return `${numericValue >= 0 ? '+' : ''}${numericValue}`;
         }
 
+        function renderAbilityCode(code, options = {}) {
+            const { badge = false } = options;
+            const colorClass = ABILITY_COLOR_CLASSES[code] || '';
+            const badgeClass = badge ? ' ability-badge' : '';
+            return `<span class="ability-score${badgeClass} ${colorClass}">${escapeHtml(code)}</span>`;
+        }
+
+        function renderAbilityName(name) {
+            const abilityCode = ABILITY_NAME_TO_CODE[name];
+            const colorClass = ABILITY_COLOR_CLASSES[abilityCode] || '';
+            return `<span class="ability-score ${colorClass}">${escapeHtml(name)}</span>`;
+        }
+
+        function colorizeAbilityText(text, options = {}) {
+            return escapeHtml(String(text))
+                .replace(/\b(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\b/g, (_, name) => renderAbilityName(name))
+                .replace(/\b(STR|DEX|CON|INT|WIS|CHA)\b/g, (_, code) => renderAbilityCode(code, options));
+        }
+
         function renderItemChip(text, className) {
-            return `<span class="inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold ${className}">${escapeHtml(text)}</span>`;
+            return `<span class="inline-block whitespace-nowrap rounded-full border px-2.5 py-1 text-xs font-semibold ${className}">${colorizeAbilityText(text, { badge: false })}</span>`;
         }
 
         function pushModifierChips(chips, modifiers) {
@@ -251,9 +613,7 @@
             for (const [stat, value] of Object.entries(modifiers)) {
                 chips.push({
                     text: `${formatSignedNumber(value)} ${stat}`,
-                    className: Number(value) >= 0
-                        ? 'border-emerald-700/50 bg-emerald-950/30 text-emerald-300'
-                        : 'border-rose-700/50 bg-rose-950/30 text-rose-300'
+                    className: 'chip-accent-neutral'
                 });
             }
         }
@@ -267,7 +627,7 @@
                 for (const mode of itemData.modes || []) {
                     chips.push({
                         text: `${titleCase(mode.name)} ${mode.damageDie} + ${mode.attackStats.join('/')}`,
-                        className: 'border-rose-700/50 bg-rose-950/30 text-rose-200'
+                        className: 'chip-accent-neutral'
                     });
                 }
             }
@@ -275,14 +635,14 @@
             if (itemData.kind === 'outfit' && itemData.armorClass != null) {
                 chips.push({
                     text: `AC ${itemData.armorClass}`,
-                    className: 'border-slate-600 bg-slate-800 text-slate-100'
+                    className: 'chip-accent-neutral'
                 });
             }
 
             if (itemData.kind === 'trinket' && itemData.armorClassBonus != null) {
                 chips.push({
                     text: `AC ${formatSignedNumber(itemData.armorClassBonus)}`,
-                    className: 'border-sky-700/50 bg-sky-950/30 text-sky-200'
+                    className: 'chip-accent-neutral'
                 });
             }
 
@@ -290,13 +650,13 @@
                 if (itemData.healing) {
                     chips.push({
                         text: itemData.healing,
-                        className: 'border-emerald-700/50 bg-emerald-950/30 text-emerald-300'
+                        className: 'chip-accent-neutral'
                     });
                 }
                 if (itemData.restore) {
                     chips.push({
                         text: itemData.restore,
-                        className: 'border-sky-700/50 bg-sky-950/30 text-sky-200'
+                        className: 'chip-accent-neutral'
                     });
                 }
             }
@@ -306,9 +666,7 @@
             for (const bonus of itemData.conditionalBonuses || []) {
                 chips.push({
                     text: `${formatSignedNumber(bonus.value)} ${bonus.stat} ${bonus.context}`,
-                    className: Number(bonus.value) >= 0
-                        ? 'border-amber-700/50 bg-amber-950/30 text-amber-200'
-                        : 'border-rose-700/50 bg-rose-950/30 text-rose-300'
+                    className: 'chip-accent-neutral'
                 });
             }
 
@@ -320,7 +678,7 @@
                 ? `<div class="mt-2 flex flex-wrap gap-2">${chips.map((chip) => renderItemChip(chip.text, chip.className)).join('')}</div>`
                 : '';
             const notesHtml = notes.length
-                ? `<div class="mt-2 space-y-1">${notes.map((note) => `<p class="text-xs italic text-slate-400">${escapeHtml(note)}</p>`).join('')}</div>`
+                ? `<div class="mt-2 space-y-1">${notes.map((note) => `<p class="text-xs italic text-slate-400">${colorizeAbilityText(note)}</p>`).join('')}</div>`
                 : '';
 
             return `${chipsHtml}${notesHtml}`;
@@ -331,24 +689,25 @@
             const abilityArray = data.sections.characters.abilityArray;
             const keyValues = data.key_values;
 
-            return `${sectionStart('characters', section)}<div class="bg-rpg-card rounded-xl p-6 border border-rpg-border shadow-lg"><p class="mb-4 text-lg">No species, no classes. Assign the standard array directly to your six Ability Modifiers:</p><div class="flex justify-center mb-6"><div class="bg-rpg-bg py-3 px-6 rounded-lg border border-rpg-border font-mono text-xl tracking-widest text-rpg-accentLight shadow-inner">${escapeHtml(JSON.stringify(abilityArray))}</div></div><div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-6 text-center">${ABILITIES.map((ability) => `<div class="bg-slate-700/50 p-3 rounded-lg border border-slate-600"><div class="font-bold text-rpg-heading">${escapeHtml(ability.code)}</div><div class="text-xs text-slate-400">${escapeHtml(ability.name)}</div></div>`).join('')}</div><ul class="space-y-3"><li class="flex items-start gap-3">${icon('trend', 'w-5 h-5 text-rpg-accent mt-1 flex-shrink-0')}<div><strong class="text-rpg-heading">Leveling Up</strong> Choose one modifier to increase by +${escapeHtml(keyValues.modIncreasePerLevel)} at each level after 1st. Milestone leveling at GM's discretion.</div></li><li class="flex items-start gap-3">${icon('alert', 'w-5 h-5 text-rpg-accent mt-1 flex-shrink-0')}<div><strong class="text-rpg-heading">Critical Rules</strong> A Natural 20 <span class="text-emerald-400 font-bold">always succeeds</span>. A Natural 1 <span class="text-rpg-danger font-bold">always fails</span>.</div></li></ul></div></section>`;
+            return `${sectionStart('characters', section)}<div class="bg-rpg-card rounded-xl p-6 border border-rpg-border shadow-lg"><p class="mb-4 text-lg">No species, no classes. Assign the standard array directly to your six Ability Modifiers:</p><div class="flex justify-center mb-6"><div class="bg-rpg-bg py-3 px-6 rounded-lg border border-rpg-border font-mono text-xl tracking-widest text-rpg-accentLight shadow-inner">${escapeHtml(JSON.stringify(abilityArray))}</div></div><div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-6 text-center">${ABILITIES.map((ability) => `<div class="bg-slate-700/50 p-3 rounded-lg border border-slate-600"><div class="font-bold text-rpg-heading">${renderAbilityCode(ability.code, { badge: true })}</div><div class="text-xs">${renderAbilityName(ability.name)}</div></div>`).join('')}</div><ul class="space-y-3"><li class="flex items-start gap-3">${icon('trend', 'w-5 h-5 text-rpg-accent mt-1 flex-shrink-0')}<div><strong class="text-rpg-heading">Leveling Up</strong> Choose one modifier to increase by +${escapeHtml(keyValues.modIncreasePerLevel)} at each level after 1st. Milestone leveling at GM's discretion.</div></li><li class="flex items-start gap-3">${icon('alert', 'w-5 h-5 text-rpg-accent mt-1 flex-shrink-0')}<div><strong class="text-rpg-heading">Critical Rules</strong> A Natural 20 <span class="text-emerald-400 font-bold">always succeeds</span>. A Natural 1 <span class="text-rpg-danger font-bold">always fails</span>.</div></li></ul></div></section>`;
         }
 
         function renderHealth(data) {
             const section = SECTION_STYLES.health;
             const keyValues = data.key_values;
 
-            return `${sectionStart('health', section)}<div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-rpg-card rounded-xl p-6 border border-rpg-border shadow-lg"><h3 class="text-xl font-bold text-rpg-heading mb-4 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-rpg-danger"></span> HP & Mortality</h3><div class="mb-4 p-3 bg-rpg-bg rounded-lg border border-rpg-border"><span class="text-sm uppercase tracking-wide text-slate-400 block mb-1">Hit Points</span><span class="text-lg font-bold text-white">Max HP = (${escapeHtml(keyValues.baseHPPerLevel)} + CON) × Level</span><p class="text-xs text-slate-400 mt-1">Worn Items do not contribute.</p></div><ul class="space-y-2 text-sm"><li><strong class="text-rpg-danger">Downed (0 HP):</strong> Roll a d20 Death Save (DC 10) at the start of your turn.</li><li class="pl-4 flex items-center gap-2"><strong class="text-emerald-400 font-bold">✓ 3 Successes:</strong> Wake up at 1 HP, gain 1 Exhaustion.</li><li class="pl-4 flex items-center gap-2"><strong class="text-rpg-danger font-bold">✗ 3 Failures:</strong> Die permanently.</li></ul><div class="mt-4 pt-4 border-t border-slate-700"><h4 class="font-bold text-rpg-accentLight mb-1">Exhaustion</h4><p class="text-sm mb-2">Die permanently upon reaching ${escapeHtml(keyValues.maxExhaustion)} levels of exhaustion.</p><p class="text-sm text-slate-400">While exhausted, you have <span class="text-rose-400">disadvantage on all Ability rolls</span>, and your Max HP is reduced by ${escapeHtml(keyValues.minusHPPerExhaustion)} per level.</p></div></div><div class="bg-rpg-card rounded-xl p-6 border border-rpg-border shadow-lg"><h3 class="text-xl font-bold text-rpg-heading mb-4 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Recovery</h3><div class="space-y-6"><div><div class="flex items-center gap-2 mb-1">${icon('clock', 'w-5 h-5 text-emerald-500')}<strong class="text-lg text-white">Short Rest</strong><span class="text-slate-400 text-sm">(${escapeHtml(keyValues.shortRestMinDurationMins)}+ mins)</span></div><p class="text-sm pl-7">Heal <strong>${escapeHtml(keyValues.shortRestHitDie)} + CON</strong> HP. If exhausted, pass a CON DC ${escapeHtml(keyValues.loseExhaustionOnShortRestDC)} check to lose 1 level of exhaustion.</p></div><div><div class="flex items-center gap-2 mb-1">${icon('moon', 'w-5 h-5 text-sky-400')}<strong class="text-lg text-white">Long Rest</strong><span class="text-slate-400 text-sm">(${escapeHtml(keyValues.longRestMinDurationHours)}+ hours)</span></div><p class="text-sm pl-7">Fully restore HP and remove all levels of exhaustion. Restore all spell slots.</p></div></div></div></div></section>`;
+            return `${sectionStart('health', section)}<div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-rpg-card rounded-xl p-6 border border-rpg-border shadow-lg"><h3 class="text-xl font-bold text-rpg-heading mb-4 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-rpg-danger"></span> HP & Mortality</h3><div class="mb-4 p-3 bg-rpg-bg rounded-lg border border-rpg-border"><span class="text-sm uppercase tracking-wide text-slate-400 block mb-1">Hit Points</span><span class="text-lg font-bold text-white">Max HP = (${escapeHtml(keyValues.baseHPPerLevel)} + ${renderAbilityCode('CON')}) × Level</span><p class="text-xs text-slate-400 mt-1">Worn Items do not contribute.</p></div><ul class="space-y-2 text-sm"><li><strong class="text-rpg-danger">Downed (0 HP):</strong> Roll a d20 Death Save (DC 10) at the start of your turn.</li><li class="pl-4 flex items-center gap-2"><strong class="text-emerald-400 font-bold">✓ 3 Successes:</strong> Wake up at 1 HP, gain 1 Exhaustion.</li><li class="pl-4 flex items-center gap-2"><strong class="text-rpg-danger font-bold">✗ 3 Failures:</strong> Die permanently.</li></ul><div class="mt-4 pt-4 border-t border-slate-700"><h4 class="font-bold text-rpg-accentLight mb-1">Exhaustion</h4><p class="text-sm mb-2">Die permanently upon reaching ${escapeHtml(keyValues.maxExhaustion)} levels of exhaustion.</p><p class="text-sm text-slate-400">While exhausted, you have <span class="text-rose-400">disadvantage on all Ability rolls</span>, and your Max HP is reduced by ${escapeHtml(keyValues.minusHPPerExhaustion)} per level.</p></div></div><div class="bg-rpg-card rounded-xl p-6 border border-rpg-border shadow-lg"><h3 class="text-xl font-bold text-rpg-heading mb-4 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Recovery</h3><div class="space-y-6"><div><div class="flex items-center gap-2 mb-1">${icon('clock', 'w-5 h-5 text-emerald-500')}<strong class="text-lg text-white">Short Rest</strong><span class="text-slate-400 text-sm">(${escapeHtml(keyValues.shortRestMinDurationMins)}+ mins)</span></div><p class="text-sm pl-7">Heal <strong>${escapeHtml(keyValues.shortRestHitDie)} + ${renderAbilityCode('CON')}</strong> HP. If exhausted, pass a ${renderAbilityCode('CON')} DC ${escapeHtml(keyValues.loseExhaustionOnShortRestDC)} check to lose 1 level of exhaustion.</p></div><div><div class="flex items-center gap-2 mb-1">${icon('moon', 'w-5 h-5 text-sky-400')}<strong class="text-lg text-white">Long Rest</strong><span class="text-slate-400 text-sm">(${escapeHtml(keyValues.longRestMinDurationHours)}+ hours)</span></div><p class="text-sm pl-7">Fully restore HP and remove all levels of exhaustion. Restore all spell slots.</p></div></div></div></div></section>`;
         }
 
         function renderItems(data) {
             const section = SECTION_STYLES.items;
             const keyValues = data.key_values;
 
-            const outfitCatalog = data.sections.appendix.itemCatalogs.find((catalog) => catalog.title === 'Outfits');
+            const primaryAppendix = getAppendixById(data, 'appendix-medieval-fantasy') || getAppendices(data)[0];
+            const outfitCatalog = primaryAppendix?.itemCatalogs.find((catalog) => catalog.title === 'Outfits');
             const outfitValues = Object.fromEntries((outfitCatalog?.items || []).map((item) => [item.name, item.data?.armorClass]));
 
-            return `${sectionStart('items', section)}<p class="mb-6 text-lg">Carry unlimited items in your backpack, but you can only equip: <strong class="text-rpg-accentLight">${escapeHtml(keyValues.maxEquippedTrinkets)} Trinkets, ${escapeHtml(keyValues.maxEquippedWeapons)} Weapons, and ${escapeHtml(keyValues.maxEquippedOutfits)} Outfit</strong>.</p><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-amber-500 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Trinkets <span class="bg-slate-700 text-sm px-2 py-1 rounded text-amber-300">Max ${escapeHtml(keyValues.maxEquippedTrinkets)}</span></h3><p class="text-sm">Grant passive benefits, situational advantages, or static modifier bonuses.</p></div><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-slate-400 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Outfits <span class="bg-slate-700 text-sm px-2 py-1 rounded text-slate-300">Max ${escapeHtml(keyValues.maxEquippedOutfits)}</span></h3><p class="text-sm mb-3">Set your flat Armor Class (AC). Cannot be equipped or removed in combat.</p><div class="grid grid-cols-2 gap-2 text-xs font-mono text-center"><div class="bg-slate-900 p-1 rounded">Unarmored = ${escapeHtml(keyValues.baseAC)}</div><div class="bg-slate-900 p-1 rounded">Robes = ${escapeHtml(outfitValues.Robes ?? '10')}</div><div class="bg-slate-900 p-1 rounded">Leathers = ${escapeHtml(outfitValues.Leathers ?? '12')}</div><div class="bg-slate-900 p-1 rounded">Chainmail = ${escapeHtml(outfitValues.Chainmail ?? '14')}</div><div class="bg-slate-900 p-1 rounded col-span-2">Plate = ${escapeHtml(outfitValues.Plate ?? '16')}</div></div></div><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-rose-500 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Weapons <span class="bg-slate-700 text-sm px-2 py-1 rounded text-rose-300">Max ${escapeHtml(keyValues.maxEquippedWeapons)}</span></h3><p class="text-sm mb-2">Unarmed strikes deal <strong>${escapeHtml(keyValues.unarmedStrikeDmgDie)} + STR</strong>. Typical weapons deal <strong>1d6 + Modifier</strong>.</p><ul class="text-xs space-y-1 mt-2 bg-slate-900 p-2 rounded"><li><span class="text-rose-400 font-bold">Melee:</span> STR vs AC (${escapeHtml(keyValues.meleeRangeFt)}ft).</li><li><span class="text-sky-400 font-bold">Ranged:</span> DEX vs AC (disadv. within ${escapeHtml(keyValues.rangeMinRangeFt)}ft or beyond ${escapeHtml(keyValues.rangeMaxRangeFt)}ft).</li></ul></div></div></section>`;
+            return `${sectionStart('items', section)}<p class="mb-6 text-lg">Carry unlimited items in your backpack, but you can only equip: <strong class="text-rpg-accentLight">${escapeHtml(keyValues.maxEquippedTrinkets)} Trinkets, ${escapeHtml(keyValues.maxEquippedWeapons)} Weapons, and ${escapeHtml(keyValues.maxEquippedOutfits)} Outfit</strong>.</p><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-amber-500 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Trinkets <span class="bg-slate-700 text-sm px-2 py-1 rounded text-amber-300">Max ${escapeHtml(keyValues.maxEquippedTrinkets)}</span></h3><p class="text-sm">Grant passive benefits, situational advantages, or static modifier bonuses.</p></div><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-slate-400 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Outfits <span class="bg-slate-700 text-sm px-2 py-1 rounded text-slate-300">Max ${escapeHtml(keyValues.maxEquippedOutfits)}</span></h3><p class="text-sm mb-3">Set your flat Armor Class (AC). Cannot be equipped or removed in combat.</p><div class="grid grid-cols-2 gap-2 text-xs font-mono text-center"><div class="bg-slate-900 p-1 rounded">Unarmored = ${escapeHtml(keyValues.baseAC)}</div><div class="bg-slate-900 p-1 rounded">Robes = ${escapeHtml(outfitValues.Robes ?? '10')}</div><div class="bg-slate-900 p-1 rounded">Leathers = ${escapeHtml(outfitValues.Leathers ?? '12')}</div><div class="bg-slate-900 p-1 rounded">Chainmail = ${escapeHtml(outfitValues.Chainmail ?? '14')}</div><div class="bg-slate-900 p-1 rounded col-span-2">Plate = ${escapeHtml(outfitValues.Plate ?? '16')}</div></div></div><div class="bg-rpg-card rounded-xl p-5 border-t-4 border-t-rose-500 border-x border-b border-rpg-border shadow-md"><h3 class="text-xl font-bold text-white mb-2 flex justify-between">Weapons <span class="bg-slate-700 text-sm px-2 py-1 rounded text-rose-300">Max ${escapeHtml(keyValues.maxEquippedWeapons)}</span></h3><p class="text-sm mb-2">Unarmed strikes deal <strong>${escapeHtml(keyValues.unarmedStrikeDmgDie)} + ${renderAbilityCode('STR')}</strong>. Typical weapons deal <strong>1d6 + Modifier</strong>.</p><ul class="text-xs space-y-1 mt-2 bg-slate-900 p-2 rounded"><li><span class="text-rose-400 font-bold">Melee:</span> ${renderAbilityCode('STR')} vs AC (${escapeHtml(keyValues.meleeRangeFt)}ft).</li><li><span class="text-sky-400 font-bold">Ranged:</span> ${renderAbilityCode('DEX')} vs AC (disadv. within ${escapeHtml(keyValues.rangeMinRangeFt)}ft or beyond ${escapeHtml(keyValues.rangeMaxRangeFt)}ft).</li></ul></div></div></section>`;
         }
 
         function renderSpells(data) {
@@ -363,7 +722,7 @@
             const section = SECTION_STYLES.combat;
             const keyValues = data.key_values;
 
-            return `${sectionStart('combat', section)}<p class="text-lg mb-4">Turns represent 6 seconds of real time. On your turn, you get (in any order):</p><div class="flex flex-wrap gap-3 mb-8"><span class="bg-rose-900/50 text-rose-200 border-rose-700 border px-4 py-2 rounded-full font-bold shadow-sm">1 Action</span><span class="bg-amber-900/50 text-amber-200 border-amber-700 border px-4 py-2 rounded-full font-bold shadow-sm">1 Object Interaction</span><span class="bg-sky-900/50 text-sky-200 border-sky-700 border px-4 py-2 rounded-full font-bold shadow-sm">30ft Movement</span></div><div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"><div class="bg-rpg-card rounded-xl p-5 border border-rpg-border shadow-md"><h3 class="text-lg font-bold text-white border-b border-slate-700 pb-2 mb-3">Actions include:</h3><ul class="list-disc list-inside space-y-1 text-sm"><li>Attacking</li><li>Casting a spell</li><li>Interacting with creatures</li><li>Changing an equipped weapon/trinket</li></ul></div><div class="bg-rpg-card rounded-xl p-5 border border-rpg-border shadow-md"><h3 class="text-lg font-bold text-white border-b border-slate-700 pb-2 mb-3">Object Interactions include:</h3><ul class="list-disc list-inside space-y-1 text-sm"><li>Retrieving/stowing a backpack item</li><li>Opening doors</li><li>Pulling levers</li></ul></div></div><div class="bg-slate-800/50 rounded-xl p-5 border border-slate-700 mb-8 flex flex-col md:flex-row gap-6"><div class="flex-1"><h4 class="font-bold text-white mb-1">Initiative</h4><p class="text-sm">Roll a DEX check when combat begins.</p></div><div class="flex-1"><h4 class="font-bold text-emerald-400 mb-1">Critical Damage</h4><p class="text-sm">Double the number of damage dice rolled on a Nat 20 (weapons & spells).</p></div><div class="flex-1"><h4 class="font-bold text-white mb-1">Cover</h4><p class="text-sm">Partial cover grants a flat +${escapeHtml(keyValues.partialCoverACBonus)} bonus to AC.</p></div></div><div class="bg-rpg-bg border border-rpg-border rounded-xl overflow-hidden shadow-lg"><div class="bg-slate-800 px-5 py-3 border-b border-slate-700"><h3 class="text-xl font-bold text-white flex items-center gap-2">${icon('bolt-solid', 'w-5 h-5 text-rose-500')} Surprise</h3></div><div class="p-5"><p class="text-sm mb-4">Initiate surprise via contested Ability checks (e.g., Attacker's active stat vs. Target's DEX, at GM discretion).</p><div class="grid md:grid-cols-2 gap-4"><div class="bg-slate-900 p-4 rounded-lg border border-slate-700"><h4 class="font-bold text-rpg-accentLight mb-2 text-sm uppercase">Restrictions</h4><p class="text-sm text-slate-400">Already-engaged creatures cannot be surprised. Unconscious targets are surprised automatically.</p></div><div class="bg-slate-900 p-4 rounded-lg border border-slate-700"><h4 class="font-bold text-rpg-accentLight mb-2 text-sm uppercase">Effects</h4><p class="text-sm text-slate-400">Surprised targets roll initiative with disadvantage but join immediately. Attacks against them have advantage. Expires end of round 1.</p></div></div></div></div></section>`;
+            return `${sectionStart('combat', section)}<p class="text-lg mb-4">Turns represent 6 seconds of real time. On your turn, you get (in any order):</p><div class="flex flex-wrap gap-3 mb-8"><span class="turn-economy-chip bg-rose-900/50 text-rose-200 border-rose-700 border px-4 py-2 rounded-full font-bold shadow-sm">1 Action</span><span class="turn-economy-chip bg-amber-900/50 text-amber-200 border-amber-700 border px-4 py-2 rounded-full font-bold shadow-sm">1 Object Interaction</span><span class="turn-economy-chip bg-sky-900/50 text-sky-200 border-sky-700 border px-4 py-2 rounded-full font-bold shadow-sm">30ft Movement</span></div><div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"><div class="bg-rpg-card rounded-xl p-5 border border-rpg-border shadow-md"><h3 class="text-lg font-bold text-white border-b border-slate-700 pb-2 mb-3">Actions include:</h3><ul class="list-disc list-inside space-y-1 text-sm"><li>Attacking</li><li>Casting a spell</li><li>Interacting with creatures</li><li>Changing an equipped weapon/trinket</li></ul></div><div class="bg-rpg-card rounded-xl p-5 border border-rpg-border shadow-md"><h3 class="text-lg font-bold text-white border-b border-slate-700 pb-2 mb-3">Object Interactions include:</h3><ul class="list-disc list-inside space-y-1 text-sm"><li>Retrieving/stowing a backpack item</li><li>Opening doors</li><li>Pulling levers</li></ul></div></div><div class="bg-slate-800/50 rounded-xl p-5 border border-slate-700 mb-8 flex flex-col md:flex-row gap-6"><div class="flex-1"><h4 class="font-bold text-white mb-1">Initiative</h4><p class="text-sm">Roll a ${renderAbilityCode('DEX')} check when combat begins.</p></div><div class="flex-1"><h4 class="font-bold text-emerald-400 mb-1">Critical Damage</h4><p class="text-sm">Double the number of damage dice rolled on a Nat 20 (weapons & spells).</p></div><div class="flex-1"><h4 class="font-bold text-white mb-1">Cover</h4><p class="text-sm">Partial cover grants a flat +${escapeHtml(keyValues.partialCoverACBonus)} bonus to AC.</p></div></div><div class="bg-rpg-bg border border-rpg-border rounded-xl overflow-hidden shadow-lg"><div class="bg-slate-800 px-5 py-3 border-b border-slate-700"><h3 class="text-xl font-bold text-white flex items-center gap-2">${icon('bolt-solid', 'w-5 h-5 text-rose-500')} Surprise</h3></div><div class="p-5"><p class="text-sm mb-4">Initiate surprise via contested Ability checks (e.g., Attacker's active stat vs. Target's ${renderAbilityCode('DEX')}, at GM discretion).</p><div class="grid md:grid-cols-2 gap-4"><div class="bg-slate-900 p-4 rounded-lg border border-slate-700"><h4 class="font-bold text-rpg-accentLight mb-2 text-sm uppercase">Restrictions</h4><p class="text-sm text-slate-400">Already-engaged creatures cannot be surprised. Unconscious targets are surprised automatically.</p></div><div class="bg-slate-900 p-4 rounded-lg border border-slate-700"><h4 class="font-bold text-rpg-accentLight mb-2 text-sm uppercase">Effects</h4><p class="text-sm text-slate-400">Surprised targets roll initiative with disadvantage but join immediately. Attacks against them have advantage. Expires end of round 1.</p></div></div></div></div></section>`;
         }
 
         function renderDc() {
@@ -371,8 +730,14 @@
             return `${sectionStart('dc', section)}<div class="flex flex-wrap gap-4 justify-between lg:justify-start">${DC_TIERS.map((tier) => `<div class="bg-rpg-card p-4 rounded-xl border ${tier.cardClass} text-center w-[45%] lg:w-32 shadow-md"><div class="text-xs ${tier.labelClass} uppercase font-bold tracking-wider mb-1">${escapeHtml(tier.label)}</div><div class="text-3xl font-serif font-bold text-white">${escapeHtml(tier.value)}</div></div>`).join('')}</div></section>`;
         }
 
-        function renderAppendix(section) {
-            return `<div class="w-full h-px bg-gradient-to-r from-transparent via-rpg-border to-transparent my-16"></div><section id="appendix" class="scroll-mt-24"><div class="bg-slate-800/30 rounded-2xl p-6 border border-slate-700"><h1 class="text-4xl font-serif font-bold text-center text-rpg-heading mb-2">Appendix A</h1><h2 class="text-xl text-center text-rpg-accent mb-10 font-serif italic">Medieval Fantasy</h2><h3 class="text-2xl font-bold border-b border-slate-600 pb-2 mb-6 text-white">Basic Items</h3><div class="grid md:grid-cols-2 gap-8 mb-12">${section.itemCatalogs.map((catalog) => `<div><h4 class="text-lg font-bold ${catalog.headingClass} mb-3 flex items-center gap-2">${icon(catalog.icon, 'w-5 h-5')} ${escapeHtml(catalog.title)}</h4><ul class="space-y-3">${catalog.items.map((item) => `<li class="text-sm bg-slate-900/50 p-3 rounded border border-slate-700"><strong class="text-white">${escapeHtml(item.name)}</strong>${renderItemDetails(item)}</li>`).join('')}</ul></div>`).join('')}</div><h3 class="text-2xl font-bold border-b border-slate-600 pb-2 mb-6 text-white mt-8">Basic Spells</h3><div class="space-y-4">${section.spellGroups.map((group) => `<details class="group bg-slate-900 border border-slate-700 rounded-lg overflow-hidden [&_summary::-webkit-details-marker]:hidden" ${group.open ? 'open' : ''}><summary class="flex justify-between items-center font-bold cursor-pointer p-4 bg-slate-800 text-rpg-heading hover:bg-slate-700 transition"><span class="flex items-center gap-2">${icon(group.icon, `w-5 h-5 ${group.iconClass}`)} ${escapeHtml(group.title)}${group.subtitle ? ` <span class="text-xs font-normal text-slate-400 ml-2">(${escapeHtml(group.subtitle)})</span>` : ''}</span><span class="transition group-open:rotate-180"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary><div class="p-4 ${group.layout === 'grid' ? 'space-y-3 grid md:grid-cols-2 gap-x-6 gap-y-3' : 'space-y-3'}">${group.entries.map((entry) => `<p class="text-sm"><strong class="text-white">${escapeHtml(entry.name)}:</strong> ${entry.tag ? `<span class="italic text-slate-400 border border-slate-600 rounded px-1 text-xs">${escapeHtml(entry.tag)}</span> ` : ''}${escapeHtml(entry.description)}</p>`).join('')}</div></details>`).join('')}</div></div></section><div class="h-24"></div>`;
+        function renderAppendix(appendix, index) {
+            const anchorId = getAppendixAnchorId(appendix, index);
+            const appendixLabel = String.fromCharCode(65 + index);
+            const appendixTitle = appendix.title || `Appendix ${appendixLabel}`;
+            const itemsHeading = appendix.itemsHeading || 'Basic Items';
+            const spellsHeading = appendix.spellsHeading || 'Basic Spells';
+
+            return `<div class="w-full h-px bg-gradient-to-r from-transparent via-rpg-border to-transparent my-16"></div><section id="${escapeHtml(anchorId)}" class="scroll-mt-24"><div class="bg-slate-800/30 rounded-2xl p-6 border border-slate-700"><h1 class="text-4xl font-serif font-bold text-center text-rpg-heading mb-2">Appendix ${escapeHtml(appendixLabel)}</h1><h2 class="text-xl text-center text-rpg-accent mb-10 font-serif italic">${escapeHtml(appendixTitle)}</h2><h3 class="text-2xl font-bold border-b border-slate-600 pb-2 mb-6 text-white">${escapeHtml(itemsHeading)}</h3><div class="grid md:grid-cols-2 gap-8 mb-12">${appendix.itemCatalogs.map((catalog) => `<div><h4 class="text-lg font-bold ${catalog.headingClass} mb-3 flex items-center gap-2">${icon(catalog.icon, 'w-5 h-5')} ${escapeHtml(catalog.title)}</h4><ul class="space-y-3">${catalog.items.map((item) => `<li class="text-sm bg-slate-900/50 p-3 rounded border border-slate-700"><strong class="text-white">${escapeHtml(item.name)}</strong>${renderItemDetails(item)}</li>`).join('')}</ul></div>`).join('')}</div><h3 class="text-2xl font-bold border-b border-slate-600 pb-2 mb-6 text-white mt-8">${escapeHtml(spellsHeading)}</h3><div class="space-y-4">${appendix.spellGroups.map((group) => `<details class="group bg-slate-900 border border-slate-700 rounded-lg overflow-hidden [&_summary::-webkit-details-marker]:hidden" ${group.open ? 'open' : ''}><summary class="flex justify-between items-center font-bold cursor-pointer p-4 bg-slate-800 text-rpg-heading hover:bg-slate-700 transition"><span class="flex items-center gap-2">${icon(group.icon, `w-5 h-5 ${group.iconClass}`)} ${escapeHtml(group.title)}${group.subtitle ? ` <span class="text-xs font-normal text-slate-400 ml-2">(${escapeHtml(group.subtitle)})</span>` : ''}</span><span class="transition group-open:rotate-180"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary><div class="p-4 ${group.layout === 'grid' ? 'space-y-3 grid md:grid-cols-2 gap-x-6 gap-y-3' : 'space-y-3'}">${group.entries.map((entry) => `<p class="text-sm"><strong class="text-white">${escapeHtml(entry.name)}:</strong> ${entry.tag ? `<span class="italic text-slate-400 border border-slate-600 rounded px-1 text-xs">${escapeHtml(entry.tag)}</span> ` : ''}${colorizeAbilityText(entry.description)}</p>`).join('')}</div></details>`).join('')}</div></div></section><div class="h-24"></div>`;
         }
 
         function applyMeta() {
@@ -384,17 +749,26 @@
 
         function renderPage(data) {
             applyMeta();
-            sidebarNav.innerHTML = renderNav();
-            pageContent.innerHTML = [
-                renderHero(),
+            const appendices = getAppendices(data);
+            sidebarNav.innerHTML = renderNav(data);
+            const rulesHtml = [
+                `<div id="rules-hero">${renderHero()}</div>`,
                 renderCharacters(data),
                 renderHealth(data),
                 renderItems(data),
                 renderSpells(data),
                 renderCombat(data),
-                renderDc(),
-                renderAppendix(data.sections.appendix)
-            ].join('');
+                renderDc()
+            ].join('').replace(
+                'bg-slate-700 text-sm px-2 py-1 rounded text-slate-300',
+                'outfits-limit-chip bg-slate-700 text-sm px-2 py-1 rounded text-slate-300'
+            );
+            const appendicesHtml = appendices.map((appendix, index) => renderAppendix(appendix, index)).join('').replaceAll(
+                'text-lg font-bold text-slate-300 mb-3 flex items-center gap-2',
+                'appendix-catalog-title text-lg font-bold text-slate-300 mb-3 flex items-center gap-2'
+            );
+
+            pageContent.innerHTML = `<div id="rules-content">${rulesHtml}</div><div id="appendices-content">${appendicesHtml}</div>`;
         }
 
         function showError(message) {
@@ -413,12 +787,21 @@
             sidebar.classList.toggle('hidden');
         });
 
+        themeToggleButton.addEventListener('click', () => {
+            setTheme(isLightTheme() ? 'dark' : 'light');
+        });
+
+        printRulesButton.addEventListener('click', () => {
+            printRulesPdf();
+        });
+
         sidebar.addEventListener('click', (event) => {
             if (event.target.closest('.nav-link') && window.innerWidth < 768) {
                 sidebar.classList.add('hidden');
             }
         });
 
+        window.addEventListener('afterprint', restoreRulesPrintMode);
         window.addEventListener('resize', syncSidebarVisibility);
 
         async function loadPage() {
@@ -438,6 +821,7 @@
         }
 
         syncSidebarVisibility();
+        updateThemeToggle();
         loadPage();
     </script>
 </body>
